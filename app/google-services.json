@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "299575139210",
+    "firebase_url": "https://linda-jamii.firebaseio.com",
+    "project_id": "linda-jamii",
+    "storage_bucket": "linda-jamii.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299575139210:android:a33ee44b19fd581b548673",
+        "android_client_info": {
+          "package_name": "com.polotechnologies.lindajamii"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299575139210-sm0qi5vetpc6p7pgt98err1i522dh764.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polotechnologies.lindajamii",
+            "certificate_hash": "feb3dd0728b492bea879bf361f1c97d0c17f9724"
+          }
+        },
+        {
+          "client_id": "299575139210-2e4e5ivoiv427nlscov6b2np84dsjm5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC65v9ashJ5v2sauxmL7bBQ3s_Cw64O5JM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299575139210-2e4e5ivoiv427nlscov6b2np84dsjm5i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

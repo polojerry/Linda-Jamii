@@ -46,9 +46,9 @@ class HomeFragment : Fragment() {
             if(homeOption!=null){
                 when(homeOption.option_title){
                     "Initial Visit"-> navigateToOption(R.id.action_homeFragment_to_initialVisitFragment)
-                    "Subsequent Visits"-> navigateToOption(R.id.action_homeFragment_to_initialVisitFragment)
-                    "Delivery"-> navigateToOption(R.id.action_homeFragment_to_initialVisitFragment)
-                    "Post Natal Visits"-> navigateToOption(R.id.action_homeFragment_to_initialVisitFragment)
+                    "Subsequent Visits"-> navigateToOption(R.id.action_homeFragment_to_subsequentVisitsFragment)
+                    "Delivery"-> navigateToOption(R.id.action_homeFragment_to_deliveryFragment)
+                    "Post Natal Visits"-> navigateToOption(R.id.action_homeFragment_to_postNatalVisitFragment)
                 }
             }
 

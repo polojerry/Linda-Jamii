@@ -26,10 +26,6 @@
             app:destination="@id/initialVisitFragment"
             app:popUpTo="@id/homeFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_subsequentVisitsFragment"
-            app:destination="@id/subsequentVisitsFragment"
-            app:popUpTo="@id/homeFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_deliveryFragment"
             app:destination="@id/deliveryFragment"
             app:popUpTo="@id/homeFragment" />
@@ -37,17 +33,16 @@
             android:id="@+id/action_homeFragment_to_postNatalVisitFragment"
             app:destination="@id/postNatalVisitFragment"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_subsequentVisitsFragment"
+            app:destination="@id/subsequentVisitsFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/initialVisitFragment"
         android:name="com.polotechnologies.lindajamii.ui.initialvisit.InitialVisitFragment"
         android:label="fragment_initial_visit"
         tools:layout="@layout/fragment_initial_visit" />
-    <fragment
-        android:id="@+id/subsequentVisitsFragment"
-        android:name="com.polotechnologies.lindajamii.ui.subsequentVisits.SubbsequentVisitsFragment"
-        android:label="fragment_subbsequent_visits"
-        tools:layout="@layout/fragment_subbsequent_visits" />
     <fragment
         android:id="@+id/deliveryFragment"
         android:name="com.polotechnologies.lindajamii.ui.delivery.DeliveryFragment"
@@ -58,4 +53,9 @@
         android:name="com.polotechnologies.lindajamii.ui.postNatalVisits.PostNatalVisitFragment"
         android:label="fragment_post_natal_visit"
         tools:layout="@layout/fragment_post_natal_visit" />
+    <fragment
+        android:id="@+id/subsequentVisitsFragment"
+        android:name="com.polotechnologies.lindajamii.ui.subsequentVisits.SubsequentVisitsFragment"
+        android:label="SubsequentVisitsFragment"
+        tools:layout="@layout/fragment_subsequent_visits"/>
 </navigation>

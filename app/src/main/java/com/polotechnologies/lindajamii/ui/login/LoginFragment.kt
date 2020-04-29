@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentLoginBinding
 
@@ -30,6 +31,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateToHomeScreen() {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
     }
 }

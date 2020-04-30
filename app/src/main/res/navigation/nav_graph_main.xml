@@ -37,6 +37,9 @@
             android:id="@+id/action_homeFragment_to_subsequentVisitsFragment"
             app:destination="@id/subsequentVisitsFragment"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_patientsFragment"
+            app:destination="@id/patientsFragment" />
     </fragment>
     <fragment
         android:id="@+id/initialVisitFragment"
@@ -58,4 +61,22 @@
         android:name="com.polotechnologies.lindajamii.ui.subsequentVisits.SubsequentVisitsFragment"
         android:label="SubsequentVisitsFragment"
         tools:layout="@layout/fragment_subsequent_visits"/>
+    <fragment
+        android:id="@+id/patientsFragment"
+        android:name="com.polotechnologies.lindajamii.ui.patients.PatientsFragment"
+        android:label="PatientsFragment"
+        tools:layout="@layout/fragment_patients">
+        <action
+            android:id="@+id/action_patientsFragment_to_patientsDetailsFragment"
+            app:destination="@id/patientsDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientsDetailsFragment"
+        android:name="com.polotechnologies.lindajamii.ui.patientsDetails.PatientsDetailsFragment"
+        android:label="PatientsDetailsFragment"
+        tools:layout="@layout/fragment_patients_details">
+        <argument
+            android:name="patient"
+            app:argType="com.polotechnologies.lindajamii.dataModels.Patients" />
+    </fragment>
 </navigation>

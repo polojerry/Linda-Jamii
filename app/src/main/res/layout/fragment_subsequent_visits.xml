@@ -63,6 +63,27 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_layout_subsequent_visits_registration_number"
+                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_present_pregnancy">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_subsequent_visits_registration_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Registration Number"
+                            android:inputType="number"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_layout_subsequent_visits_number_of_visit"
                         style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                         android:layout_width="0dp"
@@ -71,7 +92,7 @@
                         android:layout_marginEnd="4dp"
                         app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_date"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_label_present_pregnancy">
+                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_registration_number">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/text_subsequent_visits_number_of_visit"
@@ -91,7 +112,7 @@
                         android:layout_marginEnd="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_number_of_visit"
-                        app:layout_constraintTop_toBottomOf="@+id/text_label_present_pregnancy">
+                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_registration_number">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/text_subsequent_visits_date"

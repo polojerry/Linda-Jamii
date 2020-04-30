@@ -6,17 +6,19 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.polotechnologies.lindajamii.dataModels.PatientDetails
+import com.polotechnologies.lindajamii.dataModels.SubsequentVisit
 import com.polotechnologies.lindajamii.dataModels.typeConveters.AntenatalProfileConverter
 import com.polotechnologies.lindajamii.dataModels.typeConveters.MaternalProfileConverter
 import com.polotechnologies.lindajamii.dataModels.typeConveters.MedicalSurgicalHistoryConverter
 import com.polotechnologies.lindajamii.dataModels.typeConveters.PhysicalExaminationConverter
 
-@Database(entities = [PatientDetails::class], version = 1, exportSchema = false )
+@Database(entities = [PatientDetails::class, SubsequentVisit::class], version = 1, exportSchema = false )
 @TypeConverters(MaternalProfileConverter::class, MedicalSurgicalHistoryConverter::class, PhysicalExaminationConverter::class,
     AntenatalProfileConverter::class)
 abstract class LindaJamiiDatabase : RoomDatabase() {
 
     abstract val patientProfileDAO: PatientProfileDAO
+    abstract val subsequentDAO :SubsequentDAO
 
     companion object{
         @Volatile

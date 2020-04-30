@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
                     "Subsequent Visits"-> navigateToOption(R.id.action_homeFragment_to_subsequentVisitsFragment)
                     "Delivery"-> navigateToOption(R.id.action_homeFragment_to_deliveryFragment)
                     "Post Natal Visits"-> navigateToOption(R.id.action_homeFragment_to_subsequentVisitsFragment)
+                    "Patients"->navigateToOption(R.id.action_homeFragment_to_patientsFragment)
                 }
             }
 
@@ -67,7 +68,8 @@ class HomeFragment : Fragment() {
             HomeOption(R.drawable.linda_jamii_logo, "Initial Visit"),
             HomeOption(R.drawable.linda_jamii_logo, "Subsequent Visits"),
             HomeOption(R.drawable.linda_jamii_logo, "Delivery"),
-            HomeOption(R.drawable.linda_jamii_logo, "Post Natal Visits")
+            HomeOption(R.drawable.linda_jamii_logo, "Post Natal Visits"),
+            HomeOption(R.drawable.linda_jamii_logo, "Patients")
         )
     }
 

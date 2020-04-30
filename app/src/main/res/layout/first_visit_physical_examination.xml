@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_label_physical_examination"
+        style="@style/Theme.LindaJamii.TextVisitHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Physical Examination"
+        android:textStyle="bold"
+         />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_physical_examination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        app:cardBackgroundColor="@color/colorTextIcons"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/text_label_physical_examination"
+        app:layout_constraintTop_toBottomOf="@+id/text_label_physical_examination">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_physical_examination_general"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_pysical_examination_general"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="General"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_physical_examination_bp"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/text_layout_physical_examination_height"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_general">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_pysical_examination_bp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="BP"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_physical_examination_height"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_layout_physical_examination_bp"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_general">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_pysical_examination_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Heignt"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_physical_examination_cvs"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/text_layout_physical_examination_Resp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_bp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_pysical_examination_cvs"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="CVS"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_physical_examination_Resp"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_layout_physical_examination_cvs"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_height">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_pysical_examination_resp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Resp"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_physical_examination_breast"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/text_layout_physical_examination_abdomen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_cvs">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_pysical_examination_breast"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Breast"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_physical_examination_abdomen"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_layout_physical_examination_breast"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_Resp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_pysical_examination_abdomen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Abdomen"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_physical_examination_vaginal_examination"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/text_layout_physical_examination_discharge_genital_ulcer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_breast">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_pysical_examination_vaginal_examination"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="VaginalExamination"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_physical_examination_discharge_genital_ulcer"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_layout_physical_examination_vaginal_examination"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_abdomen">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_pysical_examination_discharge_genital_ulcer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Discharge/ Genital Ulcer"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

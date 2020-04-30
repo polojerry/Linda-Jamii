@@ -35,6 +35,7 @@
             android:id="@+id/nested_scroll_delivery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -295,8 +296,8 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Baby : "
                     android:gravity="center"
+                    android:text="Baby : "
                     app:layout_constraintBottom_toBottomOf="@+id/text_layout_delivery_baby_vit_k"
                     app:layout_constraintEnd_toStartOf="@+id/text_layout_delivery_baby_vit_k"
                     app:layout_constraintStart_toStartOf="@+id/text_layout_delivery_obstructed_mother_oxytoxin"
@@ -469,7 +470,6 @@
                     app:layout_constraintEnd_toEndOf="@+id/text_layout_delivery_baby_birth_conducted_by"
                     app:layout_constraintStart_toStartOf="@+id/text_layout_delivery_baby_birth_place_of_birth"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_baby_birth_place_of_birth" />
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

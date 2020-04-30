@@ -32,9 +32,10 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/nested_scrool_first_visit"
+            android:id="@+id/nested_scroll_first_visit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,12 +61,36 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_maternal_profile" />
 
+                <include
+                    android:id="@+id/layout_physical_examination"
+                    layout="@layout/first_visit_medical_surgical_history"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_medical_surgical_history" />
+
+                <include
+                    android:id="@+id/layout_antenatal_profile"
+                    layout="@layout/first_visit_antenatal_profile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_physical_examination" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finish"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nested_scroll_first_visit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

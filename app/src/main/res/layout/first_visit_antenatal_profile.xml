@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_label_antenatal_profile"
+        style="@style/Theme.LindaJamii.TextVisitHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Antenatal Profila"
+        android:textStyle="bold"
+         />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_antenatal_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        app:cardBackgroundColor="@color/colorTextIcons"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/text_label_antenatal_profile"
+        app:layout_constraintTop_toBottomOf="@+id/text_label_antenatal_profile">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_antenatal_profile_hb"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_antenatal_profile_hb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="HB"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_antenatal_profile_blood_group"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/text_layout_antenatal_profile_rhesus_factor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_hb">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_antenatal_profile_blood_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Blood Group"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_antenatal_profile_rhesus_factor"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_layout_antenatal_profile_blood_group"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_hb">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_antenatal_profile_rhesus_factor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Rhesus Fact"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_antenatal_profile_serelogy"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_blood_group">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_antenatal_profile_serelogy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Serelogy (VDRL/ RPR)"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_antenatal_profile_tb_screning"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_serelogy">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_antenatal_profile_tb_screeening"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="TB Screening as per the intensive case finding tool"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_antenatal_profile_hiv"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/text_layout_antenatal_profile_urinalisis"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_tb_screning">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_antenatal_profile_hiv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="HIV"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_antenatal_profile_urinalisis"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_layout_antenatal_profile_hiv"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_tb_screning">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_antenatal_profile_urinalisis"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Urinalysis"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_layout_antenatal_profile_hiv_couseling_and_testing"
+                style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_hiv">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_antenatal_profile_hiv_couseling_and_testing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Couple HIV Counselling and testing Done"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

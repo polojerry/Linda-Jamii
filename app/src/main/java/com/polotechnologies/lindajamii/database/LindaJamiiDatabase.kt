@@ -16,6 +16,8 @@ import com.polotechnologies.lindajamii.dataModels.typeConveters.PhysicalExaminat
     AntenatalProfileConverter::class)
 abstract class LindaJamiiDatabase : RoomDatabase() {
 
+    abstract val patientProfileDAO: PatientProfileDAO
+
     companion object{
         @Volatile
         private var INSTANCE : LindaJamiiDatabase? = null

@@ -14,11 +14,9 @@ class MaternalProfileConverter {
             profile = "${maternalProfile.institutionName}," +
                     "${maternalProfile.mfl_number}," +
                     "${maternalProfile.anc_number}," +
-                    "${maternalProfile.pnc_number}," +
                     "${maternalProfile.name_of_client}," +
                     "${maternalProfile.age_of_client}," +
                     "${maternalProfile.gravida}," +
-                    "${maternalProfile.parity}," +
                     "${maternalProfile.height}," +
                     "${maternalProfile.weight}," +
                     "${maternalProfile.marital_status}," +
@@ -38,8 +36,8 @@ class MaternalProfileConverter {
     fun toMaternalProfile(profile: String?): MaternalProfile? {
 
         var maternalProfile: MaternalProfile? = MaternalProfile(
-            "", 0, 0, 0, "", 0,
-            "", "", 0, 0, "", "", "", "", "", "", ""
+            "", 0, 0, "", 0,
+            "", 0.0, 0.0, "", "", "", "", "", "", ""
         )
 
         if (profile.equals("")) {
@@ -54,20 +52,18 @@ class MaternalProfileConverter {
                     stats[0],
             stats[1].toInt(),
             stats[2].toInt(),
-            stats[3].toInt(),
-            stats[4],
-            stats[5].toInt(),
-            stats[6],
-            stats[7],
-            stats[8].toInt(),
-            stats[9].toInt(),
+            stats[3],
+            stats[4].toInt(),
+            stats[5],
+            stats[6].toDouble(),
+            stats[7].toDouble(),
+            stats[8],
+            stats[9],
             stats[10],
             stats[11],
             stats[12],
             stats[13],
-            stats[14],
-            stats[15],
-            stats[16]
+            stats[14]
             )
 
             return maternalProfile

@@ -12,8 +12,8 @@ import com.polotechnologies.lindajamii.dataModels.typeConveters.PhysicalExaminat
 @Entity(tableName = "patients_details_table")
 data class PatientDetails(
 
-    @PrimaryKey @ColumnInfo(name = "patients_number")
-    val patientNumber: Int,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "patients_number")
+    val patientNumber: Long,
 
     @ColumnInfo(name = "maternal_profile")
     @TypeConverters(MaternalProfileConverter::class)
@@ -35,13 +35,11 @@ data class PatientDetails(
         val institutionName: String,
         val mfl_number: Int,
         val anc_number: Int,
-        val pnc_number: Int,
         val name_of_client: String,
         val age_of_client: Int,
         val gravida: String,
-        val parity: String,
-        val height: Int,
-        val weight: Int,
+        val height: Double,
+        val weight: Double,
         val marital_status: String,
         val education: String,
         val address: String,
@@ -83,8 +81,8 @@ data class PatientDetails(
         val serology: String,
         val tb_screening_intense: String,
         val hiv: String,
-        val urinalisys :String,
-        val hiv_couseling_done : String
+        val urinalisys: String,
+        val hiv_couseling_done: String
 
-        )
+    )
 }

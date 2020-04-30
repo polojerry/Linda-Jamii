@@ -80,6 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/layout_physical_examination" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_finish_initial_visit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Finish"

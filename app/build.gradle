@@ -62,6 +62,10 @@ dependencies {
     //ViewModel and Lifecycle
     implementation "androidx.lifecycle:lifecycle-extensions:$version_life_cycle"
 
+    //Room
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+
     //Glide
     implementation "com.github.bumptech.glide:glide:$version_glide"
     kapt "com.github.bumptech.glide:compiler:$version_glide"

@@ -192,9 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
-                android:layout_marginBottom="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/text_layout_medical_surgical_history_damily_history_tuberculosis"
+                app:layout_constraintEnd_toStartOf="@+id/text_layout_medical_surgical_history_family_history_tuberculosis"
                 app:layout_constraintStart_toEndOf="@+id/text_label_family_history"
                 app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_drug_allergy">
 
@@ -208,13 +206,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_layout_medical_surgical_history_damily_history_tuberculosis"
+                android:id="@+id/text_layout_medical_surgical_history_family_history_tuberculosis"
                 style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/text_layout_medical_surgical_history_twins"
                 app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_others_specify">
@@ -227,6 +223,16 @@
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_save_medical_surgical_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Save Medical/ Surgical History"
+                app:layout_constraintEnd_toEndOf="@+id/text_layout_medical_surgical_history_family_history_tuberculosis"
+                app:layout_constraintStart_toStartOf="@+id/text_label_family_history"
+                app:layout_constraintTop_toBottomOf="@+id/text_label_family_history" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -191,6 +191,15 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_save_antenatal_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Save Antenatal Profile"
+                app:layout_constraintEnd_toEndOf="@+id/text_layout_antenatal_profile_hiv_couseling_and_testing"
+                app:layout_constraintStart_toStartOf="@+id/text_layout_antenatal_profile_hiv_couseling_and_testing"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_hiv_couseling_and_testing" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

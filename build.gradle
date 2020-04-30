@@ -8,6 +8,8 @@ buildscript {
 
         version_nav = "2.2.2"
         version_life_cycle = "2.2.0"
+        version_room = "2.2.4"
+        
         version_glide = '4.11.0'
 
         version_google_gsm = "4.3.3"

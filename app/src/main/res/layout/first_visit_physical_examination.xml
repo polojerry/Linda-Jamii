@@ -211,6 +211,15 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_save_physical_examination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Save Physical Examination"
+                app:layout_constraintEnd_toEndOf="@+id/text_layout_physical_examination_discharge_genital_ulcer"
+                app:layout_constraintStart_toStartOf="@+id/text_layout_physical_examination_vaginal_examination"
+                app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_vaginal_examination" />
 
 
 

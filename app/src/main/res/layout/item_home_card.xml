@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -33,11 +34,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Initial Visit"
+                tools:text="Initial Visit"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/image_home_option"
                 app:layout_constraintStart_toStartOf="@+id/image_home_option"
-                app:layout_constraintTop_toBottomOf="@+id/image_home_option" />
+                app:layout_constraintTop_toBottomOf="@+id/image_home_option"
+                android:text="@{option.option_title}"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

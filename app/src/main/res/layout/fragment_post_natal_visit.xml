@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,6 +12,489 @@
         android:layout_height="match_parent"
         tools:context=".ui.postNatalVisits.PostNatalVisitFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.delivery.DeliveryFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_post_natal_visits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_subsequent_visits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.LindaJamii.DarkActionBar"
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                app:title="Post Natal Visits" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_post_natal_visit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_post_natal_visits">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_label_post_natal_examination"
+                    style="@style/Theme.LindaJamii.TextVisitHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Present Pregnancy"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_label_post_natal_examination_mother"
+                    style="@style/Theme.LindaJamii.TextVisitHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="A. Mother"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_post_natal_examination" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_timing_of_visit"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_date_of_visit"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_post_natal_examination_mother">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_timing_of_visit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Timing of Visit "
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_date_of_visit"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_timing_of_visit"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_post_natal_examination_mother">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_date_of_visit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Date/ Visit "
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_blood_pressure"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_temp"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_timing_of_visit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_blood_pressure"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Blood Pressure "
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_temp"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_blood_pressure"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_date_of_visit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Temp "
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_pulse"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_repiratory_rate"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_blood_pressure">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_pulse"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Pulse "
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_repiratory_rate"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_pulse"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_temp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_respiratory_rate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Respiratory Rate "
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_general_condition"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_breast"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_pulse">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_general_condition"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="General Condition "
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_breast"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_general_condition"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_repiratory_rate">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_breast"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Breast "
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_cs_scar"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_involution_of_uterus"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_general_condition">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_cs_scar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="c/S scar "
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_involution_of_uterus"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_cs_scar"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_breast">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_involution_of_uterus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Involution of Uterus "
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_label_post_natal_examination_baby"
+                    style="@style/Theme.LindaJamii.TextVisitHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="B. Baby"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_cs_scar" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_baby_general_condition"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_baby_temp"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_post_natal_examination_baby">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_baby_general_condition"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="General Condition "
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_baby_temp"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_baby_general_condition"
+                    app:layout_constraintTop_toTopOf="@+id/text_layout_post_natal_visit_baby_general_condition">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_baby_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Baby Temp"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_baby_breaths_per_minute"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_baby_feeding_method"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_general_condition">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_baby_breath_per_minute"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Breath Per Minute "
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_baby_feeding_method"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_baby_breaths_per_minute"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_temp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_baby_feeding_method"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="* Baby's feding Method"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_baby_breastfeeding_position"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="-1dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_baby_umblical_cord"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_breaths_per_minute">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_baby_breastfeeding_postion"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="** Breastfeeding Position "
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_baby_umblical_cord"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-1dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_baby_breastfeeding_position"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_feeding_method">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_baby_umblical_cord"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Baby's Umblical Cord"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_baby_immunization_started"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_baby_given_art_prophylaxis"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_breastfeeding_position">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_baby_immunization_started"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Immunization Started "
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_baby_given_art_prophylaxis"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_baby_immunization_started"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_umblical_cord">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_baby_given_art_prophylaxis"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="HEI Infant given ART prophylaxis"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_post_natal_visit_baby_centrimoxazole_initiated"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_post_natal_visit_baby_immunization_started"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_immunization_started">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_post_natal_visit_baby_centrimoxazole_initiated"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Infant contrimoxazole prophylaxis initiated"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_post_natal_visit_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Save"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_post_natal_visit_baby_centrimoxazole_initiated"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_post_natal_visit_baby_immunization_started"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_centrimoxazole_initiated" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

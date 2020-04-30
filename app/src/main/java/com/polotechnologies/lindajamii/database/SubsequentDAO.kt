@@ -1,3 +1,4 @@
+/*
 package com.polotechnologies.lindajamii.database
 
 import androidx.lifecycle.LiveData
@@ -18,4 +19,4 @@ interface SubsequentDAO {
 
     @Query("SELECT * FROM subsequent_visit_table ORDER BY nextVisit ASC")
     fun patients() : LiveData<List<PatientDetails>>
-}
+}*/

@@ -12,13 +12,13 @@ import com.polotechnologies.lindajamii.dataModels.typeConveters.MaternalProfileC
 import com.polotechnologies.lindajamii.dataModels.typeConveters.MedicalSurgicalHistoryConverter
 import com.polotechnologies.lindajamii.dataModels.typeConveters.PhysicalExaminationConverter
 
-@Database(entities = [PatientDetails::class, SubsequentVisit::class], version = 1, exportSchema = false )
+@Database(entities = [PatientDetails::class/*, SubsequentVisit::class*/], version = 1, exportSchema = false )
 @TypeConverters(MaternalProfileConverter::class, MedicalSurgicalHistoryConverter::class, PhysicalExaminationConverter::class,
     AntenatalProfileConverter::class)
 abstract class LindaJamiiDatabase : RoomDatabase() {
 
     abstract val patientProfileDAO: PatientProfileDAO
-    abstract val subsequentDAO :SubsequentDAO
+    /*abstract val subsequentDAO :SubsequentDAO*/
 
     companion object{
         @Volatile

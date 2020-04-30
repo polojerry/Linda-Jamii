@@ -6,6 +6,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="Theme.App.SplashScreen" parent="Theme.LindaJamii">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 
     <style name="Theme.LindaJamii.TextInputLayout.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@color/colorTextIcons</item>

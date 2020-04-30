@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.HomeOption
 import com.polotechnologies.lindajamii.dataModels.Patients
@@ -41,10 +42,10 @@ class PatientsFragment : Fragment() {
     private fun setObserver() {
         mViewModel.selectedPatient.observe(viewLifecycleOwner, Observer {patient->
             if(patient!=null){
-                Toast.makeText(context, patient.patientName, Toast.LENGTH_SHORT).show()
+                val action  = PatientsFragmentDirections.actionPatientsFragmentToPatientsDetailsFragment(patient)
+                findNavController().navigate(action)
                 mViewModel.displaySelectedPatientComplete()
             }
-
 
         })
     }

@@ -9,9 +9,11 @@
 
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="3dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_name"
@@ -69,7 +71,7 @@
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
-            android:text="Marital Status"
+            android:text="@{patient.patientsMaritalStatus}"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/label_next_visit"

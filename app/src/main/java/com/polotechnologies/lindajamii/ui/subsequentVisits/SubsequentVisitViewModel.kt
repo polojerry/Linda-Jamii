@@ -1,8 +1,6 @@
 package com.polotechnologies.lindajamii.ui.subsequentVisits
 
 import android.app.Application
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +9,7 @@ import com.polotechnologies.lindajamii.dataModels.PatientDetails.*
 import com.polotechnologies.lindajamii.database.PatientProfileDAO
 import kotlinx.coroutines.*
 
-class SubsequentVisitViewModel(
+internal class SubsequentVisitViewModel(
     val app: Application,
     val database: PatientProfileDAO
 ) : AndroidViewModel(app) {
@@ -75,7 +73,6 @@ class SubsequentVisitViewModel(
             _insertedDetailId.value = database.insert(patientProfile)
         }
     }
-
 
     override fun onCleared() {
         viewModelJob.cancel()

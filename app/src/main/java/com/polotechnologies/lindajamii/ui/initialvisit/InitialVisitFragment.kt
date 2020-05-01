@@ -14,6 +14,7 @@ import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.PatientDetails
 import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
 import com.polotechnologies.lindajamii.databinding.FragmentInitialVisitBinding
+import com.polotechnologies.lindajamii.utils.toast
 import kotlinx.android.synthetic.main.first_visit_maternal_profile.*
 import kotlinx.android.synthetic.main.first_visit_medical_surgical_history.*
 import kotlinx.android.synthetic.main.first_visit_physical_examination.*
@@ -22,47 +23,46 @@ import kotlinx.android.synthetic.main.fragment_initial_visit.*
 /**
  * A fragment used to insert data of initial visit by the expectant mother
  */
-class InitialVisitFragment : Fragment() {
+internal class InitialVisitFragment : Fragment(R.layout.fragment_initial_visit) {
 
     private lateinit var mBinding: FragmentInitialVisitBinding
     private lateinit var mViewModel: InitialVisitViewModel
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_initial_visit, container, false )
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //TODO: Add Kodein For dependancy Injection and service locators
         val application = requireNotNull(this.activity).application
         val dataSource = LindaJamiiDatabase.getInstance(application).patientProfileDAO
-        val viewModelFactory = InitialVisitViewModelFactory(application,dataSource)
+        val viewModelFactory = InitialVisitViewModelFactory(application, dataSource)
 
-        mViewModel = ViewModelProvider(this,viewModelFactory).get(InitialVisitViewModel::class.java)
+        mViewModel =
+            ViewModelProvider(this, viewModelFactory).get(InitialVisitViewModel::class.java)
 
+        mBinding = FragmentInitialVisitBinding.bind(view)
         setClickListener()
         setObervers()
-        return mBinding.root
     }
 
     private fun setObervers() {
-        mViewModel.insertedDetailId.observe(viewLifecycleOwner, Observer {id->
-            if(id>0){
-                Toast.makeText(context, "Profile saved with Number + $id", Toast.LENGTH_SHORT).show()
+        mViewModel.insertedDetailId.observe(viewLifecycleOwner, Observer { id ->
+            if (id > 0) {
+                context?.toast("Profile saved with Number: $id")
             }
         })
     }
 
     private fun setClickListener() {
-       /* button_save_maternal_profile.setOnClickListener {
-            val nameOfInstitution = text_maternal_profile_name_of_institution.text.toString()
-            val mflNumber = text_maternal_profile_mf_number.text.toString().toInt()
-            val ancNumber = text_maternal_profile_anc_number.text.toString().toInt()
-            val nameOfClient = text_maternal_profile_name_of_client.text.toString()
-            val age = text_maternal_profile_age.text.toString().toInt()
-            val gravida = text_maternal_profile_parity.text.toString()
-            val height = text_maternal_profile_height.text.toString().toDouble()
-            val weight = text_maternal_profile_weight.text.toString().toDouble()
-            *//*val lmp = text_maternal_profile_lmp.text.toString()
+        /* button_save_maternal_profile.setOnClickListener {
+             val nameOfInstitution = text_maternal_profile_name_of_institution.text.toString()
+             val mflNumber = text_maternal_profile_mf_number.text.toString().toInt()
+             val ancNumber = text_maternal_profile_anc_number.text.toString().toInt()
+             val nameOfClient = text_maternal_profile_name_of_client.text.toString()
+             val age = text_maternal_profile_age.text.toString().toInt()
+             val gravida = text_maternal_profile_parity.text.toString()
+             val height = text_maternal_profile_height.text.toString().toDouble()
+             val weight = text_maternal_profile_weight.text.toString().toDouble()
+             *//*val lmp = text_maternal_profile_lmp.text.toString()
             val edd = text_maternal_profile_edd.text.toString()*//*
             val maritalStatus =text_maternal_profile_marital_status.text.toString()
             val education = text_maternal_profile_education.text.toString()

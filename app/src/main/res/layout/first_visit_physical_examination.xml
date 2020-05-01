@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="#ededed">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_label_physical_examination"
@@ -11,16 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Physical Examination"
-        android:textStyle="bold"
-         />
+        android:textStyle="bold" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_physical_examination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        app:cardBackgroundColor="@color/colorTextIcons"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="@android:color/white"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/text_label_physical_examination"
@@ -220,7 +219,6 @@
                 app:layout_constraintEnd_toEndOf="@+id/text_layout_physical_examination_discharge_genital_ulcer"
                 app:layout_constraintStart_toStartOf="@+id/text_layout_physical_examination_vaginal_examination"
                 app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_vaginal_examination" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

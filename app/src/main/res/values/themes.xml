@@ -30,8 +30,8 @@
 
     <style name="Theme.LindaJamii.TextVisitHeading" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/colorPrimaryDark</item>
-        <item name="android:layout_marginStart">4dp</item>
         <item name="android:textSize">22sp</item>
+        <item name="android:gravity">center_horizontal</item>
         <item name="textAllCaps">true</item>
     </style>
 

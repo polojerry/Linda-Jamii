@@ -8,7 +8,7 @@ import com.polotechnologies.lindajamii.database.PatientProfileDAO
 /**
  * Simple ViewModel factory for Initial Visit ViewModel
  */
-class InitialVisitViewModelFactory(
+internal class InitialVisitViewModelFactory(
     private val application: Application,
     private val database: PatientProfileDAO
 ) : ViewModelProvider.Factory {

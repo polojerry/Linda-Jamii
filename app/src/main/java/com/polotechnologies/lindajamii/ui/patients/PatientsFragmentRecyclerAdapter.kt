@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.polotechnologies.lindajamii.dataModels.Patients
 import com.polotechnologies.lindajamii.databinding.ItemPatientBinding
 
-class PatientsFragmentRecyclerAdapter(val patients : List<Patients>, private val onClickListener: OnClickListener) :
-    RecyclerView.Adapter<PatientsFragmentRecyclerAdapter.PatientsViewHolder>() {
+internal class PatientsFragmentRecyclerAdapter(
+    val patients : List<Patients>,
+    private val onClickListener: OnClickListener
+) : RecyclerView.Adapter<PatientsFragmentRecyclerAdapter.PatientsViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientsViewHolder {

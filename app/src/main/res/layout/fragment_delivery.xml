@@ -470,12 +470,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/text_layout_delivery_baby_birth_conducted_by"
                     app:layout_constraintStart_toStartOf="@+id/text_layout_delivery_baby_birth_place_of_birth"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_baby_birth_place_of_birth" />
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </androidx.core.widget.NestedScrollView>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

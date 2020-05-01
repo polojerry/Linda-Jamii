@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.HomeOption
 
-class HomeFragmentViewModel : ViewModel() {
+internal class HomeFragmentViewModel : ViewModel() {
 
     //selected Shop Category
     private val _selectedHomeOption = MutableLiveData<HomeOption>()

@@ -11,8 +11,10 @@ import com.polotechnologies.lindajamii.dataModels.PatientDetails.*
 import com.polotechnologies.lindajamii.database.PatientProfileDAO
 import kotlinx.coroutines.*
 
-class InitialVisitViewModel(val app: Application, val database: PatientProfileDAO) :
-    AndroidViewModel(app) {
+internal class InitialVisitViewModel(
+    val app: Application,
+    val database: PatientProfileDAO
+) : AndroidViewModel(app) {
 
     private val _maternalProfile = MutableLiveData<MaternalProfile>()
     val maternalProfile: LiveData<MaternalProfile>
@@ -73,7 +75,6 @@ class InitialVisitViewModel(val app: Application, val database: PatientProfileDA
             _insertedDetailId.value = database.insert(patientProfile)
         }
     }
-
 
     override fun onCleared() {
         viewModelJob.cancel()

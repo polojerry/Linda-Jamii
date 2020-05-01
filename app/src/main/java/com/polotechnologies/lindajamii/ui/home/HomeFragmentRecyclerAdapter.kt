@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.polotechnologies.lindajamii.dataModels.HomeOption
 import com.polotechnologies.lindajamii.databinding.ItemHomeCardBinding
 
-class HomeFragmentRecyclerAdapter(val homeOptions : List<HomeOption>,private val onClickListener: OnClickListener) :
-    RecyclerView.Adapter<HomeFragmentRecyclerAdapter.OptionViewHolder>() {
+internal class HomeFragmentRecyclerAdapter(
+    val homeOptions : List<HomeOption>,
+    private val onClickListener: OnClickListener
+) : RecyclerView.Adapter<HomeFragmentRecyclerAdapter.OptionViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionViewHolder {

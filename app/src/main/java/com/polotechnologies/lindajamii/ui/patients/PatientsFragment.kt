@@ -19,30 +19,28 @@ import com.polotechnologies.lindajamii.ui.home.HomeFragmentRecyclerAdapter
 import com.polotechnologies.lindajamii.ui.home.HomeFragmentViewModel
 import com.polotechnologies.lindajamii.ui.patients.PatientsFragment.Companion.PATIENTS
 
-class PatientsFragment : Fragment() {
+internal class PatientsFragment : Fragment(R.layout.fragment_patients) {
 
-    lateinit var mBinding : FragmentPatientsBinding
-    lateinit var mViewModel: PatientFragmentViewModel
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        mBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_patients, container, false)
-
-        mViewModel = ViewModelProvider(this)[PatientFragmentViewModel::class.java]
-
-        displayPatients()
-        setObserver()
-
-
-        return mBinding.root
+    private lateinit var mBinding: FragmentPatientsBinding
+    private val mViewModel by lazy {
+        ViewModelProvider(this).get(PatientFragmentViewModel::class.java)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mBinding = FragmentPatientsBinding.bind(view)
+        displayPatients()
+        setObserver()
+    }
+
+
     private fun setObserver() {
-        mViewModel.selectedPatient.observe(viewLifecycleOwner, Observer {patient->
-            if(patient!=null){
-                val action  = PatientsFragmentDirections.actionPatientsFragmentToPatientsDetailsFragment(patient)
+        mViewModel.selectedPatient.observe(viewLifecycleOwner, Observer { patient ->
+            if (patient != null) {
+                val action =
+                    PatientsFragmentDirections.actionPatientsFragmentToPatientsDetailsFragment(
+                        patient
+                    )
                 findNavController().navigate(action)
                 mViewModel.displaySelectedPatientComplete()
             }
@@ -59,16 +57,13 @@ class PatientsFragment : Fragment() {
                 })
     }
 
-    companion object{
+    companion object {
         val PATIENTS = listOf<Patients>(
-            Patients("Winnie Awino","254790689212","01/04/2020","12/3/2020","Widowed"),
-            Patients("Mercy Korir","2723071546","01/05/2020","10/3/2020","Maried"),
-            Patients("Jennifer Atieno","254741554689","10/04/2020","15/4/2020","Single"),
-            Patients("Sheila Wangare","254790689212","12/05/2020","04/6/2020","Maried"),
-            Patients("Josphene Kemuntu","254724790233","13/05/2020","10/3/2020","Single")
-
-
+            Patients("Winnie Awino", "254790689212", "01/04/2020", "12/3/2020", "Widowed"),
+            Patients("Mercy Korir", "2723071546", "01/05/2020", "10/3/2020", "Maried"),
+            Patients("Jennifer Atieno", "254741554689", "10/04/2020", "15/4/2020", "Single"),
+            Patients("Sheila Wangare", "254790689212", "12/05/2020", "04/6/2020", "Maried"),
+            Patients("Josphene Kemuntu", "254724790233", "13/05/2020", "10/3/2020", "Single")
         )
     }
-
 }

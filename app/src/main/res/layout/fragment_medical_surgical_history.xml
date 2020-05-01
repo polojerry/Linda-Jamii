@@ -164,7 +164,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/text_layout_medical_surgical_history_others_specify"
+                    android:id="@+id/text_layout_medical_surgical_history_others_drug_allergy_specify"
                     style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_tuberculosis">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/text_medical_surgical_history_others_specify"
+                        android:id="@+id/text_medical_surgical_history_others_drug_allergy_specify"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Others Specify "
@@ -225,7 +225,7 @@
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/text_layout_medical_surgical_history_twins"
-                    app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_others_specify">
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_others_drug_allergy_specify">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_medical_surgical_history_family_history_tuberculosis"

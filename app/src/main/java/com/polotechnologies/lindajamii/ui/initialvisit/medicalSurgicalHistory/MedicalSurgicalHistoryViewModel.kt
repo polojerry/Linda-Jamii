@@ -9,142 +9,74 @@ class MedicalSurgicalHistoryViewModel(
     val mBinding: FragmentMedicalSurgicalHistoryBinding
 ) : ViewModel() {
 
-    private var nameOfInstitution = ""
-    private var mflNumber = ""
-    private var ancNumber = ""
-    private var pncNumber = ""
-    private var nameOfClient = ""
-    private var ageOfClient = ""
-    private var gravida = ""
-    private var parity = ""
-    private var height = ""
-    private var weight = ""
-    private var lmp = ""
-    private var edd = ""
-    private var maritalStatus = ""
-    private var education = ""
-    private var address = ""
-    private var telephone = ""
-    private var nextOfKin = ""
-    private var relationShip = ""
-    private var nextOfKinContact = ""
+    private var surgicalOperation = ""
+    private var diabetes = ""
+    private var hypertension = ""
+    private var bloodTransfusion = ""
+    private var tuberculosis = ""
+    private var specificDrugAllergy = ""
+    private var otherDrugAllergies = ""
+    private var familyHistoryTwins = ""
+    private var familyHistoryTuberculosis = ""
 
 
     fun isFieldsValid(): Boolean {
         var isValid = false
 
-        /*nameOfInstitution = mBinding.textMaternalProfileNameOfInstitution.text.toString()
-        mflNumber = mBinding.textMaternalProfileMfNumber.text.toString()
-        ancNumber = mBinding.textMaternalProfileAncNumber.text.toString()
-        pncNumber = mBinding.textMaternalProfilePncNumber.text.toString()
-        nameOfClient = mBinding.textMaternalProfileNameOfClient.text.toString()
-        ageOfClient = mBinding.textMaternalProfileAge.text.toString()
-        gravida = mBinding.textMaternalProfileGravida.text.toString()
-        parity = mBinding.textMaternalProfileParity.text.toString()
-        height = mBinding.textMaternalProfileParity.text.toString()
-        weight = mBinding.textMaternalProfileHeight.text.toString()
-        lmp = mBinding.textMaternalProfileLmp.text.toString()
-        edd = mBinding.textMaternalProfileEdd.text.toString()
-        maritalStatus = mBinding.textMaternalProfileMaritalStatus.text.toString()
-        education = mBinding.textMaternalProfileAddress.text.toString()
-        address = mBinding.textMaternalProfileAddress.text.toString()
-        telephone = mBinding.textMaternalProfileTelephone.text.toString()
-        nextOfKin = mBinding.textMaternalProfileNextOfKin.text.toString()
-        relationShip = mBinding.textMaternalProfileRelationship.text.toString()
-        nextOfKinContact = mBinding.textLayoutProfileContactPhone.text.toString()
+        surgicalOperation = mBinding.textMedicalSurgicalHistorySurgicalOperationSpecific.text.toString()
+        diabetes = mBinding.textMedicalSurgicalHistoryDiabetes.text.toString()
+        hypertension = mBinding.textMedicalSurgicalHistoryHypertension.text.toString()
+        bloodTransfusion = mBinding.textMedicalSurgicalHistoryHypertension.text.toString()
+        tuberculosis = mBinding.textMedicalSurgicalHistoryTuberculosis.text.toString()
+        specificDrugAllergy = mBinding.textMedicalSurgicalHistoryDrugAllergy.text.toString()
+        otherDrugAllergies = mBinding.textMedicalSurgicalHistoryOthersDrugAllergySpecify.text.toString()
+        familyHistoryTwins = mBinding.textMedicalSurgicalHistoryTwins.text.toString()
+        familyHistoryTuberculosis = mBinding.textMedicalSurgicalHistoryFamilyHistoryTuberculosis.text.toString()
 
 
-        if (nameOfInstitution == ""){
+        if (surgicalOperation == ""){
             isValid = false
-            mBinding.textLayoutMaternalProfileInstitutionName.error = "Required"
+            mBinding.textLayoutMedicalSurgicalHistorySergicalOperation.error = "Required"
         }
 
-        if (nameOfClient == "") {
+        if (diabetes == "") {
             isValid = false
-            mBinding.textLayoutMaternalProfileMflNumber.error = "Required"
+            mBinding.textLayoutMedicalSurgicalHistoryDiabetes.error = "Required"
+        }
+        if (hypertension == "") {
+            isValid = false
+            mBinding.textLayoutMedicalSurgicalHistoryHyperTension.error = "Required"
+        }
+        if (bloodTransfusion == "") {
+            isValid = false
+            mBinding.textLayoutMedicalSurgicalHistoryBloodTransfusion.error = "Required"
+        }
+        if (tuberculosis == "") {
+            mBinding.textLayoutMedicalSurgicalHistoryTuberculosis.error = "Required"
             isValid = false
         }
-        if (ancNumber == "") {
+        if (specificDrugAllergy == "") {
             isValid = false
-            mBinding.textLayoutMaternalProfileAncNumber.error = "Required"
+            mBinding.textLayoutMedicalSurgicalHistoryDrugAllergy.error = "Required"
         }
-        if (pncNumber == "") {
+        if (otherDrugAllergies == "") {
             isValid = false
-            mBinding.textLayoutMaternalProfilePncNumber.error = "Required"
+            mBinding.textLayoutMedicalSurgicalHistoryOthersDrugAllergySpecify.error = "Required"
         }
-        if (nameOfClient == "") {
-            mBinding.textLayoutMaternalProfileClientName.error = "Required"
-            isValid = false
-        }
-        if (ageOfClient == "") {
-            isValid = false
-            mBinding.textLayoutMaternalProfileAge.error = "Required"
-        }
-        if (gravida == "") {
+
+        if (familyHistoryTwins == "") {
 
             isValid = false
-            mBinding.textLayoutMaternalProfileGravida.error = "Required"
+            mBinding.textLayoutMedicalSurgicalHistoryTwins.error = "Required"
         }
-        if (parity == "") {
 
+        if (familyHistoryTuberculosis == "") {
             isValid = false
-            mBinding.textLayoutMaternalProfileParity.error = "Required"
+            mBinding.textLayoutMedicalSurgicalHistoryFamilyHistoryTuberculosis.error = "Required"
         }
-        if (height == "") {
 
-            isValid = false
-            mBinding.textLayoutMaternalProfileHeight.error = "Required"
-        }
-        if (weight == "") {
-            isValid = false
-            mBinding.textLayoutMaternalProfileWeight.error = "Required"
-
-        }
-        if (lmp == "") {
-
-            isValid = false
-            mBinding.textLayoutMaternalProfileLmp.error = "Required"
-        }
-        if (edd == "") {
-
-            isValid = false
-            mBinding.textLayoutMaternalProfileEdd.error = "Required"
-        }
-        if (maritalStatus == "") {
-            isValid = false
-            mBinding.textLayoutMaternalProfileMaritalStatus.error = "Required"
-        }
-        if (education == "") {
-            isValid = false
-            mBinding.textLayoutMaternalProfileEducation.error = "Required"
-        }
-        if (address == "") {
-            isValid = false
-            mBinding.textLayoutMaternalProfileAddress.error = "Required"
-        }
-        if (telephone == "") {
-            isValid = false
-            mBinding.textLayoutMaternalProfileTelephone.error = "Required"
-        }
-        if (nextOfKin == "") {
-            isValid = false
-            mBinding.textLayoutMaternalProfileNextOfKin.error = "Required"
-        }
-        if (relationShip == "") {
-            isValid = false
-            mBinding.textLayoutMaternalProfileRelationship.error = "Required"
-        }
-        if (nextOfKinContact == "") {
-            isValid = false
-            mBinding.textLayoutMaternalProfileNextOfKinContactPhone.error = "Required"
-
-
-        }*/
-
-        if (nameOfInstitution != "" && mflNumber != "" && ancNumber != "" && pncNumber != "" && nameOfClient != ""
-            && ageOfClient != "" && gravida != "" && parity != "" && height != "" && weight != "" && lmp != ""
-            && edd != "" && maritalStatus != "" && education != "" && address != "" && telephone != "" && nextOfKin != ""
-            && relationShip != "" && nextOfKinContact != ""
+        if (surgicalOperation != "" && diabetes != "" && hypertension != "" && bloodTransfusion != "" && tuberculosis != ""
+            && specificDrugAllergy != "" && otherDrugAllergies != "" && familyHistoryTwins != "" && familyHistoryTuberculosis != ""
         ) {
             isValid = true
         }

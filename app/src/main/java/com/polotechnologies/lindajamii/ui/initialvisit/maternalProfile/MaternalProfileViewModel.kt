@@ -23,13 +23,14 @@ class MaternalProfileViewModel(
     private var edd = ""
     private var maritalStatus = ""
     private var education = ""
+    private var address = ""
     private var telephone = ""
     private var nextOfKin = ""
     private var relationShip = ""
     private var nextOfKinContact = ""
 
 
-    fun isFieldsEmpty(): Boolean {
+    fun isFieldsValid(): Boolean {
         var isValid = false
 
         nameOfInstitution = mBinding.textMaternalProfileNameOfInstitution.text.toString()
@@ -39,79 +40,114 @@ class MaternalProfileViewModel(
         nameOfClient = mBinding.textMaternalProfileNameOfClient.text.toString()
         ageOfClient = mBinding.textMaternalProfileAge.text.toString()
         gravida = mBinding.textMaternalProfileGravida.text.toString()
-        parity =mBinding.textMaternalProfileParity.text.toString()
+        parity = mBinding.textMaternalProfileParity.text.toString()
         height = mBinding.textMaternalProfileParity.text.toString()
         weight = mBinding.textMaternalProfileHeight.text.toString()
         lmp = mBinding.textMaternalProfileLmp.text.toString()
         edd = mBinding.textMaternalProfileEdd.text.toString()
         maritalStatus = mBinding.textMaternalProfileMaritalStatus.text.toString()
         education = mBinding.textMaternalProfileAddress.text.toString()
-        telephone =mBinding.textMaternalProfileTelephone.text.toString()
+        address = mBinding.textMaternalProfileAddress.text.toString()
+        telephone = mBinding.textMaternalProfileTelephone.text.toString()
         nextOfKin = mBinding.textMaternalProfileNextOfKin.text.toString()
         relationShip = mBinding.textMaternalProfileRelationship.text.toString()
-        nextOfKinContact =mBinding.textLayoutProfileContactPhone.text.toString()
+        nextOfKinContact = mBinding.textLayoutProfileContactPhone.text.toString()
 
 
-        if (nextOfKinContact == "")
+        if (nameOfInstitution == ""){
+            isValid = false
             mBinding.textLayoutMaternalProfileInstitutionName.error = "Required"
-
-        if (nextOfKinContact == "") {
-            mBinding.textLayoutMaternalProfileMflNumber.error = "Required"
         }
-        if (nextOfKinContact == "") {
+
+        if (nameOfClient == "") {
+            isValid = false
+            mBinding.textLayoutMaternalProfileMflNumber.error = "Required"
+            isValid = false
+        }
+        if (ancNumber == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfileAncNumber.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (pncNumber == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfilePncNumber.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (nameOfClient == "") {
             mBinding.textLayoutMaternalProfileClientName.error = "Required"
+            isValid = false
         }
-        if (nextOfKinContact == "") {
+        if (ageOfClient == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfileAge.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (gravida == "") {
+
+            isValid = false
             mBinding.textLayoutMaternalProfileGravida.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (parity == "") {
+
+            isValid = false
             mBinding.textLayoutMaternalProfileParity.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (height == "") {
+
+            isValid = false
             mBinding.textLayoutMaternalProfileHeight.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (weight == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfileWeight.error = "Required"
+
         }
-        if (nextOfKinContact == "") {
+        if (lmp == "") {
+
+            isValid = false
             mBinding.textLayoutMaternalProfileLmp.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (edd == "") {
+
+            isValid = false
             mBinding.textLayoutMaternalProfileEdd.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (maritalStatus == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfileMaritalStatus.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (education == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfileEducation.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (address == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfileAddress.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (telephone == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfileTelephone.error = "Required"
         }
-        if (nextOfKinContact == "") {
+        if (nextOfKin == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfileNextOfKin.error = "Required"
         }
-        if (nextOfKinContact == "") {
-            mBinding.textMaternalProfileRelationship.error = "Required"
+        if (relationShip == "") {
+            isValid = false
+            mBinding.textLayoutMaternalProfileRelationship.error = "Required"
         }
         if (nextOfKinContact == "") {
+            isValid = false
             mBinding.textLayoutMaternalProfileNextOfKinContactPhone.error = "Required"
 
+
         }
 
-        isValid = true
+        if (nameOfInstitution != "" && mflNumber != "" && ancNumber != "" && pncNumber != "" && nameOfClient != ""
+            && ageOfClient != "" && gravida != "" && parity != "" && height != "" && weight != "" && lmp != ""
+            && edd != "" && maritalStatus != "" && education != "" && address != "" && telephone != "" && nextOfKin != ""
+            && relationShip != "" && nextOfKinContact != ""
+        ) {
+            isValid = true
+        }
 
         return isValid
 

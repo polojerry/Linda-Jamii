@@ -36,7 +36,7 @@ class MaternalProfileFragment : Fragment() {
         mViewModel = ViewModelProvider(this, factory)[MaternalProfileViewModel::class.java]
 
         mBinding.buttonNextMedicalSurgicalHistory.setOnClickListener {
-            if(!mViewModel.isFieldsEmpty()){
+            if(mViewModel.isFieldsValid()){
                 Toast.makeText(context!!.applicationContext, "All Valid", Toast.LENGTH_SHORT).show()
             }
         }

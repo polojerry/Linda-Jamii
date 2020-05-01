@@ -53,7 +53,7 @@ class InitialVisitFragment : Fragment() {
     }
 
     private fun setClickListener() {
-        button_save_maternal_profile.setOnClickListener {
+       /* button_save_maternal_profile.setOnClickListener {
             val nameOfInstitution = text_maternal_profile_name_of_institution.text.toString()
             val mflNumber = text_maternal_profile_mf_number.text.toString().toInt()
             val ancNumber = text_maternal_profile_anc_number.text.toString().toInt()
@@ -62,8 +62,8 @@ class InitialVisitFragment : Fragment() {
             val gravida = text_maternal_profile_parity.text.toString()
             val height = text_maternal_profile_height.text.toString().toDouble()
             val weight = text_maternal_profile_weight.text.toString().toDouble()
-            /*val lmp = text_maternal_profile_lmp.text.toString()
-            val edd = text_maternal_profile_edd.text.toString()*/
+            *//*val lmp = text_maternal_profile_lmp.text.toString()
+            val edd = text_maternal_profile_edd.text.toString()*//*
             val maritalStatus =text_maternal_profile_marital_status.text.toString()
             val education = text_maternal_profile_education.text.toString()
             val address =  text_maternal_profile_address.text.toString()
@@ -81,10 +81,10 @@ class InitialVisitFragment : Fragment() {
             Toast.makeText(context, "Maternal Profile Saved", Toast.LENGTH_SHORT).show()
 
         }
-        /*
+        *//*
         * to be implemented
         *
-        * */
+        * *//*
         button_save_medical_surgical_history.setOnClickListener {
             Toast.makeText(context, "Medical Surgical History Saved", Toast.LENGTH_SHORT).show()
         }
@@ -94,7 +94,7 @@ class InitialVisitFragment : Fragment() {
 
         button_finish_initial_visit.setOnClickListener {
             mViewModel.savePatientProfile()
-        }
+        }*/
     }
 
 }

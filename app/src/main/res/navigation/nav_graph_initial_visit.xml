@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_initial_visit.xml"
+    app:startDestination="@id/maternalProfileFragment">
+
+    <fragment
+        android:id="@+id/maternalProfileFragment"
+        android:name="com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileFragment"
+        android:label="MaternalProfileFragment"
+        tools:layout="@layout/fragment_maternal_profile"/>
+</navigation>

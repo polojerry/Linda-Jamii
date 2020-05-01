@@ -2,4 +2,9 @@
     <string name="app_name">Linda Jamii</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="filled_drop_down_yes_no">
+        <item>Yes</item>
+        <item>Yes</item>
+    </string-array>
 </resources>

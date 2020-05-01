@@ -40,6 +40,7 @@ class MedicalSurgicalHistoryFragment : Fragment() {
             }
         }
 
+        setFilledDropDownMenu()
         return mBinding.root
     }
 

@@ -5,6 +5,7 @@
     android:ellipsize="end"
     android:maxLines="1"
     android:padding="16dp"
+    android:textSize="14sp"
     tools:text="Yes"
     android:textAppearance="?attr/textAppearanceSubtitle1"
     xmlns:android="http://schemas.android.com/apk/res/android" />

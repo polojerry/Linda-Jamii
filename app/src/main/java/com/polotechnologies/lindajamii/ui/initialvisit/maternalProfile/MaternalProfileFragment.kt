@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.polotechnologies.lindajamii.R
@@ -36,8 +37,9 @@ class MaternalProfileFragment : Fragment() {
         mViewModel = ViewModelProvider(this, factory)[MaternalProfileViewModel::class.java]
 
         mBinding.buttonNextMedicalSurgicalHistory.setOnClickListener {
-            if(mViewModel.isFieldsValid()){
-                Toast.makeText(context!!.applicationContext, "All Valid", Toast.LENGTH_SHORT).show()
+            //For testing purposes check is always true
+            if(!mViewModel.isFieldsValid()){
+                findNavController().navigate(R.id.action_maternalProfileFragment_to_medicalSurgicalHistoryFragment)
             }
         }
         return mBinding.root

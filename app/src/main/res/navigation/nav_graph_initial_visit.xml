@@ -9,5 +9,17 @@
         android:id="@+id/maternalProfileFragment"
         android:name="com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileFragment"
         android:label="MaternalProfileFragment"
-        tools:layout="@layout/fragment_maternal_profile"/>
+        tools:layout="@layout/fragment_maternal_profile">
+        <action
+            android:id="@+id/action_maternalProfileFragment_to_medicalSurgicalHistoryFragment"
+            app:destination="@id/medicalSurgicalHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicalSurgicalHistoryFragment"
+        android:name="com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryFragment"
+        android:label="MedicalSurgicalHistoryFragment"
+        tools:layout="@layout/fragment_medical_surgical_history">
+        <argument android:name="user_id"
+            app:argType="string" />
+    </fragment>
 </navigation>

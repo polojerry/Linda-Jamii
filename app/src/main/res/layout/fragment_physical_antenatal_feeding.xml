@@ -349,7 +349,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_layout_antenatal_profile_hiv"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -358,12 +358,13 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_tb_screning">
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
                             android:id="@+id/text_antenatal_profile_hiv"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="50dp"
                             android:hint="HIV"
-                            android:inputType="text" />
+                            android:inputType="text"
+                            android:padding="10dp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -433,7 +434,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_layout_infant_feeding_couseling_done"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -445,7 +446,7 @@
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView
                             android:id="@+id/text_infant_feeding_couseling"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="50dp"
                             android:hint="Infant Feed Counseling Done "
                             android:inputType="text"
                             android:padding="10dp" />
@@ -454,7 +455,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_layout_infant_feeding_couseling_breastfeeding"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -466,8 +467,8 @@
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView
                             android:id="@+id/text_infant_feeding_couseling_breastfeeding"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Exclusive Breastfeeding Couselling DOne "
+                            android:layout_height="50dp"
+                            android:hint="Exclusive Breastfeeding Couselling Done "
                             android:inputType="text"
                             android:padding="10dp" />
 

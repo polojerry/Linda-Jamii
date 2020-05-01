@@ -21,5 +21,17 @@
         tools:layout="@layout/fragment_medical_surgical_history">
         <argument android:name="user_id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_medicalSurgicalHistoryFragment_to_physicalAntenatalFeeding"
+            app:destination="@id/physicalAntenatalFeeding" />
+    </fragment>
+    <fragment
+        android:id="@+id/physicalAntenatalFeeding"
+        android:name="com.polotechnologies.lindajamii.ui.initialvisit.physicalAntenatalFeedingProfile.PhysicalAntenatalFeeding"
+        android:label="PhysicalAntenatalFeeding"
+        tools:layout="@layout/fragment_physical_antenatal_feeding">
+        <argument
+            android:name="user_id"
+            app:argType="string" />
     </fragment>
 </navigation>

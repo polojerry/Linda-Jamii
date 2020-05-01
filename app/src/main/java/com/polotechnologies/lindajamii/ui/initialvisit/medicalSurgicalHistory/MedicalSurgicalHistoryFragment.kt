@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
@@ -35,8 +36,9 @@ class MedicalSurgicalHistoryFragment : Fragment() {
         mViewModel = ViewModelProvider(this, factory)[MedicalSurgicalHistoryViewModel::class.java]
 
         mBinding.buttonNextPreviousPregnancy.setOnClickListener {
-            if(mViewModel.isFieldsValid()){
-                Toast.makeText(context!!.applicationContext, "All Valid", Toast.LENGTH_SHORT).show()
+            //For Testing only set to always true
+            if(!mViewModel.isFieldsValid()){
+                findNavController().navigate(R.id.action_medicalSurgicalHistoryFragment_to_physicalAntenatalFeeding)
             }
         }
 

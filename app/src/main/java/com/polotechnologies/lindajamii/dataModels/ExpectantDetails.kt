@@ -1,9 +1,14 @@
 package com.polotechnologies.lindajamii.dataModels
 
+import com.google.firebase.firestore.ServerTimestamp
+import java.util.*
+
 data class ExpectantDetails(
-    val maternalProfile: ExpectantMaternalProfile?,
-    val medicalSurgicalHistory : ExpectantMedicalSurgicalHistory?,
-    val physicalAntenatalFeeding : ExpectantPhysicalAntenatalFeeding?
+    val patientId :String = "",
+    @ServerTimestamp val timeStamp : Date? = null,
+    val maternalProfile: ExpectantMaternalProfile? = null,
+    val medicalSurgicalHistory : ExpectantMedicalSurgicalHistory? = null,
+    val physicalAntenatalFeeding : ExpectantPhysicalAntenatalFeeding? = null
 ) {
     data class ExpectantMaternalProfile(
         val nameOfInstitution: String = "",

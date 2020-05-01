@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,7 +16,7 @@ import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
 
 /**
- .
+.
  */
 class MaternalProfileFragment : Fragment() {
 
@@ -30,19 +31,39 @@ class MaternalProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_maternal_profile, container, false)
+        mBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_maternal_profile, container, false)
         mDatabase = FirebaseFirestore.getInstance()
 
-        val factory  = MaternalProfileViewModelFactory(mDatabase, mBinding)
+        val factory = MaternalProfileViewModelFactory(mDatabase, mBinding)
         mViewModel = ViewModelProvider(this, factory)[MaternalProfileViewModel::class.java]
 
+        setObServer()
         mBinding.buttonNextMedicalSurgicalHistory.setOnClickListener {
-            //For testing purposes check is always true
-            if(!mViewModel.isFieldsValid()){
-                findNavController().navigate(R.id.action_maternalProfileFragment_to_medicalSurgicalHistoryFragment)
+            if (mViewModel.isFieldsValid()) {
+                mViewModel.saveMaternalProfile()
             }
         }
         return mBinding.root
+    }
+
+    private fun setObServer() {
+        mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+            if (status == true) {
+                val action =
+                    MaternalProfileFragmentDirections.actionMaternalProfileFragmentToMedicalSurgicalHistoryFragment(
+                        mViewModel.userId.value!!
+                    )
+                findNavController().navigate(action)
+            } else {
+                Toast.makeText(
+                    context!!.applicationContext,
+                    "Failed: ${mViewModel.exception.value!!.localizedMessage}",
+                    Toast.LENGTH_SHORT
+                )
+            }
+
+        })
     }
 
 }

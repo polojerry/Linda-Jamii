@@ -1,20 +1,37 @@
 package com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
+import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
+import java.util.UUID
 
 class MaternalProfileViewModel(
     val mDatabase: FirebaseFirestore,
     val mBinding: FragmentMaternalProfileBinding
 ) : ViewModel() {
 
+    private val _writeStatus = MutableLiveData<Boolean>()
+    val writeStatus: LiveData<Boolean>
+        get() = _writeStatus
+
+    private val _userId = MutableLiveData<String>()
+    val userId: LiveData<String>
+        get() = _userId
+
+    private val _exception = MutableLiveData<Exception>()
+    val exception: LiveData<Exception>
+        get() = _exception
+
     private var nameOfInstitution = ""
     private var mflNumber = ""
     private var ancNumber = ""
     private var pncNumber = ""
-    private var nameOfClient = ""
-    private var ageOfClient = ""
+    private var nameOfPatient = ""
+    private var ageOfPatient = ""
     private var gravida = ""
     private var parity = ""
     private var height = ""
@@ -37,8 +54,8 @@ class MaternalProfileViewModel(
         mflNumber = mBinding.textMaternalProfileMfNumber.text.toString()
         ancNumber = mBinding.textMaternalProfileAncNumber.text.toString()
         pncNumber = mBinding.textMaternalProfilePncNumber.text.toString()
-        nameOfClient = mBinding.textMaternalProfileNameOfClient.text.toString()
-        ageOfClient = mBinding.textMaternalProfileAge.text.toString()
+        nameOfPatient = mBinding.textMaternalProfileNameOfClient.text.toString()
+        ageOfPatient = mBinding.textMaternalProfileAge.text.toString()
         gravida = mBinding.textMaternalProfileGravida.text.toString()
         parity = mBinding.textMaternalProfileParity.text.toString()
         height = mBinding.textMaternalProfileParity.text.toString()
@@ -54,12 +71,12 @@ class MaternalProfileViewModel(
         nextOfKinContact = mBinding.textLayoutProfileContactPhone.text.toString()
 
 
-        if (nameOfInstitution == ""){
+        if (nameOfInstitution == "") {
             isValid = false
             mBinding.textLayoutMaternalProfileInstitutionName.error = "Required"
         }
 
-        if (nameOfClient == "") {
+        if (nameOfPatient == "") {
             isValid = false
             mBinding.textLayoutMaternalProfileMflNumber.error = "Required"
             isValid = false
@@ -72,11 +89,11 @@ class MaternalProfileViewModel(
             isValid = false
             mBinding.textLayoutMaternalProfilePncNumber.error = "Required"
         }
-        if (nameOfClient == "") {
+        if (nameOfPatient == "") {
             mBinding.textLayoutMaternalProfileClientName.error = "Required"
             isValid = false
         }
-        if (ageOfClient == "") {
+        if (ageOfPatient == "") {
             isValid = false
             mBinding.textLayoutMaternalProfileAge.error = "Required"
         }
@@ -141,8 +158,8 @@ class MaternalProfileViewModel(
 
         }
 
-        if (nameOfInstitution != "" && mflNumber != "" && ancNumber != "" && pncNumber != "" && nameOfClient != ""
-            && ageOfClient != "" && gravida != "" && parity != "" && height != "" && weight != "" && lmp != ""
+        if (nameOfInstitution != "" && mflNumber != "" && ancNumber != "" && pncNumber != "" && nameOfPatient != ""
+            && ageOfPatient != "" && gravida != "" && parity != "" && height != "" && weight != "" && lmp != ""
             && edd != "" && maritalStatus != "" && education != "" && address != "" && telephone != "" && nextOfKin != ""
             && relationShip != "" && nextOfKinContact != ""
         ) {
@@ -151,6 +168,37 @@ class MaternalProfileViewModel(
 
         return isValid
 
+    }
+
+    fun saveMaternalProfile() {
+        _userId.value= UUID.randomUUID().toString()
+        val expectantDetails = ExpectantDetails(
+            "userId",
+            null,
+            getExpectantMotherProfile(),
+            null,
+            null
+        )
+        mDatabase.collection("patients").document(userId.value!!).set(expectantDetails)
+            .addOnSuccessListener {
+                _writeStatus.value = true
+            }.addOnFailureListener{exception->
+                _exception.value = exception
+                _writeStatus.value = false
+
+            }
+
+
+    }
+
+    private fun getExpectantMotherProfile(): ExpectantMaternalProfile? {
+
+        return ExpectantMaternalProfile(
+            nameOfInstitution, mflNumber, ancNumber, pncNumber,
+            nameOfPatient, ageOfPatient, gravida, parity,
+            height, weight, lmp, edd, maritalStatus, education,
+            address, telephone, nextOfKin, relationShip, nextOfKinContact
+        )
     }
 
 

@@ -11,8 +11,10 @@ import com.polotechnologies.lindajamii.dataModels.PatientDetails.*
 import com.polotechnologies.lindajamii.database.PatientProfileDAO
 import kotlinx.coroutines.*
 
-class SubsequentVisitViewModel(val app: Application, val database: PatientProfileDAO) :
-    AndroidViewModel(app) {
+class SubsequentVisitViewModel(
+    val app: Application,
+    val database: PatientProfileDAO
+) : AndroidViewModel(app) {
 
     private val _maternalProfile = MutableLiveData<MaternalProfile>()
     val maternalProfile: LiveData<MaternalProfile>

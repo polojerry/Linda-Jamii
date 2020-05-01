@@ -38,7 +38,7 @@ class PhysicalAntenatalFeeding : Fragment() {
 
         mBinding.buttonFinishInitial.setOnClickListener {
             //For Testing only set to always true
-            if(mViewModel.isFieldsValid()){
+            if(!mViewModel.isFieldsValid()){
                 activity!!.onBackPressed()
             }
         }

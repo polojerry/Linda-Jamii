@@ -12,10 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.subsequentVisits.SubsequentVisitsFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.delivery.DeliveryFragment">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/app_bar_subsequent_visits"
@@ -78,7 +74,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Registration Number"
-                            android:inputType="number"
+                            android:inputType="text"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +95,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Number of Visit"
-                            android:inputType="text"
+                            android:inputType="number"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -203,7 +199,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="H.B."
-                            android:inputType="numberDecimal"
+                            android:inputType="text"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -245,7 +241,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="maturity"
-                            android:inputType="numberDecimal"
+                            android:inputType="text"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -266,7 +262,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Fundal Height"
-                            android:inputType="text"
+                            android:inputType="numberDecimal"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -299,7 +295,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_foetal_Health"
+                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_foetal_Heart"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_fundal_height">
 
@@ -314,7 +310,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_foetal_Health"
+                        android:id="@+id/text_layout_subsequent_foetal_Heart"
                         style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -325,10 +321,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_presentation">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_foetal_health"
+                            android:id="@+id/text_subsequent_visits_foetal_heart"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Foetal Health"
+                            android:hint="Foetal Heart"
                             android:inputType="text"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -371,7 +367,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Next Visit"
-                            android:inputType="text"
+                            android:inputType="date"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -434,18 +430,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Save"
+                        android:layout_marginEnd="8dp"
+                        app:icon="@drawable/ic_baseline_check_24"
+                        android:text="Visit Done"
                         app:layout_constraintEnd_toEndOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks"
-                        app:layout_constraintStart_toStartOf="@+id/text_layout_subsequent_visits_weight_gain"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_weight_gain" />
+                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.core.widget.NestedScrollView>
 
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar_subsequent_visit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            style="@style/Widget.AppCompat.ProgressBar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

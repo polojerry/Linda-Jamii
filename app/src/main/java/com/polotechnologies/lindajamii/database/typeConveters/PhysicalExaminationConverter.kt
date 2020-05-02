@@ -1,4 +1,4 @@
-package com.polotechnologies.lindajamii.dataModels.typeConveters
+package com.polotechnologies.lindajamii.database.typeConveters
 
 import androidx.room.TypeConverter
 import com.polotechnologies.lindajamii.dataModels.PatientDetails.PhysicalExamination

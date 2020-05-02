@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_initial_visit.xml"
+    app:startDestination="@id/maternalProfileFragment">
+
+    <fragment
+        android:id="@+id/maternalProfileFragment"
+        android:name="com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileFragment"
+        android:label="MaternalProfileFragment"
+        tools:layout="@layout/fragment_maternal_profile">
+        <action
+            android:id="@+id/action_maternalProfileFragment_to_medicalSurgicalHistoryFragment"
+            app:destination="@id/medicalSurgicalHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicalSurgicalHistoryFragment"
+        android:name="com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryFragment"
+        android:label="MedicalSurgicalHistoryFragment"
+        tools:layout="@layout/fragment_medical_surgical_history">
+        <argument android:name="user_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_medicalSurgicalHistoryFragment_to_physicalAntenatalFeeding"
+            app:destination="@id/physicalAntenatalFeeding" />
+    </fragment>
+    <fragment
+        android:id="@+id/physicalAntenatalFeeding"
+        android:name="com.polotechnologies.lindajamii.ui.initialvisit.physicalAntenatalFeedingProfile.PhysicalAntenatalFeeding"
+        android:label="PhysicalAntenatalFeeding"
+        tools:layout="@layout/fragment_physical_antenatal_feeding">
+        <argument
+            android:name="user_id"
+            app:argType="string" />
+    </fragment>
+</navigation>

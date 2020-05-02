@@ -4,10 +4,10 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.polotechnologies.lindajamii.dataModels.typeConveters.AntenatalProfileConverter
-import com.polotechnologies.lindajamii.dataModels.typeConveters.MaternalProfileConverter
-import com.polotechnologies.lindajamii.dataModels.typeConveters.MedicalSurgicalHistoryConverter
-import com.polotechnologies.lindajamii.dataModels.typeConveters.PhysicalExaminationConverter
+import com.polotechnologies.lindajamii.database.typeConveters.AntenatalProfileConverter
+import com.polotechnologies.lindajamii.database.typeConveters.MaternalProfileConverter
+import com.polotechnologies.lindajamii.database.typeConveters.MedicalSurgicalHistoryConverter
+import com.polotechnologies.lindajamii.database.typeConveters.PhysicalExaminationConverter
 
 @Entity(tableName = "patients_details_table")
 data class PatientDetails(

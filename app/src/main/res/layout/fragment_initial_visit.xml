@@ -30,70 +30,18 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nested_scroll_first_visit"
-            android:layout_width="match_parent"
+
+        <fragment
+            android:id="@+id/host_initial_visit"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
             android:layout_height="0dp"
+            app:defaultNavHost="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/app_bar_initial_visit">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <include
-                    android:id="@+id/layout_maternal_profile"
-                    layout="@layout/first_visit_maternal_profile"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <include
-                    android:id="@+id/layout_medical_surgical_history"
-                    layout="@layout/first_visit_medical_surgical_history"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_maternal_profile" />
-
-                <include
-                    android:id="@+id/layout_physical_examination"
-                    layout="@layout/first_visit_physical_examination"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_medical_surgical_history" />
-
-                <include
-                    android:id="@+id/layout_antenatal_profile"
-                    layout="@layout/first_visit_antenatal_profile"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="4dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_physical_examination" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_finish_initial_visit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Finish"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_antenatal_profile" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_initial_visit"
+            app:navGraph="@navigation/nav_graph_initial_visit" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

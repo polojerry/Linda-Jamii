@@ -14,6 +14,11 @@
         <item name="boxBackgroundColor">@color/colorTextIcons</item>
     </style>
 
+    <style name="Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="boxBackgroundColor">@color/colorTextIcons</item>
+    </style>
+
+
     <style name="Theme.LindaJamii.DarkActionBar" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
         <item name="colorButtonNormal">@color/colorTextIcons</item>
     </style>

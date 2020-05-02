@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.initialvisit.maternalProfile.MaternalProfileFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_label_maternal_profile"
+            style="@style/Theme.LindaJamii.TextVisitHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="Maternal Profile"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_institution_name"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_name_of_institution"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Name of Institution"
+                        android:inputType="text"
+                    />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_mfl_number"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_maternal_profile_anc_number"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_institution_name"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_institution_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_mf_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="MFL No"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_anc_number"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_institution_name"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_maternal_profile_mfl_number"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_institution_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_anc_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="ANC No"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_pnc_number"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_anc_number"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_mfl_number"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_mfl_number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_pnc_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="PNC No"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_client_name"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_pnc_number"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_pnc_number"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_pnc_number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_name_of_client"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Name of Client"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_age"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_maternal_profile_gravida"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_client_name"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_client_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Age"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_gravida"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_maternal_profile_parity"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_maternal_profile_age"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_client_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_gravida"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Gravida"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_parity"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_client_name"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_maternal_profile_gravida"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_client_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_parity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Parity"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_height"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_maternal_profile_weight"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_age"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_age">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_height"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Height"
+                        android:inputType="numberDecimal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_weight"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_parity"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_maternal_profile_height"
+                    app:layout_constraintTop_toTopOf="@+id/text_layout_maternal_profile_height">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Weight"
+                        android:inputType="numberDecimal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_lmp"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="2dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_maternal_profile_edd"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_height"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_height">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_lmp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="L.M.P"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_edd"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_weight"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_maternal_profile_lmp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_height">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_edd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="E.D.D"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_marital_status"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_maternal_profile_education"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_lmp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_lmp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_marital_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Marital Status"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_education"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_edd"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_maternal_profile_marital_status"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_lmp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_education"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Education"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_address"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_education"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_marital_status"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_marital_status">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Address"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_telephone"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_address"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_address"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_telephone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Telephone"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_next_of_kin"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_maternal_profile_relationship"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_telephone"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_telephone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_next_of_kin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Next of Kin"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_relationship"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_telephone"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_maternal_profile_next_of_kin"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_telephone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_maternal_profile_relationship"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Relationship"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_maternal_profile_next_of_kin_contact_phone"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_relationship"
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_maternal_profile_next_of_kin"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_next_of_kin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_layout_profile_contact_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Next of Kin's Contacts/Phone"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_next_medical_surgical_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Medical History"
+                    app:icon="@drawable/ic_baseline_arrow_forward_24"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_relationship"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_next_of_kin_contact_phone" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar_maternal_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            style="@style/Widget.AppCompat.ProgressBar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -11,7 +11,10 @@ import com.polotechnologies.lindajamii.dataModels.SubsequentVisit
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
 
 
-class SubsequentVisitViewModel(val mDatabase: FirebaseFirestore, val mBinding: FragmentSubsequentVisitsBinding) :
+class SubsequentVisitViewModel(
+    val mDatabase: FirebaseFirestore,
+    val mBinding: FragmentSubsequentVisitsBinding
+) :
     ViewModel() {
 
     private val _writeStatus = MutableLiveData<Boolean>()
@@ -144,7 +147,7 @@ class SubsequentVisitViewModel(val mDatabase: FirebaseFirestore, val mBinding: F
 
         if (registrationNumber != "" && numberOfVisit != "" && dateOfVisit != "" && urine != "" && weight != ""
             && bp != "" && hb != "" && pallor != "" && maturity != "" && fundalHeight != ""
-            && presentation != "" && lie != "" && foetalHeart != ""&& presentation != "" && foetalMovement != "" && nextVisit != ""
+            && presentation != "" && lie != "" && foetalHeart != "" && presentation != "" && foetalMovement != "" && nextVisit != ""
         ) {
             isValid = true
         }
@@ -161,27 +164,29 @@ class SubsequentVisitViewModel(val mDatabase: FirebaseFirestore, val mBinding: F
             urine,
             weight,
             bp,
-            hb ,
+            hb,
             pallor,
             maturity,
             fundalHeight,
             presentation,
-            lie ,
+            lie,
             foetalHeart,
             foetalMovement,
             nextVisit
+
         )
 
         mDatabase.collection("patients")
-            .document("subsequentVisits")
-            .collection(registrationNumber).add(subsequentVisit
-        ).addOnSuccessListener {
-            _writeStatus.value = true
-        }.addOnFailureListener { exception ->
-            _exception.value = exception
-            _writeStatus.value = false
+            .document(registrationNumber)
+            .collection("subsequentVisits").add(
+                subsequentVisit
+            ).addOnSuccessListener {
+                _writeStatus.value = true
+            }.addOnFailureListener { exception ->
+                _exception.value = exception
+                _writeStatus.value = false
 
-        }
+            }
 
     }
 

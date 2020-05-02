@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.HomeOption
 import com.polotechnologies.lindajamii.dataModels.Patients
 
-class PatientFragmentViewModel : ViewModel() {
+class PatientsFragmentViewModel : ViewModel() {
 
     //selected Patient
     private val _selectedPatient = MutableLiveData<Patients>()

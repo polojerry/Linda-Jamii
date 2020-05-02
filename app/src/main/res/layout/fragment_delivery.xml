@@ -58,54 +58,73 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_delivery_registration_number"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_delivery_registration_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Registration Number"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_layout_delivery_pregnancy_duration"
                     style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     app:layout_constraintEnd_toStartOf="@+id/text_layout_delivery_hiv_tested"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile">
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_registration_number">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/text_delivery_pregnancy_duration"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="During of Pregnancy (Weeks)"
-                        android:inputType="text"
+                        android:inputType="number"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
-
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_layout_delivery_hiv_tested"
-                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="1dp"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/text_layout_delivery_pregnancy_duration"
-                    app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile">
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_registration_number">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_delivery_hiv_tested"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="54dp"
                         android:hint="HIV tested"
                         android:inputType="text"
+                        android:padding="10dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_layout_delivery_counsel_and_test"
-                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -114,12 +133,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_pregnancy_duration">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_delivery_counsel_and_test"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="HIV tested"
+                        android:layout_height="54dp"
+                        android:hint="Counsel and Test"
                         android:inputType="text"
+                        android:padding="10dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -168,7 +188,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_layout_delivery_blood_loss"
-                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -177,12 +197,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_mode_of_delivery">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_delivery_blood_loss"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="54dp"
                         android:hint="Blood Loss"
                         android:inputType="text"
+                        android:padding="10dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -230,7 +251,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_layout_delivery_obstructed_labour"
-                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -239,12 +260,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_blood_loss">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_delivery_obstructed_labour"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Eclampia"
+                        android:layout_height="54dp"
+                        android:hint="Obstructed Labour"
                         android:inputType="text"
+                        android:padding="10dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -271,6 +293,47 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_delivery_apgar_score"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_delivery_rescusitation_done"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_obstructed_labour">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_delivery_apgar_score"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Apgar Score"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_delivery_rescusitation_done"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_delivery_obstructed_labour_condition_of_mother"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_delivery_apgar_score"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_obstructed_labour_condition_of_mother">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/text_delivery_rescusitation_done"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:hint="Rescuscitation Done"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_layout_delivery_obstructed_mother_oxytoxin"
                     style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                     android:layout_width="0dp"
@@ -279,7 +342,7 @@
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_obstructed_labour">
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_apgar_score">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/text_delivery_mother_oxytoxin"
@@ -434,7 +497,7 @@
                         android:id="@+id/text_delivery_baby_birth_place_of_birth"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Place of Birth"
+                        android:hint="Place of Delivery"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -466,15 +529,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
                     android:text="Finish Delivery"
+                    app:icon="@drawable/ic_baseline_check_24"
                     app:layout_constraintEnd_toEndOf="@+id/text_layout_delivery_baby_birth_conducted_by"
-                    app:layout_constraintStart_toStartOf="@+id/text_layout_delivery_baby_birth_place_of_birth"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_delivery_baby_birth_place_of_birth" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar_delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            style="@style/Widget.AppCompat.ProgressBar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

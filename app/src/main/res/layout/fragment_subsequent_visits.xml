@@ -360,7 +360,7 @@
                         android:layout_marginEnd="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_foetal_mvt"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_foetal_Health">
+                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_foetal_Heart">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/text_subsequent_visits_next_visit"

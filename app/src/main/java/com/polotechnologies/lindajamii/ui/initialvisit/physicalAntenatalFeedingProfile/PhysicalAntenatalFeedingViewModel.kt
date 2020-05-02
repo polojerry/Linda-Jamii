@@ -45,8 +45,12 @@ class PhysicalAntenatalFeedingViewModel(
     private var rhesus = ""
     private var serology = ""
     private var tbScreening = ""
+
+    //To be Added
     private var dateIPTIsonaziadGiven = ""
     private var nextVisit = ""
+
+
     private var hiv = ""
     private var urianalysis = ""
     private var givenHIVCounsellingAndTest = ""
@@ -75,8 +79,6 @@ class PhysicalAntenatalFeedingViewModel(
         rhesus = mBinding.textAntenatalProfileRhesusFactor.text.toString()
         serology = mBinding.textAntenatalProfileSerelogy.text.toString()
         tbScreening = mBinding.textAntenatalProfileTbScreeening.text.toString()
-        //dateIPTIsonaziadGiven = mBinding..text.toString()
-        //nextVisit = mBinding.te.text.toString()
         hiv = mBinding.textAntenatalProfileHiv.text.toString()
         urianalysis = mBinding.textAntenatalProfileUrinalisis.text.toString()
         givenHIVCounsellingAndTest =
@@ -118,7 +120,6 @@ class PhysicalAntenatalFeedingViewModel(
         }
 
         if (vaginalExamination == "") {
-
             isValid = false
             mBinding.textLayoutPhysicalExaminationVaginalExamination.error = "Required"
         }
@@ -127,7 +128,6 @@ class PhysicalAntenatalFeedingViewModel(
             isValid = false
             mBinding.textLayoutPhysicalExaminationDischargeGenitalUlcer.error = "Required"
         }
-
 
         //Antenatal Profile
         if (hb == "") {
@@ -182,7 +182,7 @@ class PhysicalAntenatalFeedingViewModel(
             && abdomen != "" && vaginalExamination != "" && vaginalExamination != "" && dischargeGenitalUlcers != ""
 
             && hb != "" && bloodGroup != "" && rhesus != "" && serology != "" && tbScreening != ""
-            && dateIPTIsonaziadGiven != "" && nextVisit != "" && hiv != "" && urianalysis != "" && givenHIVCounsellingAndTest != ""
+            && hiv != "" && urianalysis != "" && givenHIVCounsellingAndTest != ""
 
             && feedingCounsellingDone != "" && counselingOnExclusiveBreastfeedingDone != ""
         ) {

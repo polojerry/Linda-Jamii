@@ -113,7 +113,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_diabetes">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_medical_surgical_history_blood_transfusion"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -133,7 +133,7 @@
                     app:layout_constraintStart_toEndOf="@+id/text_layout_medical_surgical_history_blood_transfusion"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_hyper_tension">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_medical_surgical_history_tuberculosis"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -241,7 +241,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Pyisical and  Antenatal Profile"
+                    android:text="Physical and  Antenatal Profile"
                     app:icon="@drawable/ic_baseline_arrow_forward_24"
                     app:layout_constraintEnd_toEndOf="@+id/text_layout_medical_surgical_history_family_history_tuberculosis"
                     app:layout_constraintTop_toBottomOf="@+id/text_label_family_history" />
@@ -250,6 +250,17 @@
 
 
         </androidx.core.widget.NestedScrollView>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar_medical_surgical_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            style="@style/Widget.AppCompat.ProgressBar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

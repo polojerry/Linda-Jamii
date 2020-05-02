@@ -85,7 +85,6 @@ class MedicalSurgicalHistoryViewModel(
         }
 
         if (familyHistoryTwins == "") {
-
             isValid = false
             mBinding.textLayoutMedicalSurgicalHistoryTwins.error = "Required"
         }

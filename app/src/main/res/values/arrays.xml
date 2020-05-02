@@ -7,6 +7,6 @@
     </string-array>
     <string-array name="filled_drop_down_yes_no">
         <item>Yes</item>
-        <item>Yes</item>
+        <item>No</item>
     </string-array>
 </resources>

@@ -42,10 +42,11 @@ class MedicalSurgicalHistoryFragment : Fragment() {
 
         setObserver()
         mBinding.buttonNextPhysicalAntenatalInfantFeeding.setOnClickListener {
-            //For Testing only set to always true
-            if(!mViewModel.isFieldsValid()){
-                mViewModel.saveMedicalSurgicalHistory()
+            if(mViewModel.isFieldsValid()){
+                mBinding.progressBarMedicalSurgicalHistory.visibility = View.VISIBLE
                 mBinding.buttonNextPhysicalAntenatalInfantFeeding.isEnabled = false
+                mViewModel.saveMedicalSurgicalHistory()
+
             }
         }
 
@@ -55,6 +56,7 @@ class MedicalSurgicalHistoryFragment : Fragment() {
 
     private fun setObserver() {
         mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+            mBinding.progressBarMedicalSurgicalHistory.visibility = View.INVISIBLE
             if (status == true) {
                 val action =
                     MedicalSurgicalHistoryFragmentDirections.actionMedicalSurgicalHistoryFragmentToPhysicalAntenatalFeeding(
@@ -82,6 +84,8 @@ class MedicalSurgicalHistoryFragment : Fragment() {
 
         mBinding.textMedicalSurgicalHistoryDiabetes.setAdapter(categoryAdapter)
         mBinding.textMedicalSurgicalHistoryHypertension.setAdapter(categoryAdapter)
+        mBinding.textMedicalSurgicalHistoryBloodTransfusion.setAdapter(categoryAdapter)
+        mBinding.textMedicalSurgicalHistoryTuberculosis.setAdapter(categoryAdapter)
         mBinding.textMedicalSurgicalHistoryTwins.setAdapter(categoryAdapter)
         mBinding.textMedicalSurgicalHistoryFamilyHistoryTuberculosis.setAdapter(categoryAdapter)
     }

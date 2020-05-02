@@ -173,7 +173,7 @@ class MaternalProfileViewModel(
     fun saveMaternalProfile() {
         _userId.value= UUID.randomUUID().toString()
         val expectantDetails = ExpectantDetails(
-            "userId",
+            userId.value!!,
             null,
             getExpectantMotherProfile(),
             null,

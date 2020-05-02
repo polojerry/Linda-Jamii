@@ -36,28 +36,26 @@ class PhysicalAntenatalFeeding : Fragment() {
         mDatabase = FirebaseFirestore.getInstance()
 
         val userId = PhysicalAntenatalFeedingArgs.fromBundle(requireArguments()).userId
-
         val factory  = PhysicalAntenatalFeedingViewModelFactory(mDatabase, mBinding, userId)
         mViewModel = ViewModelProvider(this, factory)[PhysicalAntenatalFeedingViewModel::class.java]
         mViewModel._userId.value= userId
 
-
         setObserver()
-
         mBinding.buttonFinishInitial.setOnClickListener {
-            //For Testing only set to always true
-            if(!mViewModel.isFieldsValid()){
-                mViewModel.savePhysicalAntenatalFeeding()
+            if(mViewModel.isFieldsValid()){
+                mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = View.VISIBLE
                 mBinding.buttonFinishInitial.isEnabled = false
+                mViewModel.savePhysicalAntenatalFeeding()
+
             }
         }
-
 
         setFilledDropDownMenu()
         return mBinding.root
     }
     private fun setObserver() {
         mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+            mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = View.INVISIBLE
             if (status == true) {
                 Toast.makeText(context!!.applicationContext, "Initial Visit Done", Toast.LENGTH_SHORT).show()
                 activity!!.onBackPressed()

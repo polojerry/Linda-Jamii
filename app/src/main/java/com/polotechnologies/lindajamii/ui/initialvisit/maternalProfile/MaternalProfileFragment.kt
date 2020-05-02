@@ -41,8 +41,10 @@ class MaternalProfileFragment : Fragment() {
         setObServer()
         mBinding.buttonNextMedicalSurgicalHistory.setOnClickListener {
             if (mViewModel.isFieldsValid()) {
-                mViewModel.saveMaternalProfile()
+                mBinding.progressBarMaternalProfile.visibility = View.VISIBLE
                 mBinding.buttonNextMedicalSurgicalHistory.isEnabled = false
+                mViewModel.saveMaternalProfile()
+
             }
         }
         return mBinding.root
@@ -50,6 +52,7 @@ class MaternalProfileFragment : Fragment() {
 
     private fun setObServer() {
         mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+            mBinding.progressBarMaternalProfile.visibility = View.INVISIBLE
             if (status == true) {
                 val action =
                     MaternalProfileFragmentDirections.actionMaternalProfileFragmentToMedicalSurgicalHistoryFragment(

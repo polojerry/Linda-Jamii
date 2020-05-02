@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
+import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryFragmentDirections
 import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryViewModel
 import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryViewModelFactory
 
@@ -30,22 +33,43 @@ class PhysicalAntenatalFeeding : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_physical_antenatal_feeding, container, false)
-
         mDatabase = FirebaseFirestore.getInstance()
 
-        val factory  = PhysicalAntenatalFeedingViewModelFactory(mDatabase, mBinding)
+        val userId = PhysicalAntenatalFeedingArgs.fromBundle(requireArguments()).userId
+
+        val factory  = PhysicalAntenatalFeedingViewModelFactory(mDatabase, mBinding, userId)
         mViewModel = ViewModelProvider(this, factory)[PhysicalAntenatalFeedingViewModel::class.java]
+        mViewModel._userId.value= userId
+
+
+        setObserver()
 
         mBinding.buttonFinishInitial.setOnClickListener {
             //For Testing only set to always true
             if(!mViewModel.isFieldsValid()){
-                activity!!.onBackPressed()
+                mViewModel.savePhysicalAntenatalFeeding()
+                mBinding.buttonFinishInitial.isEnabled = false
             }
         }
 
 
         setFilledDropDownMenu()
         return mBinding.root
+    }
+    private fun setObserver() {
+        mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+            if (status == true) {
+                Toast.makeText(context!!.applicationContext, "Initial Visit Done", Toast.LENGTH_SHORT).show()
+                activity!!.onBackPressed()
+            } else {
+                Toast.makeText(
+                    context!!.applicationContext,
+                    "Failed: ${mViewModel.exception.value!!.localizedMessage}",
+                    Toast.LENGTH_SHORT
+                )
+            }
+
+        })
     }
 
     private fun setFilledDropDownMenu() {

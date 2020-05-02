@@ -8,13 +8,16 @@ import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistor
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
 
 class PhysicalAntenatalFeedingViewModelFactory (private val mDatabase: FirebaseFirestore,
-                                                private val mBinding: FragmentPhysicalAntenatalFeedingBinding) : ViewModelProvider.Factory {
+                                                private val mBinding: FragmentPhysicalAntenatalFeedingBinding,
+                                                private val mUserId : String
+) : ViewModelProvider.Factory {
         @Suppress("unchecked_cast")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(PhysicalAntenatalFeedingViewModel::class.java)) {
                 return PhysicalAntenatalFeedingViewModel(
                     mDatabase,
-                    mBinding
+                    mBinding,
+                    mUserId
                 ) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")

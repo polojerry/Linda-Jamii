@@ -1,5 +1,7 @@
 package com.polotechnologies.lindajamii.ui.initialvisit.physicalAntenatalFeedingProfile
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
@@ -9,8 +11,22 @@ import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeed
 
 class PhysicalAntenatalFeedingViewModel(
     val mDatabase: FirebaseFirestore,
-    val mBinding: FragmentPhysicalAntenatalFeedingBinding
+    val mBinding: FragmentPhysicalAntenatalFeedingBinding,
+    val mUserId :String
 ) : ViewModel() {
+
+    val _userId = MutableLiveData<String>()
+    val userId: LiveData<String>
+        get() = _userId
+
+    private val _writeStatus = MutableLiveData<Boolean>()
+    val writeStatus: LiveData<Boolean>
+        get() = _writeStatus
+
+    private val _exception = MutableLiveData<Exception>()
+    val exception: LiveData<Exception>
+        get() = _exception
+
 
     //Physical Examination
     private var general = ""
@@ -184,6 +200,16 @@ class PhysicalAntenatalFeedingViewModel(
             nextVisit, hiv, urianalysis, givenHIVCounsellingAndTest, feedingCounsellingDone,
             counselingOnExclusiveBreastfeedingDone
             )
+
+        mDatabase.collection("patients").document(mUserId).update(
+            "physicalAntenatalFeeding", physicalAntenatalFeeding
+        ).addOnSuccessListener {
+            _writeStatus.value = true
+        }.addOnFailureListener { exception ->
+            _exception.value = exception
+            _writeStatus.value = false
+
+        }
     }
 
 

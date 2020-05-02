@@ -7,13 +7,15 @@ import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBindin
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
 
 class MedicalSurgicalHistoryViewModelFactory (private val mDatabase: FirebaseFirestore,
-                                              private val mBinding: FragmentMedicalSurgicalHistoryBinding) : ViewModelProvider.Factory {
+                                              private val mBinding: FragmentMedicalSurgicalHistoryBinding,
+private val mUserId: String) : ViewModelProvider.Factory {
         @Suppress("unchecked_cast")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MedicalSurgicalHistoryViewModel::class.java)) {
                 return MedicalSurgicalHistoryViewModel(
                     mDatabase,
-                    mBinding
+                    mBinding,
+                    mUserId
                 ) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")

@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
+import com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileFragmentDirections
 import com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileViewModel
 import com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileViewModelFactory
 
@@ -32,18 +34,42 @@ class MedicalSurgicalHistoryFragment : Fragment() {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_medical_surgical_history, container, false)
         mDatabase = FirebaseFirestore.getInstance()
 
-        val factory  = MedicalSurgicalHistoryViewModelFactory(mDatabase, mBinding)
-        mViewModel = ViewModelProvider(this, factory)[MedicalSurgicalHistoryViewModel::class.java]
+        val mUserId = MedicalSurgicalHistoryFragmentArgs.fromBundle(requireArguments()).userId
 
-        mBinding.buttonNextPreviousPregnancy.setOnClickListener {
+        val factory  = MedicalSurgicalHistoryViewModelFactory(mDatabase, mBinding, mUserId)
+        mViewModel = ViewModelProvider(this, factory)[MedicalSurgicalHistoryViewModel::class.java]
+        mViewModel._userId.value = mUserId
+
+        setObserver()
+        mBinding.buttonNextPhysicalAntenatalInfantFeeding.setOnClickListener {
             //For Testing only set to always true
             if(!mViewModel.isFieldsValid()){
-                findNavController().navigate(R.id.action_medicalSurgicalHistoryFragment_to_physicalAntenatalFeeding)
+                mViewModel.saveMedicalSurgicalHistory()
+                mBinding.buttonNextPhysicalAntenatalInfantFeeding.isEnabled = false
             }
         }
 
         setFilledDropDownMenu()
         return mBinding.root
+    }
+
+    private fun setObserver() {
+        mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+            if (status == true) {
+                val action =
+                    MedicalSurgicalHistoryFragmentDirections.actionMedicalSurgicalHistoryFragmentToPhysicalAntenatalFeeding(
+                        mViewModel.mUserId
+                    )
+                findNavController().navigate(action)
+            } else {
+                Toast.makeText(
+                    context!!.applicationContext,
+                    "Failed: ${mViewModel.exception.value!!.localizedMessage}",
+                    Toast.LENGTH_SHORT
+                )
+            }
+
+        })
     }
 
     private fun setFilledDropDownMenu() {

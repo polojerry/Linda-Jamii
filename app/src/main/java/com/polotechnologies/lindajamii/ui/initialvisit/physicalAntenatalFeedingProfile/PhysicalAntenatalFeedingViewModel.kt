@@ -2,6 +2,8 @@ package com.polotechnologies.lindajamii.ui.initialvisit.physicalAntenatalFeeding
 
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
+import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
 
@@ -38,7 +40,6 @@ class PhysicalAntenatalFeedingViewModel(
     private var counselingOnExclusiveBreastfeedingDone = ""
 
 
-
     fun isFieldsValid(): Boolean {
         var isValid = false
 
@@ -50,7 +51,8 @@ class PhysicalAntenatalFeedingViewModel(
         breasts = mBinding.textPysicalExaminationBreast.text.toString()
         abdomen = mBinding.textPysicalExaminationAbdomen.text.toString()
         vaginalExamination = mBinding.textPysicalExaminationVaginalExamination.text.toString()
-        dischargeGenitalUlcers = mBinding.textPysicalExaminationDischargeGenitalUlcer.text.toString()
+        dischargeGenitalUlcers =
+            mBinding.textPysicalExaminationDischargeGenitalUlcer.text.toString()
 
         hb = mBinding.textAntenatalProfileHb.text.toString()
         bloodGroup = mBinding.textAntenatalProfileBloodGroup.text.toString()
@@ -61,13 +63,15 @@ class PhysicalAntenatalFeedingViewModel(
         //nextVisit = mBinding.te.text.toString()
         hiv = mBinding.textAntenatalProfileHiv.text.toString()
         urianalysis = mBinding.textAntenatalProfileUrinalisis.text.toString()
-        givenHIVCounsellingAndTest = mBinding.textAntenatalProfileHivCouselingAndTesting.text.toString()
+        givenHIVCounsellingAndTest =
+            mBinding.textAntenatalProfileHivCouselingAndTesting.text.toString()
 
         feedingCounsellingDone = mBinding.textInfantFeedingCouseling.text.toString()
-        counselingOnExclusiveBreastfeedingDone = mBinding.textInfantFeedingCouselingBreastfeeding.text.toString()
+        counselingOnExclusiveBreastfeedingDone =
+            mBinding.textInfantFeedingCouselingBreastfeeding.text.toString()
 
 
-        if (general == ""){
+        if (general == "") {
             isValid = false
             mBinding.textLayoutPhysicalExaminationGeneral.error = "Required"
         }
@@ -110,7 +114,7 @@ class PhysicalAntenatalFeedingViewModel(
 
 
         //Antenatal Profile
-        if (hb == ""){
+        if (hb == "") {
             isValid = false
             mBinding.textLayoutAntenatalProfileHb.error = "Required"
         }
@@ -151,7 +155,7 @@ class PhysicalAntenatalFeedingViewModel(
             mBinding.textLayoutInfantFeedingCouselingDone.error = "Required"
         }
 
-        if (counselingOnExclusiveBreastfeedingDone == ""){
+        if (counselingOnExclusiveBreastfeedingDone == "") {
             isValid = false
             mBinding.textLayoutInfantFeedingCouselingBreastfeeding.error = "Required"
         }
@@ -170,7 +174,16 @@ class PhysicalAntenatalFeedingViewModel(
         }
 
         return isValid
+    }
 
+    fun savePhysicalAntenatalFeeding() {
+        val physicalAntenatalFeeding = ExpectantPhysicalAntenatalFeeding(
+            general, bp, height, cvs, resp,
+            breasts, abdomen, vaginalExamination, dischargeGenitalUlcers,
+            hb, bloodGroup, rhesus, serology, tbScreening, dateIPTIsonaziadGiven,
+            nextVisit, hiv, urianalysis, givenHIVCounsellingAndTest, feedingCounsellingDone,
+            counselingOnExclusiveBreastfeedingDone
+            )
     }
 
 

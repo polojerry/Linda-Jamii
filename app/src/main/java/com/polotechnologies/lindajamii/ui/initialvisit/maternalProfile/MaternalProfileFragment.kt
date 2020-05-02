@@ -42,6 +42,7 @@ class MaternalProfileFragment : Fragment() {
         mBinding.buttonNextMedicalSurgicalHistory.setOnClickListener {
             if (mViewModel.isFieldsValid()) {
                 mViewModel.saveMaternalProfile()
+                mBinding.buttonNextMedicalSurgicalHistory.isEnabled = false
             }
         }
         return mBinding.root

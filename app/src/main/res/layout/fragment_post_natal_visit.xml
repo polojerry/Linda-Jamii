@@ -12,29 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.postNatalVisits.PostNatalVisitFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.delivery.DeliveryFragment">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_post_natal_visits"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar_subsequent_visits"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/Theme.LindaJamii.DarkActionBar"
-                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-                app:title="Post Natal Visits" />
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll_post_natal_visit"
@@ -44,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/app_bar_post_natal_visits">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -71,8 +48,8 @@
                     android:layout_marginTop="8dp"
                     android:text="A. Mother"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination"
                     app:layout_constraintTop_toBottomOf="@+id/text_label_post_natal_examination" />
 
@@ -493,8 +470,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

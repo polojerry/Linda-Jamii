@@ -13,432 +13,413 @@
         tools:context=".ui.subsequentVisits.SubsequentVisitsFragment">
 
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/app_bar_subsequent_visits"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_subsequent_visits"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="wrap_content">
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar_subsequent_visits"
-                    android:layout_width="match_parent"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_label_present_pregnancy"
+                    style="@style/Theme.LindaJamii.TextVisitHeading"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/Theme.LindaJamii.DarkActionBar"
-                    app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-                    app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-                    app:title="Subsequent Visits" />
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Present Pregnancy"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            </com.google.android.material.appbar.AppBarLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_registration_number"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_present_pregnancy">
 
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/nested_scroll_subsequent_visits"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/app_bar_subsequent_visits">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/text_label_present_pregnancy"
-                        style="@style/Theme.LindaJamii.TextVisitHeading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="4dp"
-                        android:text="Present Pregnancy"
-                        android:textStyle="bold"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_registration_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Registration Number"
+                        android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_registration_number"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_number_of_visit"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_registration_number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_number_of_visit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Number of Visit"
+                        android:inputType="number"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_label_present_pregnancy">
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_registration_number"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Registration Number"
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_date"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_number_of_visit"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_registration_number">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_number_of_visit"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_date"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Date of Visit"
+                        android:inputType="date"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_registration_number">
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_number_of_visit"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Number of Visit"
-                            android:inputType="number"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_urine"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_weight"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_number_of_visit">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_date"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_number_of_visit"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_registration_number">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_date"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Date of Visit"
-                            android:inputType="date"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_urine"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_weight"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_urine"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Urine"
+                        android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_number_of_visit">
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_urine"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Urine"
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_weight"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_urine"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_date">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_weight"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_urine"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_date">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_weight"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Weight"
-                            android:inputType="numberDecimal"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_bp"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_hb"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Weight"
+                        android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_urine">
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_bp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="B.P. "
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_bp"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_hb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_urine">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_hb"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_bp"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_weight">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_hb"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="H.B."
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_pallor"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_maturity"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_bp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="B.P. "
+                        android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_bp">
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_pallor"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Pallor"
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_hb"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_bp"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_weight">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_maturity"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_pallor"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_hb">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_maturity"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="maturity"
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_fundal_height"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_presentation"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_hb"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="H.B."
+                        android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_pallor">
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_fundal_height"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Fundal Height"
-                            android:inputType="numberDecimal"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_pallor"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_maturity"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_bp">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_presentation"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_fundal_height"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_maturity">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_presentation"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Presentation"
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_lie"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_foetal_Heart"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_pallor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Pallor"
+                        android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_fundal_height">
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_lie"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Lie"
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_maturity"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_pallor"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_hb">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_foetal_Heart"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_lie"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_presentation">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_foetal_heart"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Foetal Heart"
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_foetal_mvt"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_next_visit"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_maturity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="maturity"
+                        android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_lie">
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_foetal_mvt"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Foetal Mvt"
-                            android:inputType="text"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_fundal_height"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_presentation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_pallor">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_next_visit"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_foetal_mvt"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_foetal_Heart">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_next_visit"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Next Visit"
-                            android:inputType="date"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/text_label_weight_gain"
-                        style="@style/Theme.LindaJamii.TextVisitHeading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Weight Gain"
-                        android:textStyle="bold"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_fundal_height"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Fundal Height"
+                        android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_foetal_mvt" />
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_weight_gain"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_presentation"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_fundal_height"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_maturity">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_presentation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Presentation"
+                        android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_label_weight_gain">
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_weight_gain"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Current Weight "
-                            android:inputType="numberDecimal"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_lie"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_foetal_Heart"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_fundal_height">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks"
-                        style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_weight_gain"
-                        app:layout_constraintTop_toBottomOf="@+id/text_label_weight_gain">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_lie"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Lie"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_subsequent_visits_weight_gestation_weeks"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Gestation Week "
-                            android:inputType="numberDecimal"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_foetal_Heart"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_lie"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_presentation">
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_finish_subsequent_visit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        app:icon="@drawable/ic_baseline_check_24"
-                        android:text="Visit Done"
-                        app:layout_constraintEnd_toEndOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_foetal_heart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Foetal Heart"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_foetal_mvt"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_next_visit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_lie">
 
-            </androidx.core.widget.NestedScrollView>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_foetal_mvt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Foetal Mvt"
+                        android:inputType="text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_next_visit"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_foetal_mvt"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_foetal_Heart">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_next_visit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Next Visit"
+                        android:inputType="date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_label_weight_gain"
+                    style="@style/Theme.LindaJamii.TextVisitHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Weight Gain"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_foetal_mvt" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_weight_gain"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_weight_gain">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_weight_gain"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Current Weight "
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_layout_subsequent_visits_weight_gain"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_weight_gain">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_subsequent_visits_weight_gestation_weeks"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Gestation Week "
+                        android:inputType="numberDecimal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_finish_subsequent_visit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Visit Done"
+                    app:icon="@drawable/ic_baseline_check_24"
+                    app:layout_constraintEnd_toEndOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
         <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/progress_bar_subsequent_visit"

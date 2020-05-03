@@ -12,25 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.initialvisit.InitialVisitFragment">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_initial_visit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar_initial_visit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/Theme.LindaJamii.DarkActionBar"
-                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-                app:title="Initial Visit" />
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-
         <fragment
             android:id="@+id/host_initial_visit"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -40,7 +21,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/app_bar_initial_visit"
+            app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/nav_graph_initial_visit" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

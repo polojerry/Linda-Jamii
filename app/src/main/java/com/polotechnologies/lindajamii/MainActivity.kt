@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -14,7 +17,8 @@ import com.google.android.material.navigation.NavigationView
 import com.polotechnologies.lindajamii.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    Toolbar.OnMenuItemClickListener {
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,27 +26,36 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setTheme(R.style.Theme_LindaJamii)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        setDisplayContent()
+        setNavControllerOptions()
+
+        setDrawerLayout()
     }
 
-    private fun setDisplayContent() {
-        navController = supportFragmentManager.findFragmentById(R.id.nav_host_main)!!.findNavController()
+    private fun setNavControllerOptions() {
+        navController =
+            supportFragmentManager.findFragmentById(R.id.nav_host_main)!!.findNavController()
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.loginFragment){
-                mBinding.toolbarMain.visibility = View.GONE
-                mBinding.drawerLayoutMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-            }else{
-                navController.graph.startDestination = R.id.homeFragment
-                setUpToolbar(destination)
-                setDrawerLayout()
-            }
-        }
+            when (destination.id) {
+                R.id.loginFragment -> {
+                    mBinding.toolbarMain.visibility = View.GONE
+                    mBinding.drawerLayoutMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                }
+                else -> {
+                    setUpToolbar(destination)
+                    setDrawerLayout()
 
+                }
+            }
+
+        }
     }
+
 
     private fun setUpToolbar(destination: NavDestination) {
         mBinding.toolbarMain.visibility = View.VISIBLE
         mBinding.toolbarMain.title = destination.label
+
+        navController.graph.startDestination = R.id.homeFragment
 
         setSupportActionBar(mBinding.toolbarMain)
         supportActionBar!!.setDefaultDisplayHomeAsUpEnabled(true)
@@ -64,4 +77,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         TODO()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(navController, mBinding.drawerLayoutMain)
+    }
+
+    override fun onBackPressed() {
+        if (mBinding.drawerLayoutMain.isDrawerOpen(GravityCompat.START)) {
+            mBinding.drawerLayoutMain.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        if (item!!.itemId == R.id.action_sign_out) {
+            Toast.makeText(applicationContext, "Signed Out Successfully", Toast.LENGTH_SHORT).show()
+        }
+        return true
+    }
 }

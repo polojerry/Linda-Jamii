@@ -12,22 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.home.HomeFragment">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:title="Linda Jamii"
-                app:menu="@menu/menu_home"
-                android:theme="@style/Theme.LindaJamii.DarkActionBar"
-                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"/>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_home_welcome"
             style="@style/Theme.LindaJamii.HomeWelcomeCard"
@@ -38,7 +22,7 @@
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/app_bar_home">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -47,9 +31,9 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="4dp"
+                android:gravity="center"
                 android:text="Welcome to Linda Jamii"
-                android:textColor="@color/colorTextIcons"
-                android:gravity="center"/>
+                android:textColor="@color/colorTextIcons" />
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.AppCompatTextView

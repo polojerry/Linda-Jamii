@@ -1,3 +1,4 @@
+/*
 package com.polotechnologies.lindajamii.ui.patients
 
 import android.view.LayoutInflater
@@ -43,4 +44,4 @@ class PatientsFragmentRecyclerAdapter(val patients : List<Patients>, private val
             }
         }
     }
-}
+}*/

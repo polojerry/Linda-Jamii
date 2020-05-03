@@ -9,13 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.polotechnologies.lindajamii.R
+import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.Patients
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsDetailsBinding
 
 class PatientsDetailsFragment : Fragment() {
 
     private lateinit var mBinding: FragmentPatientsDetailsBinding
-    private lateinit var patient: Patients
+    private lateinit var patient: ExpectantDetails
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,16 +25,16 @@ class PatientsDetailsFragment : Fragment() {
         mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_patients_details, container, false)
 
 
-        patient = PatientsDetailsFragmentArgs.fromBundle(requireArguments()).patient
-        displayPatientDetails()
+        patient = PatientsDetailsFragmentArgs.fromBundle(requireArguments()).expectantPatient
+        /*displayPatientDetails()
 
         mBinding.buttonPatientDetailsCall.setOnClickListener {
             callPatient()
-        }
+        }*/
         return mBinding.root
     }
 
-    private fun displayPatientDetails() {
+    /*private fun displayPatientDetails() {
         mBinding.textPatientName.setText(patient.patientName)
         mBinding.textPatientPhoneNumber.setText(patient.patientsPhoneNumber)
         mBinding.textPatientPreviousVisit.setText(patient.patientsPrevious_Visit)
@@ -46,6 +47,6 @@ class PatientsDetailsFragment : Fragment() {
         val callIntent = Intent(Intent.ACTION_CALL, Uri.fromParts("tel", patient.patientsPhoneNumber,null))
         startActivity(callIntent)
     }
-
+*/
 
 }

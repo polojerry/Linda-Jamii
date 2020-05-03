@@ -76,7 +76,7 @@
         android:label="PatientsDetailsFragment"
         tools:layout="@layout/fragment_patients_details">
         <argument
-            android:name="patient"
-            app:argType="com.polotechnologies.lindajamii.dataModels.Patients" />
+            android:name="expectantPatient"
+            app:argType="com.polotechnologies.lindajamii.dataModels.ExpectantDetails" />
     </fragment>
 </navigation>

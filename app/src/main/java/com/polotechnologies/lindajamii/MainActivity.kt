@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
@@ -50,7 +51,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-
     private fun setUpToolbar(destination: NavDestination) {
         mBinding.toolbarMain.visibility = View.VISIBLE
         mBinding.toolbarMain.title = destination.label
@@ -71,10 +71,40 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        item.isChecked = true
-        mBinding.drawerLayoutMain.closeDrawers()
+        when(item.itemId){
+            R.id.action_initial_visit->{
+                navController.navigate(R.id.action_homeFragment_to_initialVisitFragment)
+                mBinding.drawerLayoutMain.closeDrawers()
+            }
+            R.id.action_subsequent_visit->{
+                navController.navigate(R.id.action_homeFragment_to_subsequentVisitsFragment)
+                mBinding.drawerLayoutMain.closeDrawers()
+            }
 
-        TODO()
+            R.id.action_delivery->{
+                navController.navigate(R.id.action_homeFragment_to_deliveryFragment)
+                mBinding.drawerLayoutMain.closeDrawers()
+            }
+
+            R.id.action_post_natal_visit->{
+                navController.navigate(R.id.action_homeFragment_to_postNatalVisitFragment)
+                mBinding.drawerLayoutMain.closeDrawers()
+            }
+
+            R.id.action_patients->{
+                navController.navigate(R.id.action_homeFragment_to_patientsFragment)
+                mBinding.drawerLayoutMain.closeDrawers()
+            }
+            else->{
+                return true
+            }
+        }
+        return true
+    }
+
+    private fun checkCloseDrawer(){
+        /*item.isisChecked = true*/
+        mBinding.drawerLayoutMain.closeDrawers()
     }
 
     override fun onSupportNavigateUp(): Boolean {

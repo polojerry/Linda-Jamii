@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <group android:checkableBehavior="single"
+        >
+
+        <item android:id="@+id/action_initial_visit"
+            android:title="Initial Visit"
+            />
+
+        <item android:id="@+id/action_subsequent_visit"
+            android:title="Subsequent Visit"
+            />
+        <item android:id="@+id/action_delivery"
+            android:title="Delivery"
+            />
+        <item android:id="@+id/action_post_natal_visit"
+            android:title="Post Natal Visit"
+            />
+
+    </group>
+
+    <group android:checkableBehavior="single"
+        >
+
+        <item android:id="@+id/action_patients"
+            android:title="Patients Reports"
+            />
+
+
+    </group>
 </menu>

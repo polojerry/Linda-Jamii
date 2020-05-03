@@ -19,8 +19,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.polotechnologies.lindajamii.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_initialVisitFragment"
             app:destination="@id/initialVisitFragment"
@@ -44,23 +44,23 @@
     <fragment
         android:id="@+id/initialVisitFragment"
         android:name="com.polotechnologies.lindajamii.ui.initialvisit.InitialVisitFragment"
-        android:label="fragment_initial_visit"
+        android:label="Initial Visit"
         tools:layout="@layout/fragment_initial_visit" />
     <fragment
         android:id="@+id/deliveryFragment"
         android:name="com.polotechnologies.lindajamii.ui.delivery.DeliveryFragment"
-        android:label="fragment_delivery"
+        android:label="Delivery"
         tools:layout="@layout/fragment_delivery" />
     <fragment
         android:id="@+id/postNatalVisitFragment"
         android:name="com.polotechnologies.lindajamii.ui.postNatalVisits.PostNatalVisitFragment"
-        android:label="fragment_post_natal_visit"
+        android:label="Post Natal Visit"
         tools:layout="@layout/fragment_post_natal_visit" />
     <fragment
         android:id="@+id/subsequentVisitsFragment"
         android:name="com.polotechnologies.lindajamii.ui.subsequentVisits.SubsequentVisitsFragment"
-        android:label="SubsequentVisitsFragment"
-        tools:layout="@layout/fragment_subsequent_visits"/>
+        android:label="Subsequent Visit"
+        tools:layout="@layout/fragment_subsequent_visits" />
     <fragment
         android:id="@+id/patientsFragment"
         android:name="com.polotechnologies.lindajamii.ui.patients.PatientsFragment"

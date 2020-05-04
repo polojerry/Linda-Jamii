@@ -54,7 +54,7 @@
                         android:id="@+id/text_subsequent_visits_registration_number"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Registration Number"
+                        android:hint="ANC Number"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />

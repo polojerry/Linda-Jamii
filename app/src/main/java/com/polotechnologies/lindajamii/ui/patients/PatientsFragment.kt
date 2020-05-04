@@ -12,25 +12,16 @@ import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import androidx.paging.PagedList
-import com.firebase.ui.firestore.paging.FirestorePagingAdapter
-import com.firebase.ui.firestore.paging.FirestorePagingOptions
-import com.google.firebase.firestore.EventListener
+import com.firebase.ui.firestore.paging.LoadingState
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.toObject
 import com.polotechnologies.lindajamii.R
-import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
-import java.util.*
 
 class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     lateinit var mBinding : FragmentPatientsBinding
     lateinit var mViewModel: PatientsViewModel
     lateinit var mDatabase: FirebaseFirestore
-    lateinit var mQuery: Query
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,107 +29,17 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
     ): View? {
         // Inflate the layout for this fragment
         mBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_patients, container, false)
+        mBinding.lifecycleOwner = this
         mDatabase = FirebaseFirestore.getInstance()
 
-        val factory = PatientsViewModelFactory("", mDatabase)
+        val factory = PatientsViewModelFactory(mBinding,"", mDatabase)
         mViewModel = ViewModelProvider(this,factory)[PatientsViewModel::class.java]
+
         inflateSearchMenu()
+        setObservers()
 
-        mViewModel.selectedPatient.observe(viewLifecycleOwner, Observer {expectantDetails->
-            if(expectantDetails!=null){
-                val action = PatientsFragmentDirections.actionPatientsFragmentToPatientsDetailsFragment(expectantDetails)
-                activity!!.findNavController(R.id.nav_host_main).navigate(action)
-                mViewModel.displaySelectedHeroComplete()
-            }
-        })
-
-        fetchPatients()
+        mViewModel.fetchPatients()
         return mBinding.root
-    }
-
-    private fun fetchPatients() {
-        //firestore query
-        val mQuery = mDatabase.collection("patients")
-            .document("maternalVisit")
-            .collection("initialVisit")
-            .limit(15)
-
-        //paging configuration
-        val config = PagedList.Config.Builder()
-            .setEnablePlaceholders(false)
-            .setPrefetchDistance(2)
-            .setPageSize(5)
-            .build()
-
-        // adapter configuration
-        val options = FirestorePagingOptions.Builder<ExpectantDetails>()
-            .setLifecycleOwner(this)
-            .setQuery(mQuery, config, ExpectantDetails::class.java)
-            .build()
-
-        val mAdapter  = object :
-            FirestorePagingAdapter<ExpectantDetails, PatientsDetailsViewHolder>(options){
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientsDetailsViewHolder {
-                /*val view = layoutInflater.inflate(R.layout.item_patient, parent, false)
-                return PatientsDetailsViewHolder(view)*/
-                return PatientsDetailsViewHolder.from(parent)
-            }
-
-            override fun onBindViewHolder(holder: PatientsDetailsViewHolder,
-                postion: Int, expectantDetails: ExpectantDetails) {
-                holder.bind(expectantDetails)
-            }
-
-        }
-        mBinding.recyclerPatients.adapter = mAdapter
-
-       /* // Instantiate Paging Adapter
-        val mAdapter = object : FirestorePagingAdapter<ExpectantDetails, PatientsDetailsViewHolder>(options) {
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-                val view = layoutInflater.inflate(R.layout.item_post, parent, false)
-                return PostViewHolder(view)
-            }
-
-            override fun onBindViewHolder(viewHolder: PostViewHolder, position: Int, post: Post) {
-                // Bind to ViewHolder
-                viewHolder.bind(post)
-            }
-
-            override fun onError(e: Exception) {
-                super.onError(e)
-                Log.e("MainActivity", e.message)
-            }
-
-            override fun onLoadingStateChanged(state: LoadingState) {
-                when (state) {
-                    LoadingState.LOADING_INITIAL -> {
-                        swipeRefreshLayout.isRefreshing = true
-                    }
-
-                    LoadingState.LOADING_MORE -> {
-                        swipeRefreshLayout.isRefreshing = true
-                    }
-
-                    LoadingState.LOADED -> {
-                        swipeRefreshLayout.isRefreshing = false
-                    }
-
-                    LoadingState.ERROR -> {
-                        Toast.makeText(
-                            applicationContext,
-                            "Error Occurred!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        swipeRefreshLayout.isRefreshing = false
-                    }
-
-                    LoadingState.FINISHED -> {
-                        swipeRefreshLayout.isRefreshing = false
-                    }
-                }
-            }
-        }*/
-
     }
 
     private fun inflateSearchMenu() {
@@ -156,8 +57,43 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     }
 
+    private fun setObservers(){
+        mViewModel.selectedPatient.observe(viewLifecycleOwner, Observer {expectantDetails->
+            if(expectantDetails!=null){
+                TODO()
+            }
+        })
+
+        mViewModel.patientsStatus.observe(viewLifecycleOwner, Observer {status->
+            when (status) {
+                LoadingState.LOADING_INITIAL -> {
+                    mBinding.swipeRefreshPatients.isRefreshing = true
+                }
+
+                LoadingState.LOADING_MORE -> {
+                    mBinding.swipeRefreshPatients.isRefreshing = true
+                }
+
+                LoadingState.LOADED -> {
+                    mBinding.swipeRefreshPatients.isRefreshing = false
+                }
+
+                LoadingState.ERROR -> {
+                    mBinding.swipeRefreshPatients.isRefreshing = false
+                    Toast.makeText(context, "Error Loading Patients: Swipe to refresh", Toast.LENGTH_SHORT).show()
+                }
+
+                LoadingState.FINISHED -> {
+                    mBinding.swipeRefreshPatients.isRefreshing = false
+                }
+
+            }
+
+        })
+
+    }
+
     override fun onQueryTextSubmit(query: String?): Boolean {
-        mViewModel.fetchPatients(query)
         return true
     }
 

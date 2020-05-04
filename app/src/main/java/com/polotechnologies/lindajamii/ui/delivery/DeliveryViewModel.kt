@@ -172,8 +172,8 @@ class DeliveryViewModel(
         )
 
         mDatabase.collection("patients")
-            .document(registrationNumber)
-            .collection("deliveryDetails").add(
+            .document("maternalVisit")
+            .collection("deliveryDetails").document(registrationNumber).set(
                 deliveryDetails
             ).addOnSuccessListener {
                 _writeStatus.value = true
@@ -182,7 +182,6 @@ class DeliveryViewModel(
                 _writeStatus.value = false
 
             }
-
     }
 
 

@@ -1,20 +1,25 @@
 package com.polotechnologies.lindajamii.ui.patients
 
+import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.PagedList
+import com.firebase.ui.firestore.paging.FirestorePagingAdapter
+import com.firebase.ui.firestore.paging.FirestorePagingOptions
+import com.firebase.ui.firestore.paging.LoadingState
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
+import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 
-class PatientsViewModel( mMflNumber: String, val mDatabase: FirebaseFirestore) : ViewModel() {
+class PatientsViewModel(val mBinding: FragmentPatientsBinding, mMflNumber: String, val mDatabase: FirebaseFirestore) : ViewModel() {
 
     //Response from Firestore
-    private val _patientsStatus = MutableLiveData<HeroApiStatus>()
-    val patientsStatus: LiveData<HeroApiStatus>
+    private val _patientsStatus = MutableLiveData<LoadingState>()
+    val patientsStatus: LiveData<LoadingState>
         get() = _patientsStatus
 
     //List from Firestore
@@ -31,36 +36,71 @@ class PatientsViewModel( mMflNumber: String, val mDatabase: FirebaseFirestore) :
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init{
-        fetchPatients(mMflNumber)
+        fetchPatients()
     }
 
 
-    fun fetchPatients(mMflNumber: String?) {
+    fun fetchPatients() {
+        //firestore query
+        val mQuery = mDatabase.collection("patients")
+            .document("maternalVisit")
+            .collection("initialVisit")
+            .limit(15)
 
-        coroutineScope.launch {
+        //paging configuration
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setPrefetchDistance(2)
+            .setPageSize(5)
+            .build()
 
+        // adapter configuration
+        val options = FirestorePagingOptions.Builder<ExpectantDetails>()
+            .setLifecycleOwner(mBinding.lifecycleOwner!!)
+            .setQuery(mQuery, config, ExpectantDetails::class.java)
+            .build()
+
+        val mAdapter  = object :
+            FirestorePagingAdapter<ExpectantDetails, PatientsViewHolder>(options){
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientsViewHolder {
+                return PatientsViewHolder.from(parent)
+            }
+
+            override fun onBindViewHolder(holder: PatientsViewHolder,
+                                          postion: Int, expectantDetails: ExpectantDetails) {
+                holder.bind(expectantDetails)
+            }
+
+            override fun onLoadingStateChanged(state: LoadingState) {
+                when (state) {
+                    LoadingState.LOADING_INITIAL -> {
+                        _patientsStatus.value = LoadingState.LOADING_INITIAL
+                    }
+
+                    LoadingState.LOADING_MORE -> {
+                        _patientsStatus.value = LoadingState.LOADING_MORE
+                    }
+
+                    LoadingState.LOADED -> {
+                        _patientsStatus.value = LoadingState.LOADED
+                    }
+
+                    LoadingState.ERROR -> {
+                        _patientsStatus.value = LoadingState.ERROR
+                    }
+
+                    LoadingState.FINISHED -> {
+                        _patientsStatus.value = LoadingState.FINISHED
+                    }
+                }
+            }
 
         }
 
+        mBinding.recyclerPatients.adapter = mAdapter
     }
-
-    fun displaySelectedPatient(expectantDetails: ExpectantDetails){
-        _selectedPatient.value = expectantDetails
-    }
-
-    fun displaySelectedHeroComplete(){
-        _selectedPatient.value = null
-    }
-
 
     override fun onCleared() {
         viewModelJob.cancel()
     }
-}
-
-public enum class HeroApiStatus{
-    LOADING,
-    NO_INTERNET_CONNECTION,
-    DONE,
-    NO_MATCH
 }

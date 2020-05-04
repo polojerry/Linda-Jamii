@@ -158,27 +158,14 @@ class SubsequentVisitViewModel(
 
     fun saveMedicalSurgicalHistory() {
         val subsequentVisit = ExpectantSubsequentVisit(
-            registrationNumber,
-            numberOfVisit,
-            dateOfVisit,
-            urine,
-            weight,
-            bp,
-            hb,
-            pallor,
-            maturity,
-            fundalHeight,
-            presentation,
-            lie,
-            foetalHeart,
-            foetalMovement,
-            nextVisit
-
+            registrationNumber, numberOfVisit, dateOfVisit, urine, weight,
+            bp, hb, pallor, maturity, fundalHeight, presentation, lie,
+            foetalHeart, foetalMovement, nextVisit
         )
 
         mDatabase.collection("patients")
-            .document(registrationNumber)
-            .collection("subsequentVisits").add(
+            .document("maternalVisit")
+            .collection("subsequentVisits").document(registrationNumber).set(
                 subsequentVisit
             ).addOnSuccessListener {
                 _writeStatus.value = true

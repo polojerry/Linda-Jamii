@@ -28,18 +28,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setNavControllerOptions()
-
         setDrawerLayout()
     }
 
     private fun setNavControllerOptions() {
         navController =
             supportFragmentManager.findFragmentById(R.id.nav_host_main)!!.findNavController()
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.loginFragment -> {
                     mBinding.toolbarMain.visibility = View.GONE
                     mBinding.drawerLayoutMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    navController.graph.startDestination = R.id.loginFragment
                 }
                 else -> {
                     setUpToolbar(destination)
@@ -50,7 +51,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         }
     }
-
     private fun setUpToolbar(destination: NavDestination) {
         mBinding.toolbarMain.visibility = View.VISIBLE
         mBinding.toolbarMain.title = destination.label

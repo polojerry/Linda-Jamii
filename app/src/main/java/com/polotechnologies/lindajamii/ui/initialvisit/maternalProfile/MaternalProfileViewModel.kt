@@ -164,6 +164,7 @@ class MaternalProfileViewModel(
             && relationShip != "" && nextOfKinContact != ""
         ) {
             isValid = true
+            _userId.value = ancNumber
         }
 
         return isValid
@@ -171,7 +172,6 @@ class MaternalProfileViewModel(
     }
 
     fun saveMaternalProfile() {
-        _userId.value= UUID.randomUUID().toString()
         val expectantDetails = ExpectantDetails(
             userId.value!!,
             null,
@@ -179,7 +179,9 @@ class MaternalProfileViewModel(
             null,
             null
         )
-        mDatabase.collection("patients").document(userId.value!!).set(expectantDetails)
+        mDatabase.collection("patients").document("maternalVisit")
+            .collection("initialVisit").document(ancNumber).
+            set(expectantDetails)
             .addOnSuccessListener {
                 _writeStatus.value = true
             }.addOnFailureListener{exception->
@@ -187,7 +189,6 @@ class MaternalProfileViewModel(
                 _writeStatus.value = false
 
             }
-
 
     }
 

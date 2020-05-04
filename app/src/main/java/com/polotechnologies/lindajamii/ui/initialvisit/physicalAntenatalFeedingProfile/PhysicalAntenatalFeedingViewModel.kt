@@ -201,7 +201,8 @@ class PhysicalAntenatalFeedingViewModel(
             counselingOnExclusiveBreastfeedingDone
             )
 
-        mDatabase.collection("patients").document(mUserId).update(
+        mDatabase.collection("patients").document("maternalVisit")
+            .collection("initialVisit").document(mUserId).update(
             "physicalAntenatalFeeding", physicalAntenatalFeeding
         ).addOnSuccessListener {
             _writeStatus.value = true

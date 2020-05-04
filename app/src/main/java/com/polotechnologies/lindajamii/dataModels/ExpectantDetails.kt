@@ -1,15 +1,19 @@
 package com.polotechnologies.lindajamii.dataModels
 
+import android.os.Parcelable
 import com.google.firebase.firestore.ServerTimestamp
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
+@Parcelize
 data class ExpectantDetails(
     val patientId :String = "",
     @ServerTimestamp val timeStamp : Date? = null,
     val maternalProfile: ExpectantMaternalProfile? = null,
     val medicalSurgicalHistory : ExpectantMedicalSurgicalHistory? = null,
     val physicalAntenatalFeeding : ExpectantPhysicalAntenatalFeeding? = null
-) {
+) : Parcelable {
+    @Parcelize
     data class ExpectantMaternalProfile(
         val nameOfInstitution: String = "",
         val mflNumber: String = "",
@@ -30,8 +34,9 @@ data class ExpectantDetails(
         val nextOfKin: String = "",
         val relationShip: String = "",
         val nextOfKinContact: String = ""
-    )
+    ) : Parcelable
 
+    @Parcelize
     data class ExpectantMedicalSurgicalHistory (
         val surgicalOperation: String = "",
         val diabetes : String= "",
@@ -43,8 +48,9 @@ data class ExpectantDetails(
         val familyHistoryTwins : String= "",
         val familyHistoryTuberculosis : String= ""
 
-    )
+    ) : Parcelable
 
+    @Parcelize
     data class ExpectantPhysicalAntenatalFeeding(
         val general : String= "",
                 val bp : String= "",
@@ -68,5 +74,5 @@ data class ExpectantDetails(
                 val feedingCounsellingDone : String= "",
                 val counselingOnExclusiveBreastfeedingDone: String = ""
 
-    )
+    ) : Parcelable
 }

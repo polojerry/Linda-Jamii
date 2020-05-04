@@ -117,7 +117,9 @@ class MedicalSurgicalHistoryViewModel(
             familyHistoryTuberculosis
         )
 
-        mDatabase.collection("patients").document(mUserId).update(
+        mDatabase.collection("patients").document("maternalVisit")
+            .collection("initialVisit").
+            document(mUserId).update(
             "medicalSurgicalHistory", medicalHistory
         ).addOnSuccessListener {
             _writeStatus.value = true

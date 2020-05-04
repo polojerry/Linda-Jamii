@@ -104,7 +104,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_layout_medical_surgical_history_blood_transfusion"
-                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -116,15 +116,16 @@
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_medical_surgical_history_blood_transfusion"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="50dp"
                         android:hint="Blood Transfusion "
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:padding="10dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_layout_medical_surgical_history_tuberculosis"
-                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
+                    style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -136,9 +137,10 @@
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_medical_surgical_history_tuberculosis"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="50dp"
                         android:hint="Tuberculosis "
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:padding="10dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,6 +188,7 @@
                     android:id="@+id/text_label_family_history"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:gravity="center"
                     android:text="Family History"
@@ -193,7 +196,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/text_layout_medical_surgical_history_twins"
                     app:layout_constraintEnd_toStartOf="@+id/text_layout_medical_surgical_history_twins"
                     app:layout_constraintStart_toStartOf="@+id/text_layout_medical_surgical_history_drug_allergy"
-                    app:layout_constraintTop_toTopOf="@+id/text_layout_medical_surgical_history_twins" />
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_drug_allergy" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_layout_medical_surgical_history_twins"
@@ -240,10 +243,13 @@
                     android:id="@+id/button_next_physical_antenatal_infant_feeding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
                     android:text="Physical and  Antenatal Profile"
                     app:icon="@drawable/ic_baseline_arrow_forward_24"
                     app:layout_constraintEnd_toEndOf="@+id/text_layout_medical_surgical_history_family_history_tuberculosis"
+                    app:layout_constraintStart_toStartOf="@+id/text_label_family_history"
                     app:layout_constraintTop_toBottomOf="@+id/text_label_family_history" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

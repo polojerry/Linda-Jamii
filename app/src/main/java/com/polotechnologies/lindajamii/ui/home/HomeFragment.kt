@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
                     "Initial Visit"-> navigateToOption(R.id.action_homeFragment_to_initialVisitFragment)
                     "Subsequent Visits"-> navigateToOption(R.id.action_homeFragment_to_subsequentVisitsFragment)
                     "Delivery"-> navigateToOption(R.id.action_homeFragment_to_deliveryFragment)
-                    "Post Natal Visits"-> navigateToOption(R.id.action_homeFragment_to_subsequentVisitsFragment)
+                    "Post Natal Visits"-> navigateToOption(R.id.action_homeFragment_to_postNatalVisitFragment)
                     "Patients"->navigateToOption(R.id.action_homeFragment_to_patientsFragment)
                 }
             }

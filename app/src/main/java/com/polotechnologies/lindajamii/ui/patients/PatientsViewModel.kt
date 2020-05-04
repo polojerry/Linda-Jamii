@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class PatientsViewModel(mMflNumber: String, val mDatabase: FirebaseFirestore) : ViewModel() {
+class PatientsViewModel( mMflNumber: String, val mDatabase: FirebaseFirestore) : ViewModel() {
 
     //Response from Firestore
     private val _patientsStatus = MutableLiveData<HeroApiStatus>()
@@ -62,6 +62,5 @@ public enum class HeroApiStatus{
     LOADING,
     NO_INTERNET_CONNECTION,
     DONE,
-    NONE,
     NO_MATCH
 }

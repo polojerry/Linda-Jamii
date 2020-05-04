@@ -7,22 +7,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import androidx.paging.PagedList
+import com.firebase.ui.firestore.paging.FirestorePagingAdapter
+import com.firebase.ui.firestore.paging.FirestorePagingOptions
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.toObject
 import com.polotechnologies.lindajamii.R
-import com.polotechnologies.lindajamii.dataModels.Patients
+import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
+import java.util.*
 
 class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     lateinit var mBinding : FragmentPatientsBinding
     lateinit var mViewModel: PatientsViewModel
     lateinit var mDatabase: FirebaseFirestore
+    lateinit var mQuery: Query
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +52,93 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
             }
         })
 
+        fetchPatients()
         return mBinding.root
+    }
+
+    private fun fetchPatients() {
+        //firestore query
+        val mQuery = mDatabase.collection("patients")
+            .document("maternalVisit")
+            .collection("initialVisit")
+            .limit(15)
+
+        //paging configuration
+        val config = PagedList.Config.Builder()
+            .setEnablePlaceholders(false)
+            .setPrefetchDistance(2)
+            .setPageSize(5)
+            .build()
+
+        // adapter configuration
+        val options = FirestorePagingOptions.Builder<ExpectantDetails>()
+            .setLifecycleOwner(this)
+            .setQuery(mQuery, config, ExpectantDetails::class.java)
+            .build()
+
+        val mAdapter  = object :
+            FirestorePagingAdapter<ExpectantDetails, PatientsDetailsViewHolder>(options){
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientsDetailsViewHolder {
+                /*val view = layoutInflater.inflate(R.layout.item_patient, parent, false)
+                return PatientsDetailsViewHolder(view)*/
+                return PatientsDetailsViewHolder.from(parent)
+            }
+
+            override fun onBindViewHolder(holder: PatientsDetailsViewHolder,
+                postion: Int, expectantDetails: ExpectantDetails) {
+                holder.bind(expectantDetails)
+            }
+
+        }
+        mBinding.recyclerPatients.adapter = mAdapter
+
+       /* // Instantiate Paging Adapter
+        val mAdapter = object : FirestorePagingAdapter<ExpectantDetails, PatientsDetailsViewHolder>(options) {
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
+                val view = layoutInflater.inflate(R.layout.item_post, parent, false)
+                return PostViewHolder(view)
+            }
+
+            override fun onBindViewHolder(viewHolder: PostViewHolder, position: Int, post: Post) {
+                // Bind to ViewHolder
+                viewHolder.bind(post)
+            }
+
+            override fun onError(e: Exception) {
+                super.onError(e)
+                Log.e("MainActivity", e.message)
+            }
+
+            override fun onLoadingStateChanged(state: LoadingState) {
+                when (state) {
+                    LoadingState.LOADING_INITIAL -> {
+                        swipeRefreshLayout.isRefreshing = true
+                    }
+
+                    LoadingState.LOADING_MORE -> {
+                        swipeRefreshLayout.isRefreshing = true
+                    }
+
+                    LoadingState.LOADED -> {
+                        swipeRefreshLayout.isRefreshing = false
+                    }
+
+                    LoadingState.ERROR -> {
+                        Toast.makeText(
+                            applicationContext,
+                            "Error Occurred!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        swipeRefreshLayout.isRefreshing = false
+                    }
+
+                    LoadingState.FINISHED -> {
+                        swipeRefreshLayout.isRefreshing = false
+                    }
+                }
+            }
+        }*/
+
     }
 
     private fun inflateSearchMenu() {

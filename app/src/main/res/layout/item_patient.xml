@@ -6,138 +6,155 @@
     <data>
         <variable
             name="patient"
-            type="com.polotechnologies.lindajamii.dataModels.Patients" />
+            type="com.polotechnologies.lindajamii.dataModels.ExpectantDetails" />
 
     </data>
 
-    <com.google.android.material.card.MaterialCardView
-        style="@style/Theme.LindaJamii.Card.Patient"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Theme.LindaJamii.Card.Patient"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/image_patient_profile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/linda_jamii_logo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_patient_name"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                android:alpha="0.65"
-                android:text="Winnie Adhiambo"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
-                app:layout_constraintTop_toTopOf="@+id/image_patient_profile" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image_patient_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/linda_jamii_logo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_label_patient_anc_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                android:text="ANC Number: "
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/text_patient_anc_number"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
-                app:layout_constraintTop_toBottomOf="@+id/text_patient_name" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_patient_name"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:alpha="0.65"
+                    android:text="@{patient.maternalProfile.nameOfClient}"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
+                    app:layout_constraintTop_toTopOf="@+id/image_patient_profile"
+                    tools:text="Winnie Adhiambo" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_patient_anc_number"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:alpha="0.65"
-                android:text="10001"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/text_label_patient_anc_number"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_label_patient_anc_number"
-                app:layout_constraintTop_toTopOf="@+id/text_label_patient_anc_number" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_label_patient_anc_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="ANC Number: "
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/text_patient_anc_number"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/text_patient_name" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_label_patient_ddd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:text="E.D.D : "
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/text_patient_anc_ddd"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
-                app:layout_constraintTop_toBottomOf="@+id/text_label_patient_anc_number" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_patient_anc_number"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:alpha="0.65"
+                    android:text="@{patient.maternalProfile.ancNumber}"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_label_patient_anc_number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_label_patient_anc_number"
+                    app:layout_constraintTop_toTopOf="@+id/text_label_patient_anc_number" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_patient_anc_ddd"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:alpha="0.65"
-                android:text="20/12/2020"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/text_label_patient_ddd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_label_patient_ddd"
-                app:layout_constraintTop_toTopOf="@+id/text_label_patient_ddd" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_label_patient_ddd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="E.D.D : "
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/text_patient_anc_ddd"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_patient_anc_number" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_label_patient_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:text="Age    :"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/text_patient_anc_age"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
-                app:layout_constraintTop_toBottomOf="@+id/text_label_patient_ddd" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_patient_anc_ddd"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:alpha="0.65"
+                    android:textStyle="bold"
+                    android:text="@{patient.maternalProfile.edd}"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_label_patient_ddd"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_label_patient_ddd"
+                    app:layout_constraintTop_toTopOf="@+id/text_label_patient_ddd"
+                    tools:text="20/12/2020" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/text_patient_anc_age"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:alpha="0.65"
-                android:text="18"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/text_label_patient_age"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text_label_patient_age"
-                app:layout_constraintTop_toTopOf="@+id/text_label_patient_age" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_label_patient_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Age    :"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/text_patient_anc_age"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_patient_ddd" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_patient_anc_age"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:alpha="0.65"
+                    android:text="@{patient.maternalProfile.ageOfClient}"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_label_patient_age"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_label_patient_age"
+                    app:layout_constraintTop_toTopOf="@+id/text_label_patient_age"
+                    tools:text="18" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </layout>

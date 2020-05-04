@@ -78,6 +78,13 @@ dependencies {
 
     //Firebase Fire-store
     implementation "com.google.firebase:firebase-firestore-ktx:21.4.3"
+    implementation "com.google.firebase:firebase-core:17.0.1"
+
+    // Firestore FirebaseUI Library
+    implementation 'com.firebaseui:firebase-ui-firestore:5.0.0'
+
+    // Paging Library
+    implementation 'android.arch.paging:runtime:1.0.1'
 
     //Circular image
     implementation 'de.hdodenhof:circleimageview:3.1.0'

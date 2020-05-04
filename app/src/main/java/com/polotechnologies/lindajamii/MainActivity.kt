@@ -1,3 +1,5 @@
+
+
 package com.polotechnologies.lindajamii
 
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +30,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setNavControllerOptions()
-        setDrawerLayout()
     }
 
     private fun setNavControllerOptions() {

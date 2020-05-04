@@ -24,3 +24,4 @@ Enabling Health Practitioner keep track of Expectant Mothers, Encouraging them f
 * [Firebase](https://firebase.google.com/) Firebase is a mobile and web application development platform developed by Firebase, Inc.
   * [Cloud Firestore](https://firebase.google.com/docs/firestore) Cloud Firestore is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud Platform.
   * [Google Analytics](https://firebase.google.com/docs/analytics) Analytics reports help you understand clearly how your users behave, which enables you to make informed decisions regarding app marketing and performance optimizations.
+  * [FirestorePagingAdapter](https://github.com/firebase/FirebaseUI-Android/tree/master/firestore) The FirestorePagingAdapter binds a Query to a RecyclerView by loading documents in pages. This results in a time and memory efficient binding.

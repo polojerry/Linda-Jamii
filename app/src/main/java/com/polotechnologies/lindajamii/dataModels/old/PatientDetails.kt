@@ -1,13 +1,13 @@
-package com.polotechnologies.lindajamii.dataModels
+package com.polotechnologies.lindajamii.dataModels.old
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.polotechnologies.lindajamii.database.typeConveters.AntenatalProfileConverter
-import com.polotechnologies.lindajamii.database.typeConveters.MaternalProfileConverter
-import com.polotechnologies.lindajamii.database.typeConveters.MedicalSurgicalHistoryConverter
-import com.polotechnologies.lindajamii.database.typeConveters.PhysicalExaminationConverter
+import com.polotechnologies.lindajamii.database.typeConveters.old.AntenatalProfileConverter
+import com.polotechnologies.lindajamii.database.typeConveters.old.MaternalProfileConverter
+import com.polotechnologies.lindajamii.database.typeConveters.old.MedicalSurgicalHistoryConverter
+import com.polotechnologies.lindajamii.database.typeConveters.old.PhysicalExaminationConverter
 
 @Entity(tableName = "patients_details_table")
 data class PatientDetails(

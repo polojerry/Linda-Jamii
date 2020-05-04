@@ -1,16 +1,37 @@
 package com.polotechnologies.lindajamii.dataModels
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.firebase.firestore.ServerTimestamp
+import com.polotechnologies.lindajamii.database.typeConveters.newConverters.TypeConverterExpectantMaternalProfile
+import com.polotechnologies.lindajamii.database.typeConveters.newConverters.TypeConverterExpectantMedicalSurgicalHistory
+import com.polotechnologies.lindajamii.database.typeConveters.newConverters.TypeConverterExpectantPhysicalAntenatalFeeding
+import com.polotechnologies.lindajamii.database.typeConveters.old.MaternalProfileConverter
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
+@Entity(tableName = "expectant_details_table")
 data class ExpectantDetails(
+    @PrimaryKey @ColumnInfo(name = "user_anc_number")
     val patientId :String = "",
+
+    @ColumnInfo(name = "time_stamp")
     @ServerTimestamp val timeStamp : Date? = null,
+
+    @ColumnInfo(name = "maternal_profile")
+    @TypeConverters(TypeConverterExpectantMaternalProfile::class)
     val maternalProfile: ExpectantMaternalProfile? = null,
+
+    @ColumnInfo(name = "medical_surgical_history")
+    @TypeConverters(TypeConverterExpectantMedicalSurgicalHistory::class)
     val medicalSurgicalHistory : ExpectantMedicalSurgicalHistory? = null,
+
+    @ColumnInfo(name = "physical_antenatal_feeding")
+    @TypeConverters(TypeConverterExpectantPhysicalAntenatalFeeding::class)
     val physicalAntenatalFeeding : ExpectantPhysicalAntenatalFeeding? = null
 ) : Parcelable {
     @Parcelize

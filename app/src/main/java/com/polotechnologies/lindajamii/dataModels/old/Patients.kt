@@ -1,4 +1,4 @@
-package com.polotechnologies.lindajamii.dataModels
+package com.polotechnologies.lindajamii.dataModels.old
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -1,7 +1,7 @@
-package com.polotechnologies.lindajamii.database.typeConveters
+package com.polotechnologies.lindajamii.database.typeConveters.old
 
 import androidx.room.TypeConverter
-import com.polotechnologies.lindajamii.dataModels.PatientDetails.MaternalProfile
+import com.polotechnologies.lindajamii.dataModels.old.PatientDetails.MaternalProfile
 
 class MaternalProfileConverter {
     @TypeConverter

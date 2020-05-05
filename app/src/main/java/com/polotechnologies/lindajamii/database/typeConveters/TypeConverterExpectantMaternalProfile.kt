@@ -1,4 +1,4 @@
-package com.polotechnologies.lindajamii.database.typeConveters.newConverters
+package com.polotechnologies.lindajamii.database.typeConveters
 
 import androidx.room.TypeConverter
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*

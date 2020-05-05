@@ -1,31 +1,31 @@
 package com.polotechnologies.lindajamii.ui.patients
 
-import android.view.ViewGroup
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import androidx.paging.PagedList
-import com.firebase.ui.firestore.paging.FirestorePagingAdapter
-import com.firebase.ui.firestore.paging.FirestorePagingOptions
 import com.firebase.ui.firestore.paging.LoadingState
-import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
-class PatientsViewModel(val mBinding: FragmentPatientsBinding, mMflNumber: String, val mDatabase: FirebaseFirestore) : ViewModel() {
+class PatientsViewModel(val mBinding: FragmentPatientsBinding,
+                        private val firestoreServiceViewModel: FirestoreServiceViewModel) : ViewModel() {
 
-    //Response from Firestore
+    /*//Response from Firestore
     private val _patientsStatus = MutableLiveData<LoadingState>()
     val patientsStatus: LiveData<LoadingState>
         get() = _patientsStatus
-
+*/
     //List from Firestore
-    private val _patientsData = MutableLiveData<List<ExpectantDetails>>()
-    val patientsData: LiveData<List<ExpectantDetails>>
-        get() = _patientsData
+    private val _patientsList = MutableLiveData<List<ExpectantDetails>>()
+    val patientsListData: LiveData<List<ExpectantDetails>>
+        get() = _patientsList
 
     //Selected Patient
     private val _selectedPatient = MutableLiveData<ExpectantDetails>()
@@ -33,72 +33,19 @@ class PatientsViewModel(val mBinding: FragmentPatientsBinding, mMflNumber: Strin
         get () = _selectedPatient
 
     private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     init{
         fetchPatients()
     }
 
-
-    fun fetchPatients() {
-        //firestore query
-        val mQuery = mDatabase.collection("patients")
-            .document("maternalVisit")
-            .collection("initialVisit")
-            .limit(15)
-
-        //paging configuration
-        val config = PagedList.Config.Builder()
-            .setEnablePlaceholders(false)
-            .setPrefetchDistance(2)
-            .setPageSize(5)
-            .build()
-
-        // adapter configuration
-        val options = FirestorePagingOptions.Builder<ExpectantDetails>()
-            .setLifecycleOwner(mBinding.lifecycleOwner!!)
-            .setQuery(mQuery, config, ExpectantDetails::class.java)
-            .build()
-
-        val mAdapter  = object :
-            FirestorePagingAdapter<ExpectantDetails, PatientsViewHolder>(options){
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientsViewHolder {
-                return PatientsViewHolder.from(parent)
-            }
-
-            override fun onBindViewHolder(holder: PatientsViewHolder,
-                                          postion: Int, expectantDetails: ExpectantDetails) {
-                holder.bind(expectantDetails)
-            }
-
-            override fun onLoadingStateChanged(state: LoadingState) {
-                when (state) {
-                    LoadingState.LOADING_INITIAL -> {
-                        _patientsStatus.value = LoadingState.LOADING_INITIAL
-                    }
-
-                    LoadingState.LOADING_MORE -> {
-                        _patientsStatus.value = LoadingState.LOADING_MORE
-                    }
-
-                    LoadingState.LOADED -> {
-                        _patientsStatus.value = LoadingState.LOADED
-                    }
-
-                    LoadingState.ERROR -> {
-                        _patientsStatus.value = LoadingState.ERROR
-                    }
-
-                    LoadingState.FINISHED -> {
-                        _patientsStatus.value = LoadingState.FINISHED
-                    }
-                }
-            }
-
-        }
-
-        mBinding.recyclerPatients.adapter = mAdapter
+    private fun fetchPatients()  = viewModelScope.launch{
+        firestoreServiceViewModel.getPatients().observe(mBinding.lifecycleOwner!!, Observer {list->
+            _patientsList.value= list
+        })
     }
+
+
 
     override fun onCleared() {
         viewModelJob.cancel()

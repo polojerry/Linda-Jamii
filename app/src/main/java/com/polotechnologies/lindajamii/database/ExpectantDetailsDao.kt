@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
-import com.polotechnologies.lindajamii.dataModels.old.PatientDetails
 
 @Dao
 interface ExpectantDetailsDao {

@@ -6,10 +6,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.firebase.firestore.ServerTimestamp
-import com.polotechnologies.lindajamii.database.typeConveters.newConverters.TypeConverterExpectantMaternalProfile
-import com.polotechnologies.lindajamii.database.typeConveters.newConverters.TypeConverterExpectantMedicalSurgicalHistory
-import com.polotechnologies.lindajamii.database.typeConveters.newConverters.TypeConverterExpectantPhysicalAntenatalFeeding
-import com.polotechnologies.lindajamii.database.typeConveters.old.MaternalProfileConverter
+import com.polotechnologies.lindajamii.database.typeConveters.TypeConverterDate
+import com.polotechnologies.lindajamii.database.typeConveters.TypeConverterExpectantMaternalProfile
+import com.polotechnologies.lindajamii.database.typeConveters.TypeConverterExpectantMedicalSurgicalHistory
+import com.polotechnologies.lindajamii.database.typeConveters.TypeConverterExpectantPhysicalAntenatalFeeding
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
@@ -20,6 +20,7 @@ data class ExpectantDetails(
     val patientId :String = "",
 
     @ColumnInfo(name = "time_stamp")
+    @TypeConverters(TypeConverterDate::class)
     @ServerTimestamp val timeStamp : Date? = null,
 
     @ColumnInfo(name = "maternal_profile")

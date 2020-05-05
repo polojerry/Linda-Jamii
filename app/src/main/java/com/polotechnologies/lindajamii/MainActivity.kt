@@ -72,34 +72,38 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.action_initial_visit->{
-                navController.navigate(R.id.action_homeFragment_to_initialVisitFragment)
-                mBinding.drawerLayoutMain.closeDrawers()
-            }
-            R.id.action_subsequent_visit->{
-                navController.navigate(R.id.action_homeFragment_to_subsequentVisitsFragment)
-                mBinding.drawerLayoutMain.closeDrawers()
-            }
 
-            R.id.action_delivery->{
-                navController.navigate(R.id.action_homeFragment_to_deliveryFragment)
-                mBinding.drawerLayoutMain.closeDrawers()
-            }
+        if(navController.currentDestination!!.id == R.id.homeFragment){
+            when(item.itemId){
+                R.id.action_initial_visit->{
+                    navController.navigate(R.id.action_homeFragment_to_initialVisitFragment)
+                    mBinding.drawerLayoutMain.closeDrawers()
+                }
+                R.id.action_subsequent_visit->{
+                    navController.navigate(R.id.action_homeFragment_to_subsequentVisitsFragment)
+                    mBinding.drawerLayoutMain.closeDrawers()
+                }
 
-            R.id.action_post_natal_visit->{
-                navController.navigate(R.id.action_homeFragment_to_postNatalVisitFragment)
-                mBinding.drawerLayoutMain.closeDrawers()
-            }
+                R.id.action_delivery->{
+                    navController.navigate(R.id.action_homeFragment_to_deliveryFragment)
+                    mBinding.drawerLayoutMain.closeDrawers()
+                }
 
-            R.id.action_patients->{
-                navController.navigate(R.id.action_homeFragment_to_patientsFragment)
-                mBinding.drawerLayoutMain.closeDrawers()
-            }
-            else->{
-                return true
+                R.id.action_post_natal_visit->{
+                    navController.navigate(R.id.action_homeFragment_to_postNatalVisitFragment)
+                    mBinding.drawerLayoutMain.closeDrawers()
+                }
+
+                R.id.action_patients->{
+                    navController.navigate(R.id.action_homeFragment_to_patientsFragment)
+                    mBinding.drawerLayoutMain.closeDrawers()
+                }
+                else->{
+                    return true
+                }
             }
         }
+
         return true
     }
 

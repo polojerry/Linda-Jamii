@@ -77,7 +77,6 @@ class MaternalProfileViewModel(
         }
 
         if (nameOfPatient == "") {
-            isValid = false
             mBinding.textLayoutMaternalProfileMflNumber.error = "Required"
             isValid = false
         }

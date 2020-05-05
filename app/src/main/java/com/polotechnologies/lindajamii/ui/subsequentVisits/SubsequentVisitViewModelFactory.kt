@@ -1,10 +1,8 @@
 package com.polotechnologies.lindajamii.ui.subsequentVisits
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.polotechnologies.lindajamii.database.PatientProfileDAO
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
 
 /**

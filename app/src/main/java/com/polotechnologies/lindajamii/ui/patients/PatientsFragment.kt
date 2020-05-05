@@ -16,12 +16,13 @@ import com.firebase.ui.firestore.paging.LoadingState
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
+import com.polotechnologies.lindajamii.network.FirestoreService
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
 class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     lateinit var mBinding : FragmentPatientsBinding
     lateinit var mViewModel: PatientsViewModel
-    lateinit var mDatabase: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,17 +31,18 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
         // Inflate the layout for this fragment
         mBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_patients, container, false)
         mBinding.lifecycleOwner = this
-        mDatabase = FirebaseFirestore.getInstance()
 
-        val factory = PatientsViewModelFactory(mBinding,"", mDatabase)
+        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
+
+        val factory = PatientsViewModelFactory(mBinding, firestoreServiceViewModel)
         mViewModel = ViewModelProvider(this,factory)[PatientsViewModel::class.java]
 
         inflateSearchMenu()
         setObservers()
 
-        mViewModel.fetchPatients()
         return mBinding.root
     }
+
 
     private fun inflateSearchMenu() {
         val toolbar = mBinding.toolbarSearchPatient
@@ -64,30 +66,14 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
             }
         })
 
-        mViewModel.patientsStatus.observe(viewLifecycleOwner, Observer {status->
-            when (status) {
-                LoadingState.LOADING_INITIAL -> {
-                    mBinding.swipeRefreshPatients.isRefreshing = true
-                }
+        val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ reportedIncident->
+            Toast.makeText(context?.applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
+        })
 
-                LoadingState.LOADING_MORE -> {
-                    mBinding.swipeRefreshPatients.isRefreshing = true
-                }
+        mBinding.recyclerPatients.adapter = adapter
 
-                LoadingState.LOADED -> {
-                    mBinding.swipeRefreshPatients.isRefreshing = false
-                }
-
-                LoadingState.ERROR -> {
-                    mBinding.swipeRefreshPatients.isRefreshing = false
-                    Toast.makeText(context, "Error Loading Patients: Swipe to refresh", Toast.LENGTH_SHORT).show()
-                }
-
-                LoadingState.FINISHED -> {
-                    mBinding.swipeRefreshPatients.isRefreshing = false
-                }
-
-            }
+        mViewModel.patientsListData.observe(viewLifecycleOwner, Observer {patientsList->
+            adapter.submitList(patientsList)
 
         })
 

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentDeliveryBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import com.polotechnologies.lindajamii.ui.subsequentVisits.SubsequentVisitViewModel
 import com.polotechnologies.lindajamii.ui.subsequentVisits.SubsequentVisitViewModelFactory
 
@@ -31,7 +32,8 @@ class DeliveryFragment : Fragment() {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_delivery, container, false)
         mDatabase = FirebaseFirestore.getInstance()
 
-        val factory = DeliveryViewModelFactory(mDatabase, mBinding)
+        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
+        val factory = DeliveryViewModelFactory(firestoreServiceViewModel, mBinding)
         mViewModel = ViewModelProvider(this, factory)[DeliveryViewModel::class.java]
 
 
@@ -50,15 +52,15 @@ class DeliveryFragment : Fragment() {
     }
 
     private fun setObserver() {
-        mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+        mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarDelivery.visibility = View.INVISIBLE
-            if (status == true) {
+            if (exception == null) {
                 Toast.makeText(context!!.applicationContext, "Delivery Details Done", Toast.LENGTH_SHORT).show()
                 activity!!.onBackPressed()
             } else {
                 Toast.makeText(
                     context!!.applicationContext,
-                    "Failed: ${mViewModel.exception.value!!.localizedMessage}",
+                    "Failed: ${exception.localizedMessage}",
                     Toast.LENGTH_SHORT
                 )
             }
@@ -82,6 +84,7 @@ class DeliveryFragment : Fragment() {
         )
 
         mBinding.textDeliveryHivTested.setAdapter(categoryYesNoAdapter)
+        mBinding.textDeliveryBloodLoss.setAdapter(categoryYesNoAdapter)
         mBinding.textDeliveryCounselAndTest.setAdapter(categoryHivAdapter)
         mBinding.textDeliveryObstructedLabour.setAdapter(categoryYesNoAdapter)
         mBinding.textDeliveryRescusitationDone.setAdapter(categoryYesNoAdapter)

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 
@@ -39,6 +40,16 @@ class FirestoreServiceViewModel : ViewModel() {
 
         }
 
+        return writeException
+    }
+
+    fun saveDeliveryDetails(deliveryDetails: DeliveryDetails) : LiveData<java.lang.Exception> {
+        firestoreService.saveDeliveryDetails(deliveryDetails).addOnSuccessListener {
+            writeException.value = null
+        }.addOnFailureListener {exception->
+            writeException.value = exception
+
+        }
         return writeException
     }
 

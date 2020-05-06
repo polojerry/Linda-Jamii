@@ -11,21 +11,17 @@ import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 import com.polotechnologies.lindajamii.dataModels.SubsequentVisit
 import com.polotechnologies.lindajamii.databinding.FragmentDeliveryBinding
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
 
 class DeliveryViewModel(
-    val mDatabase: FirebaseFirestore,
+    private val firestoreServiceViewModel: FirestoreServiceViewModel,
     val mBinding: FragmentDeliveryBinding
 ) :
     ViewModel() {
-
-    private val _writeStatus = MutableLiveData<Boolean>()
-    val writeStatus: LiveData<Boolean>
-        get() = _writeStatus
-
-    private val _exception = MutableLiveData<Exception>()
+    private val _writeException = MutableLiveData<Exception>()
     val exception: LiveData<Exception>
-        get() = _exception
+        get() = _writeException
 
     private var registrationNumber = ""
     private var duringOfPregnancy = ""
@@ -171,17 +167,16 @@ class DeliveryViewModel(
             birthLength, headCircumference, placeOfDelivery, conductedBy
         )
 
-        mDatabase.collection("patients")
-            .document("maternalVisit")
-            .collection("deliveryDetails").document(registrationNumber).set(
-                deliveryDetails
-            ).addOnSuccessListener {
-                _writeStatus.value = true
-            }.addOnFailureListener { exception ->
-                _exception.value = exception
-                _writeStatus.value = false
+
+        firestoreServiceViewModel.saveDeliveryDetails(deliveryDetails).also {writeException->
+            if(writeException.value == null){
+                _writeException.value = null
+            }else{
+                _writeException.value = writeException.value
 
             }
+        }
+
     }
 
 

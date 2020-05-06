@@ -3,6 +3,7 @@ package com.polotechnologies.lindajamii.network
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 
 class FirestoreService {
@@ -24,5 +25,12 @@ class FirestoreService {
 
     }
 
+    fun saveDeliveryDetails(deliveryDetails: DeliveryDetails): Task<Void> {
+        return mDatabase.collection("patients")
+            .document("maternalVisit")
+            .collection("deliveryDetails").document(deliveryDetails.registrationNumber).set(
+                deliveryDetails
+            )
+    }
 
 }

@@ -4,26 +4,21 @@ package com.polotechnologies.lindajamii.ui.subsequentVisits
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.FirebaseFirestore
-import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
-import com.polotechnologies.lindajamii.dataModels.SubsequentVisit
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
+import java.lang.Exception
 
 
 class SubsequentVisitViewModel(
-    val mDatabase: FirebaseFirestore,
-    val mBinding: FragmentSubsequentVisitsBinding
+    val mBinding: FragmentSubsequentVisitsBinding,
+    val firestoreServiceViewModel: FirestoreServiceViewModel
 ) :
     ViewModel() {
 
-    private val _writeStatus = MutableLiveData<Boolean>()
-    val writeStatus: LiveData<Boolean>
-        get() = _writeStatus
-
-    private val _exception = MutableLiveData<Exception>()
+    private val _writeException = MutableLiveData<java.lang.Exception>()
     val exception: LiveData<Exception>
-        get() = _exception
+        get() = _writeException
 
     private var registrationNumber = ""
     private var numberOfVisit = ""
@@ -163,17 +158,14 @@ class SubsequentVisitViewModel(
             foetalHeart, foetalMovement, nextVisit
         )
 
-        mDatabase.collection("patients")
-            .document("maternalVisit")
-            .collection("subsequentVisits").document(registrationNumber).set(
-                subsequentVisit
-            ).addOnSuccessListener {
-                _writeStatus.value = true
-            }.addOnFailureListener { exception ->
-                _exception.value = exception
-                _writeStatus.value = false
+        firestoreServiceViewModel.saveSubsequentVisit(subsequentVisit).also {writeException->
+            if(writeException.value == null){
+                _writeException.value = null
+            }else{
+                _writeException.value = writeException.value
 
             }
+        }
 
     }
 

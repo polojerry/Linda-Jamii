@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryFragmentDirections
 
 
@@ -33,7 +34,8 @@ class SubsequentVisitsFragment : Fragment() {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_subsequent_visits, container, false)
         mDatabase = FirebaseFirestore.getInstance()
 
-        val factory = SubsequentVisitViewModelFactory(mDatabase, mBinding)
+        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
+        val factory = SubsequentVisitViewModelFactory(mBinding,firestoreServiceViewModel)
         mViewModel = ViewModelProvider(this, factory)[SubsequentVisitViewModel::class.java]
 
         setObserver()
@@ -46,20 +48,19 @@ class SubsequentVisitsFragment : Fragment() {
             }
         }
 
-
         return mBinding.root
     }
 
     private fun setObserver() {
-        mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+        mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarSubsequentVisit.visibility = View.INVISIBLE
-            if (status == true) {
+            if (exception == null) {
                 Toast.makeText(context!!.applicationContext, "Subsequent Visit Done", Toast.LENGTH_SHORT).show()
                 activity!!.onBackPressed()
             } else {
                 Toast.makeText(
                     context!!.applicationContext,
-                    "Failed: ${mViewModel.exception.value!!.localizedMessage}",
+                    "Failed: ${exception.localizedMessage}",
                     Toast.LENGTH_SHORT
                 )
             }

@@ -16,13 +16,7 @@ import kotlinx.coroutines.launch
 
 class PatientsViewModel(val mBinding: FragmentPatientsBinding,
                         private val firestoreServiceViewModel: FirestoreServiceViewModel) : ViewModel() {
-
-    /*//Response from Firestore
-    private val _patientsStatus = MutableLiveData<LoadingState>()
-    val patientsStatus: LiveData<LoadingState>
-        get() = _patientsStatus
-*/
-    //List from Firestore
+    // List from Firestore
     private val _patientsList = MutableLiveData<List<ExpectantDetails>>()
     val patientsListData: LiveData<List<ExpectantDetails>>
         get() = _patientsList

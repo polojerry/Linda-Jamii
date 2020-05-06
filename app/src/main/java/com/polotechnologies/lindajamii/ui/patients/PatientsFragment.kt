@@ -33,7 +33,6 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
         mBinding.lifecycleOwner = this
 
         val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
-
         val factory = PatientsViewModelFactory(mBinding, firestoreServiceViewModel)
         mViewModel = ViewModelProvider(this,factory)[PatientsViewModel::class.java]
 

@@ -7,24 +7,22 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
+import java.lang.Exception
 import java.util.UUID
 
 class MaternalProfileViewModel(
-    val mDatabase: FirebaseFirestore,
+    val firestoreServiceViewModel: FirestoreServiceViewModel,
     val mBinding: FragmentMaternalProfileBinding
 ) : ViewModel() {
-
-    private val _writeStatus = MutableLiveData<Boolean>()
-    val writeStatus: LiveData<Boolean>
-        get() = _writeStatus
 
     private val _userId = MutableLiveData<String>()
     val userId: LiveData<String>
         get() = _userId
 
-    private val _exception = MutableLiveData<Exception>()
+    private val _writeException = MutableLiveData<Exception>()
     val exception: LiveData<Exception>
-        get() = _exception
+        get() = _writeException
 
     private var nameOfInstitution = ""
     private var mflNumber = ""
@@ -178,16 +176,15 @@ class MaternalProfileViewModel(
             null,
             null
         )
-        mDatabase.collection("patients").document("maternalVisit")
-            .collection("initialVisit").document(ancNumber).
-            set(expectantDetails)
-            .addOnSuccessListener {
-                _writeStatus.value = true
-            }.addOnFailureListener{exception->
-                _exception.value = exception
-                _writeStatus.value = false
+
+        firestoreServiceViewModel.saveInitialVisitMaternalProfile(expectantDetails).also {writeException->
+            if(writeException.value == null){
+                _writeException.value = null
+            }else{
+                _writeException.value = writeException.value
 
             }
+        }
 
     }
 

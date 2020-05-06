@@ -85,9 +85,10 @@ class DeliveryFragment : Fragment() {
 
         mBinding.textDeliveryHivTested.setAdapter(categoryYesNoAdapter)
         mBinding.textDeliveryBloodLoss.setAdapter(categoryYesNoAdapter)
-        mBinding.textDeliveryCounselAndTest.setAdapter(categoryHivAdapter)
         mBinding.textDeliveryObstructedLabour.setAdapter(categoryYesNoAdapter)
         mBinding.textDeliveryRescusitationDone.setAdapter(categoryYesNoAdapter)
+        mBinding.textDeliveryCounselAndTest.setAdapter(categoryHivAdapter)
+
     }
 
 }

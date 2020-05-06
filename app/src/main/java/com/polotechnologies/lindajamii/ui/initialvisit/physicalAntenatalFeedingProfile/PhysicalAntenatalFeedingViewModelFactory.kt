@@ -6,8 +6,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
-class PhysicalAntenatalFeedingViewModelFactory (private val mDatabase: FirebaseFirestore,
+class PhysicalAntenatalFeedingViewModelFactory (val firestoreServiceViewModel: FirestoreServiceViewModel,
                                                 private val mBinding: FragmentPhysicalAntenatalFeedingBinding,
                                                 private val mUserId : String
 ) : ViewModelProvider.Factory {
@@ -15,7 +16,7 @@ class PhysicalAntenatalFeedingViewModelFactory (private val mDatabase: FirebaseF
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(PhysicalAntenatalFeedingViewModel::class.java)) {
                 return PhysicalAntenatalFeedingViewModel(
-                    mDatabase,
+                    firestoreServiceViewModel,
                     mBinding,
                     mUserId
                 ) as T

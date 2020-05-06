@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
+import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 
 class FirestoreServiceViewModel : ViewModel() {
@@ -53,4 +54,33 @@ class FirestoreServiceViewModel : ViewModel() {
         return writeException
     }
 
+    fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails) : LiveData<java.lang.Exception> {
+        firestoreService.saveInitialVisitMaternalProfile(expectantDetails).addOnSuccessListener {
+            writeException.value = null
+        }.addOnFailureListener {exception->
+            writeException.value = exception
+
+        }
+        return writeException
+    }
+
+    fun saveInitialVisitMedicalHistory(ancNumber : String, medicalSurgicalHistory: ExpectantMedicalSurgicalHistory) : LiveData<java.lang.Exception> {
+        firestoreService.saveInitialVisitMedicalHistory(ancNumber, medicalSurgicalHistory).addOnSuccessListener {
+            writeException.value = null
+        }.addOnFailureListener {exception->
+            writeException.value = exception
+
+        }
+        return writeException
+    }
+
+    fun saveInitialVisitPhysicalAntenatal(ancNumber : String, physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding) : LiveData<java.lang.Exception> {
+        firestoreService.saveInitialVisitPhysicalAntenatal(ancNumber, physicalAntenatalFeeding).addOnSuccessListener {
+            writeException.value = null
+        }.addOnFailureListener {exception->
+            writeException.value = exception
+
+        }
+        return writeException
+    }
 }

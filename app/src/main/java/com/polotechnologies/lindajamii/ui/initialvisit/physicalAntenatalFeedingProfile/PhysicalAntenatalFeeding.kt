@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryFragmentDirections
 import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryViewModel
 import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryViewModelFactory
@@ -26,19 +27,17 @@ class PhysicalAntenatalFeeding : Fragment() {
 
     private lateinit var mBinding: FragmentPhysicalAntenatalFeedingBinding
     private lateinit var mViewModel: PhysicalAntenatalFeedingViewModel
-    private  lateinit var mDatabase: FirebaseFirestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_physical_antenatal_feeding, container, false)
-        mDatabase = FirebaseFirestore.getInstance()
 
+        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
         val userId = PhysicalAntenatalFeedingArgs.fromBundle(requireArguments()).userId
-        val factory  = PhysicalAntenatalFeedingViewModelFactory(mDatabase, mBinding, userId)
+        val factory  = PhysicalAntenatalFeedingViewModelFactory(firestoreServiceViewModel, mBinding, userId)
         mViewModel = ViewModelProvider(this, factory)[PhysicalAntenatalFeedingViewModel::class.java]
-        mViewModel._userId.value= userId
 
         setObserver()
         mBinding.buttonFinishInitial.setOnClickListener {
@@ -54,9 +53,9 @@ class PhysicalAntenatalFeeding : Fragment() {
         return mBinding.root
     }
     private fun setObserver() {
-        mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+        mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = View.INVISIBLE
-            if (status == true) {
+            if (exception == null) {
                 Toast.makeText(context!!.applicationContext, "Initial Visit Done", Toast.LENGTH_SHORT).show()
                 activity!!.onBackPressed()
             } else {

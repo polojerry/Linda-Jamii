@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileFragmentDirections
 import com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileViewModel
 import com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileViewModelFactory
@@ -25,20 +26,18 @@ class MedicalSurgicalHistoryFragment : Fragment() {
 
     private lateinit var mBinding :FragmentMedicalSurgicalHistoryBinding
     private lateinit var mViewModel: MedicalSurgicalHistoryViewModel
-    private lateinit var mDatabase: FirebaseFirestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_medical_surgical_history, container, false)
-        mDatabase = FirebaseFirestore.getInstance()
 
+        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
         val mUserId = MedicalSurgicalHistoryFragmentArgs.fromBundle(requireArguments()).userId
 
-        val factory  = MedicalSurgicalHistoryViewModelFactory(mDatabase, mBinding, mUserId)
+        val factory  = MedicalSurgicalHistoryViewModelFactory(firestoreServiceViewModel, mBinding, mUserId)
         mViewModel = ViewModelProvider(this, factory)[MedicalSurgicalHistoryViewModel::class.java]
-        mViewModel._userId.value = mUserId
 
         setObserver()
         mBinding.buttonNextPhysicalAntenatalInfantFeeding.setOnClickListener {
@@ -55,9 +54,9 @@ class MedicalSurgicalHistoryFragment : Fragment() {
     }
 
     private fun setObserver() {
-        mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+        mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarMedicalSurgicalHistory.visibility = View.INVISIBLE
-            if (status == true) {
+            if (exception == null) {
                 val action =
                     MedicalSurgicalHistoryFragmentDirections.actionMedicalSurgicalHistoryFragmentToPhysicalAntenatalFeeding(
                         mViewModel.mUserId
@@ -66,7 +65,7 @@ class MedicalSurgicalHistoryFragment : Fragment() {
             } else {
                 Toast.makeText(
                     context!!.applicationContext,
-                    "Failed: ${mViewModel.exception.value!!.localizedMessage}",
+                    "Failed: ${exception.localizedMessage}",
                     Toast.LENGTH_SHORT
                 )
             }

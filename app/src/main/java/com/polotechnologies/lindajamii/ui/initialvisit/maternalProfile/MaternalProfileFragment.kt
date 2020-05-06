@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
 /**
 .
@@ -23,9 +24,6 @@ class MaternalProfileFragment : Fragment() {
     private lateinit var mBinding: FragmentMaternalProfileBinding
     private lateinit var mViewModel: MaternalProfileViewModel
 
-    private lateinit var mDatabase: FirebaseFirestore
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,9 +31,10 @@ class MaternalProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_maternal_profile, container, false)
-        mDatabase = FirebaseFirestore.getInstance()
 
-        val factory = MaternalProfileViewModelFactory(mDatabase, mBinding)
+        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
+
+        val factory = MaternalProfileViewModelFactory(firestoreServiceViewModel, mBinding)
         mViewModel = ViewModelProvider(this, factory)[MaternalProfileViewModel::class.java]
 
         setObServer()
@@ -51,9 +50,9 @@ class MaternalProfileFragment : Fragment() {
     }
 
     private fun setObServer() {
-        mViewModel.writeStatus.observe(viewLifecycleOwner, Observer { status ->
+        mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarMaternalProfile.visibility = View.INVISIBLE
-            if (status == true) {
+            if (exception == null) {
                 val action =
                     MaternalProfileFragmentDirections.actionMaternalProfileFragmentToMedicalSurgicalHistoryFragment(
                         mViewModel.userId.value!!
@@ -62,7 +61,7 @@ class MaternalProfileFragment : Fragment() {
             } else {
                 Toast.makeText(
                     context!!.applicationContext,
-                    "Failed: ${mViewModel.exception.value!!.localizedMessage}",
+                    "Failed: ${exception.localizedMessage}",
                     Toast.LENGTH_SHORT
                 )
             }

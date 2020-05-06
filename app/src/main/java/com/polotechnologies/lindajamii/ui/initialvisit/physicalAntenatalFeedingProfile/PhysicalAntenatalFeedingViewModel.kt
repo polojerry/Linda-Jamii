@@ -8,24 +8,18 @@ import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
+import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
+import java.lang.Exception
 
 class PhysicalAntenatalFeedingViewModel(
-    val mDatabase: FirebaseFirestore,
+    val firestoreServiceViewModel: FirestoreServiceViewModel,
     val mBinding: FragmentPhysicalAntenatalFeedingBinding,
     val mUserId :String
 ) : ViewModel() {
 
-    val _userId = MutableLiveData<String>()
-    val userId: LiveData<String>
-        get() = _userId
-
-    private val _writeStatus = MutableLiveData<Boolean>()
-    val writeStatus: LiveData<Boolean>
-        get() = _writeStatus
-
-    private val _exception = MutableLiveData<Exception>()
+    private val _writeException = MutableLiveData<Exception>()
     val exception: LiveData<Exception>
-        get() = _exception
+        get() = _writeException
 
 
     //Physical Examination
@@ -201,15 +195,13 @@ class PhysicalAntenatalFeedingViewModel(
             counselingOnExclusiveBreastfeedingDone
             )
 
-        mDatabase.collection("patients").document("maternalVisit")
-            .collection("initialVisit").document(mUserId).update(
-            "physicalAntenatalFeeding", physicalAntenatalFeeding
-        ).addOnSuccessListener {
-            _writeStatus.value = true
-        }.addOnFailureListener { exception ->
-            _exception.value = exception
-            _writeStatus.value = false
+        firestoreServiceViewModel.saveInitialVisitPhysicalAntenatal(mUserId,physicalAntenatalFeeding ).also {writeException->
+            if(writeException.value == null){
+                _writeException.value = null
+            }else{
+                _writeException.value = writeException.value
 
+            }
         }
     }
 

@@ -1,7 +1,5 @@
 package com.polotechnologies.lindajamii.ui.patientsDetails
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
-import com.polotechnologies.lindajamii.dataModels.Patients
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsDetailsBinding
 
 class PatientsDetailsFragment : Fragment() {

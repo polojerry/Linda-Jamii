@@ -32,11 +32,7 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
         mBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_patients, container, false)
         mBinding.lifecycleOwner = this
 
-        /*val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
-        val factory = PatientsViewModelFactory(mBinding, firestoreServiceViewModel)*/
-
-        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
-        val factory = PatientsViewModelFactory(activity!!.application,firestoreServiceViewModel)
+        val factory = PatientsViewModelFactory(activity!!.application)
         mViewModel = ViewModelProvider(this,factory)[PatientsViewModel::class.java]
 
         inflateSearchMenu()

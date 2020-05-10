@@ -10,30 +10,13 @@ import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
 import com.polotechnologies.lindajamii.databinding.ItemPatientBinding
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
-/*
-class PatientsViewModelFactory (private val mBinding : FragmentPatientsBinding,
-                                private val firestoreServiceViewModel: FirestoreServiceViewModel
-                                ) : ViewModelProvider.Factory {
-        @Suppress("unchecked_cast")
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(PatientsViewModel::class.java)) {
-                return PatientsViewModel(
-                    mBinding,
-                    firestoreServiceViewModel
-                ) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
-        }
-}*/
-class PatientsViewModelFactory (val app : Application,
-                                private val firestoreServiceViewModel: FirestoreServiceViewModel
+class PatientsViewModelFactory (val app : Application
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PatientsViewModel::class.java)) {
             return PatientsViewModel(
-                app,
-                firestoreServiceViewModel
+                app
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

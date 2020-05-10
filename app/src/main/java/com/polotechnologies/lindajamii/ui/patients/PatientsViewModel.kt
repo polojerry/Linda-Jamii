@@ -17,8 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class PatientsViewModel(application: Application,
-                        firestoreServiceViewModel: FirestoreServiceViewModel) : ViewModel() {
+class PatientsViewModel(application: Application) : ViewModel() {
 
     //Selected Patient
     private val _selectedPatient = MutableLiveData<ExpectantDetails>()
@@ -33,7 +32,7 @@ class PatientsViewModel(application: Application,
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val database = getDatabase(application)
-    val patientRepository = PatientRepository(firestoreServiceViewModel,database)
+    val patientRepository = PatientRepository(database)
 
     init{
         fetchPatients()

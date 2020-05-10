@@ -27,7 +27,7 @@ abstract class LindaJamiiDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: LindaJamiiDatabase? = null
 
-        fun getInstance(context: Context): LindaJamiiDatabase {
+        fun getDatabase(context: Context): LindaJamiiDatabase {
             synchronized(this) {
                 var instance = INSTANCE
 

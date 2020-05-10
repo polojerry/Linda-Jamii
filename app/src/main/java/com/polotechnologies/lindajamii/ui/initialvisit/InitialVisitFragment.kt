@@ -26,7 +26,4 @@ class InitialVisitFragment : Fragment() {
         return mBinding.root
     }
 
-
-
-
 }

@@ -98,3 +98,14 @@ data class ExpectantDetails(
 
     ) : Parcelable
 }
+
+fun List<ExpectantDetails>.asDomainModel(): List<ExpectantDetails> {
+    return map {expectantPatient->
+        ExpectantDetails(
+            patientId = expectantPatient.patientId,
+            timeStamp = expectantPatient.timeStamp,
+            maternalProfile = expectantPatient.maternalProfile,
+            medicalSurgicalHistory = expectantPatient.medicalSurgicalHistory,
+            physicalAntenatalFeeding = expectantPatient.physicalAntenatalFeeding)
+    }
+}

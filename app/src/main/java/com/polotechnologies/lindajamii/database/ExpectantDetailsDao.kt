@@ -9,7 +9,7 @@ import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 
 @Dao
 interface ExpectantDetailsDao {
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg expectantDetails: ExpectantDetails)
 
     @Query("SELECT * FROM expectant_details_table")

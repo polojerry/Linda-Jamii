@@ -12,25 +12,8 @@ import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 class FirestoreServiceViewModel : ViewModel() {
     val TAG = "FIRESTORE SERVICE VIEW MODEL"
     val firestoreService = FirestoreService()
-    var patients = listOf<ExpectantDetails>()
-
     var writeException = MutableLiveData<Exception>()
 
-
-    fun getPatients() {
-        firestoreService.getPatients().addSnapshotListener { snapshot, exception ->
-            if (exception != null) {
-                Log.d(TAG, "getPatients: $exception")
-                patients = emptyList()
-            }
-            val patientsList: MutableList<ExpectantDetails> = mutableListOf()
-            snapshot?.forEach { docSnapshot ->
-                val patient = docSnapshot.toObject(ExpectantDetails::class.java)
-                patientsList.add(patient)
-            }
-            patients = patientsList
-        }
-    }
 
     fun saveSubsequentVisit(subsequentVisit: ExpectantSubsequentVisit): LiveData<java.lang.Exception> {
         firestoreService.saveSubsequentVisit(subsequentVisit).addOnSuccessListener {

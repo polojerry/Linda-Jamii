@@ -9,13 +9,14 @@ buildscript {
         version_nav = "2.2.2"
         version_life_cycle = "2.2.0"
         version_room = "2.2.4"
-        
+        version_work = "1.0.0-alpha11"
+        version_kotlin_coroutines = "1.1.0"
+
         version_glide = '4.11.0'
 
         version_google_gsm = "4.3.3"
         version_google_play_maps = "17.0.0"
         version_gooogle_places="2.2.0"
-
 
         version_firebase_analytics = "17.2.3"
         version_firebase_authentication = "19.3.0"

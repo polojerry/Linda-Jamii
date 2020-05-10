@@ -17,67 +17,34 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-/*class PatientsViewModel(val mBinding: FragmentPatientsBinding,
-                        private val firestoreServiceViewModel: FirestoreServiceViewModel) : ViewModel() {
-    // List from Firestore
-    private val _patientsList = MutableLiveData<List<ExpectantDetails>>()
-    val patientsListData: LiveData<List<ExpectantDetails>>
-        get() = _patientsList
+class PatientsViewModel(application: Application) : ViewModel() {
 
     //Selected Patient
     private val _selectedPatient = MutableLiveData<ExpectantDetails>()
     val selectedPatient : LiveData<ExpectantDetails>
         get () = _selectedPatient
 
-    private var viewModelJob = Job()
-    private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
-    init{
-        fetchPatients()
-    }
-
-    private fun fetchPatients()  = viewModelScope.launch{
-        *//*firestoreServiceViewModel.getPatients().observe(mBinding.lifecycleOwner!!, Observer {list->
-            _patientsList.value= list
-        })*//*
-    }
-
-
-
-    override fun onCleared() {
-        viewModelJob.cancel()
-    }
-}*/
-class PatientsViewModel(application: Application,
-                        firestoreServiceViewModel: FirestoreServiceViewModel) : ViewModel() {
-
-/*
-    // List from Firestore
-    private val _patientsList = MutableLiveData<List<ExpectantDetails>>()
-    val patientsListData: LiveData<List<ExpectantDetails>>
-        get() = _patientsList
-*/
-
-    //Selected Patient
-    private val _selectedPatient = MutableLiveData<ExpectantDetails>()
-    val selectedPatient : LiveData<ExpectantDetails>
-        get () = _selectedPatient
+    private val _repoIsLoading = MutableLiveData<Boolean>()
+    val repoIsLoading : LiveData<Boolean>
+        get () = _repoIsLoading
 
     private var viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val database = getDatabase(application)
-    val patientRepository = PatientRepository(firestoreServiceViewModel,database)
+    val patientRepository = PatientRepository(database)
+
     init{
         fetchPatients()
+        _repoIsLoading.value = true
     }
 
-    private fun fetchPatients()  = viewModelScope.launch{
+    fun fetchPatients()  = viewModelScope.launch{
         patientRepository.refreshPatients()
+        _repoIsLoading.value = false
     }
 
     val patientsListData = patientRepository.patients
-
 
     override fun onCleared() {
         viewModelJob.cancel()

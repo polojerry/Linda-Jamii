@@ -1,5 +1,3 @@
-
-
 package com.polotechnologies.lindajamii
 
 import androidx.appcompat.app.AppCompatActivity

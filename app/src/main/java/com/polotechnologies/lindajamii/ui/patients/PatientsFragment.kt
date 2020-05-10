@@ -32,19 +32,15 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
         mBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_patients, container, false)
         mBinding.lifecycleOwner = this
 
-        /*val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
-        val factory = PatientsViewModelFactory(mBinding, firestoreServiceViewModel)*/
-
-        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
-        val factory = PatientsViewModelFactory(activity!!.application,firestoreServiceViewModel)
+        val factory = PatientsViewModelFactory(activity!!.application)
         mViewModel = ViewModelProvider(this,factory)[PatientsViewModel::class.java]
 
         inflateSearchMenu()
+        setDisplayDetails()
         setObservers()
 
         return mBinding.root
     }
-
 
     private fun inflateSearchMenu() {
         val toolbar = mBinding.toolbarSearchPatient
@@ -58,26 +54,35 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
             isSubmitButtonEnabled = false
             isIconified = false
         }
-
     }
 
+    private fun setDisplayDetails() {
+        val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ reportedIncident->
+            Toast.makeText(context?.applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
+        })
+
+        mBinding.recyclerPatients.adapter = adapter
+        mViewModel.patientsListData.observe(viewLifecycleOwner, Observer {patientsList->
+            adapter.submitList(patientsList)
+
+        })
+    }
+
+
     private fun setObservers(){
+        mViewModel.repoIsLoading.observe(viewLifecycleOwner, Observer {isLoading->
+                mBinding.swipeRefreshPatients.isRefreshing = isLoading
+        })
+
         mViewModel.selectedPatient.observe(viewLifecycleOwner, Observer {expectantDetails->
             if(expectantDetails!=null){
                 TODO()
             }
         })
 
-        val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ reportedIncident->
-            Toast.makeText(context?.applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
-        })
-
-        mBinding.recyclerPatients.adapter = adapter
-
-        mViewModel.patientsListData.observe(viewLifecycleOwner, Observer {patientsList->
-            adapter.submitList(patientsList)
-
-        })
+        mBinding.swipeRefreshPatients.setOnRefreshListener {
+            mViewModel.fetchPatients()
+        }
 
     }
 

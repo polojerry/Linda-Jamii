@@ -19,9 +19,9 @@ class PatientsRecyclerAdapter(private val onClickListener: OnClickListener)  :
     override fun onBindViewHolder(holder: PatientsViewHolder, position: Int) {
         val patient = getItem(position)
         holder.bind(patient)
-        /*holder.itemView.setOnContextClickListener {
+        holder.itemView.setOnClickListener {
             onClickListener.onClick(patient)
-        }*/
+        }
 
     }
 

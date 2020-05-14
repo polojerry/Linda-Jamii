@@ -3,6 +3,7 @@ package com.polotechnologies.lindajamii.ui.patients
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -66,6 +67,8 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
             adapter.submitList(patientsList)
 
         })
+
+
     }
 
     private fun setObservers(){

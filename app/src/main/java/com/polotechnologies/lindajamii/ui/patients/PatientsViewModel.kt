@@ -36,6 +36,8 @@ class PatientsViewModel(application: Application) : ViewModel() {
     val patientsListData = patientRepository.patients
 
 
+
+
     init{
         fetchPatients()
         _repoIsLoading.value = true

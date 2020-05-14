@@ -37,8 +37,6 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
                     android:src="@drawable/linda_jamii_logo"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="32dp"
                     android:text="E.D.D : "
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/text_patient_anc_ddd"
@@ -118,18 +116,47 @@
                     tools:text="20/12/2020" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_label_patient_next_visit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Next Visit: "
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/text_patient_next_visit"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_patient_ddd" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_patient_next_visit"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:alpha="0.65"
+                    android:text="@{patient.nextVisit}"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/text_label_patient_next_visit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/text_label_patient_next_visit"
+                    app:layout_constraintTop_toTopOf="@+id/text_label_patient_next_visit"
+                    tools:text="12/01/2021" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/text_label_patient_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="Age    :"
+                    android:layout_marginEnd="8dp"
+                    android:text="Age: "
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/text_patient_anc_age"
-                    app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toEndOf="@+id/image_patient_profile"
-                    app:layout_constraintTop_toBottomOf="@+id/text_label_patient_ddd" />
+                    app:layout_constraintTop_toBottomOf="@+id/text_label_patient_next_visit" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/text_patient_anc_age"
@@ -145,8 +172,6 @@
                     app:layout_constraintStart_toEndOf="@+id/text_label_patient_age"
                     app:layout_constraintTop_toTopOf="@+id/text_label_patient_age"
                     tools:text="18" />
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>

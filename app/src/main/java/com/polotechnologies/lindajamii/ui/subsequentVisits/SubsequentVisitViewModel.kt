@@ -9,6 +9,8 @@ import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBindi
 import com.polotechnologies.lindajamii.network.FirestoreService
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class SubsequentVisitViewModel(
@@ -149,10 +151,11 @@ class SubsequentVisitViewModel(
     }
 
     fun saveMedicalSurgicalHistory() {
+        val dateFormat = SimpleDateFormat("dd, MM, yyyy, ")
         val subsequentVisit = ExpectantSubsequentVisit(
-            registrationNumber, numberOfVisit, dateOfVisit, urine, weight,
+            registrationNumber, numberOfVisit, dateFormat.format(Date(dateOfVisit)), urine, weight,
             bp, hb, pallor, maturity, fundalHeight, presentation, lie,
-            foetalHeart, foetalMovement, nextVisit
+            foetalHeart, foetalMovement, dateFormat.format(Date(nextVisit))
         )
 
         firestoreService.saveSubsequentVisit(subsequentVisit).also {writeException->

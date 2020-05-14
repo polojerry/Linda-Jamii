@@ -175,7 +175,7 @@ class MaternalProfileViewModel(
             getExpectantMotherProfile(),
             null,
             null,
-            null
+            ""
         )
 
         firestoreServiceViewModel.saveInitialVisitMaternalProfile(expectantDetails).also {writeException->

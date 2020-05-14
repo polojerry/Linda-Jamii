@@ -17,11 +17,11 @@ import java.util.*
 @Entity(tableName = "expectant_details_table")
 data class ExpectantDetails(
     @PrimaryKey @ColumnInfo(name = "user_anc_number")
-    val patientId :String = "",
+    val patientId: String = "",
 
     @ColumnInfo(name = "time_stamp")
     @TypeConverters(TypeConverterDate::class)
-    @ServerTimestamp val timeStamp : Date? = null,
+    @ServerTimestamp val timeStamp: Date? = null,
 
     @ColumnInfo(name = "maternal_profile")
     @TypeConverters(TypeConverterExpectantMaternalProfile::class)
@@ -29,14 +29,14 @@ data class ExpectantDetails(
 
     @ColumnInfo(name = "medical_surgical_history")
     @TypeConverters(TypeConverterExpectantMedicalSurgicalHistory::class)
-    val medicalSurgicalHistory : ExpectantMedicalSurgicalHistory? = null,
+    val medicalSurgicalHistory: ExpectantMedicalSurgicalHistory? = null,
 
     @ColumnInfo(name = "physical_antenatal_feeding")
     @TypeConverters(TypeConverterExpectantPhysicalAntenatalFeeding::class)
-    val physicalAntenatalFeeding : ExpectantPhysicalAntenatalFeeding? = null,
+    val physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding? = null,
 
     @ColumnInfo(name = "next_visit")
-    val nextVisit: Long?=null
+    val nextVisit: String = ""
 ) : Parcelable {
     @Parcelize
     data class ExpectantMaternalProfile(
@@ -62,53 +62,55 @@ data class ExpectantDetails(
     ) : Parcelable
 
     @Parcelize
-    data class ExpectantMedicalSurgicalHistory (
+    data class ExpectantMedicalSurgicalHistory(
         val surgicalOperation: String = "",
-        val diabetes : String= "",
-        val hypertension : String= "",
-        val bloodTransfusion : String= "",
-        val tuberculosis : String= "",
+        val diabetes: String = "",
+        val hypertension: String = "",
+        val bloodTransfusion: String = "",
+        val tuberculosis: String = "",
         val specificDrugAllergy: String = "",
         val otherDrugAllergies: String = "",
-        val familyHistoryTwins : String= "",
-        val familyHistoryTuberculosis : String= ""
+        val familyHistoryTwins: String = "",
+        val familyHistoryTuberculosis: String = ""
 
     ) : Parcelable
 
     @Parcelize
     data class ExpectantPhysicalAntenatalFeeding(
-        val general : String= "",
-                val bp : String= "",
-                val height : String= "",
-                val cvs : String= "",
-                val resp : String= "",
-                val breasts: String = "",
-                val abdomen : String= "",
-                val vaginalExamination: String = "",
-                val dischargeGenitalUlcers: String = "",
-                val hb : String= "",
-                val bloodGroup : String= "",
-                val rhesus : String= "",
-                val serology: String = "",
-                val tbScreening : String= "",
-                val dateIPTIsonaziadGiven: String = "",
-                val nextVisit : String= "",
-                val hiv : String= "",
-                val urianalysis: String = "",
-                val givenHIVCounsellingAndTest : String= "",
-                val feedingCounsellingDone : String= "",
-                val counselingOnExclusiveBreastfeedingDone: String = ""
+        val general: String = "",
+        val bp: String = "",
+        val height: String = "",
+        val cvs: String = "",
+        val resp: String = "",
+        val breasts: String = "",
+        val abdomen: String = "",
+        val vaginalExamination: String = "",
+        val dischargeGenitalUlcers: String = "",
+        val hb: String = "",
+        val bloodGroup: String = "",
+        val rhesus: String = "",
+        val serology: String = "",
+        val tbScreening: String = "",
+        val dateIPTIsonaziadGiven: String = "",
+        val nextVisit: String = "",
+        val hiv: String = "",
+        val urianalysis: String = "",
+        val givenHIVCounsellingAndTest: String = "",
+        val feedingCounsellingDone: String = "",
+        val counselingOnExclusiveBreastfeedingDone: String = ""
 
     ) : Parcelable
 }
 
 fun List<ExpectantDetails>.asDomainModel(): List<ExpectantDetails> {
-    return map {expectantPatient->
+    return map { expectantPatient ->
         ExpectantDetails(
             patientId = expectantPatient.patientId,
             timeStamp = expectantPatient.timeStamp,
             maternalProfile = expectantPatient.maternalProfile,
             medicalSurgicalHistory = expectantPatient.medicalSurgicalHistory,
-            physicalAntenatalFeeding = expectantPatient.physicalAntenatalFeeding)
+            physicalAntenatalFeeding = expectantPatient.physicalAntenatalFeeding,
+            nextVisit = expectantPatient.nextVisit
+        )
     }
 }

@@ -1,30 +1,16 @@
 package com.polotechnologies.lindajamii.network
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
-import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 
 class FirestoreServiceViewModel : ViewModel() {
     val TAG = "FIRESTORE SERVICE VIEW MODEL"
     val firestoreService = FirestoreService()
     var writeException = MutableLiveData<Exception>()
-
-
-    fun saveSubsequentVisit(subsequentVisit: ExpectantSubsequentVisit): LiveData<java.lang.Exception> {
-        firestoreService.saveSubsequentVisit(subsequentVisit).addOnSuccessListener {
-            writeException.value = null
-        }.addOnFailureListener { exception ->
-            writeException.value = exception
-
-        }
-
-        return writeException
-    }
 
     fun saveDeliveryDetails(deliveryDetails: DeliveryDetails): LiveData<java.lang.Exception> {
         firestoreService.saveDeliveryDetails(deliveryDetails).addOnSuccessListener {

@@ -11,7 +11,7 @@ import com.polotechnologies.lindajamii.database.typeConveters.TypeConverterExpec
 import com.polotechnologies.lindajamii.database.typeConveters.TypeConverterExpectantMedicalSurgicalHistory
 import com.polotechnologies.lindajamii.database.typeConveters.TypeConverterExpectantPhysicalAntenatalFeeding
 
-@Database(entities = [ExpectantDetails::class], version = 1, exportSchema = false)
+@Database(entities = [ExpectantDetails::class], version = 4, exportSchema = false)
 @TypeConverters(
     TypeConverterDate::class,
     TypeConverterExpectantMaternalProfile::class,

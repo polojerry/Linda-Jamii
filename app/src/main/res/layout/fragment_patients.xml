@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         tools:context=".ui.patients.PatientsFragment">
 
-        <com.google.android.material.card.MaterialCardView
+        <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/materialCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
                 android:backgroundTint="@color/colorPrimary"/>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_patients"

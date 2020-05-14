@@ -33,18 +33,20 @@ class PatientsViewModel(application: Application) : ViewModel() {
 
     private val database = getDatabase(application)
     val patientRepository = PatientRepository(database)
+    val patientsListData = patientRepository.patients
+
 
     init{
         fetchPatients()
         _repoIsLoading.value = true
     }
 
+
     fun fetchPatients()  = viewModelScope.launch{
         patientRepository.refreshPatients()
         _repoIsLoading.value = false
     }
 
-    val patientsListData = patientRepository.patients
 
     override fun onCleared() {
         viewModelJob.cancel()

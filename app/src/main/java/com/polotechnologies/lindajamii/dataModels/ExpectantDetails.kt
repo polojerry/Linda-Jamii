@@ -33,7 +33,10 @@ data class ExpectantDetails(
 
     @ColumnInfo(name = "physical_antenatal_feeding")
     @TypeConverters(TypeConverterExpectantPhysicalAntenatalFeeding::class)
-    val physicalAntenatalFeeding : ExpectantPhysicalAntenatalFeeding? = null
+    val physicalAntenatalFeeding : ExpectantPhysicalAntenatalFeeding? = null,
+
+    @ColumnInfo(name = "next_visit")
+    val nextVisit: Long?=null
 ) : Parcelable {
     @Parcelize
     data class ExpectantMaternalProfile(

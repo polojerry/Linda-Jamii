@@ -11,11 +11,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryFragmentDirections
+import java.util.*
 
 
 /**
@@ -25,17 +27,14 @@ class SubsequentVisitsFragment : Fragment() {
 
     private lateinit var mBinding: FragmentSubsequentVisitsBinding
     private lateinit var mViewModel: SubsequentVisitViewModel
-    private lateinit var mDatabase: FirebaseFirestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_subsequent_visits, container, false)
-        mDatabase = FirebaseFirestore.getInstance()
 
-        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
-        val factory = SubsequentVisitViewModelFactory(mBinding,firestoreServiceViewModel)
+        val factory = SubsequentVisitViewModelFactory(mBinding)
         mViewModel = ViewModelProvider(this, factory)[SubsequentVisitViewModel::class.java]
 
         setObserver()
@@ -48,8 +47,49 @@ class SubsequentVisitsFragment : Fragment() {
             }
         }
 
+        setClickListeners()
+
         return mBinding.root
     }
+
+    private fun setClickListeners() {
+        mBinding.textSubsequentVisitsDate.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus){
+                displayDatePicker("Today's Date")
+            }
+        }
+        mBinding.textSubsequentVisitsNextVisit.setOnFocusChangeListener { v, hasFocus ->
+            if(hasFocus){
+                displayDatePicker("Next Visit")
+            }
+
+        }
+    }
+
+    private fun displayDatePicker(title: String) {
+        val dateBuilder = MaterialDatePicker.Builder.datePicker()
+        dateBuilder.setTitleText(title)
+
+        val materialDatePicker = dateBuilder.build()
+        materialDatePicker.show(activity!!.supportFragmentManager, "DATE_PICKER")
+        materialDatePicker.addOnPositiveButtonClickListener {date->
+            when(title){
+                "Today's Date"->{
+                    mViewModel.dateOfVisit = date
+                    mBinding.textSubsequentVisitsDate.setText(materialDatePicker.headerText)
+                }
+
+                "Next Visit"->{
+                    mViewModel.nextVisit = date
+                    mBinding.textSubsequentVisitsNextVisit.setText(materialDatePicker.headerText)
+                }
+
+            }
+
+        }
+
+    }
+
 
     private fun setObserver() {
         mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->

@@ -6,23 +6,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
+import com.polotechnologies.lindajamii.network.FirestoreService
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import java.lang.Exception
 
 
 class SubsequentVisitViewModel(
-    val mBinding: FragmentSubsequentVisitsBinding,
-    val firestoreServiceViewModel: FirestoreServiceViewModel
+    val mBinding: FragmentSubsequentVisitsBinding
 ) :
     ViewModel() {
 
+    private val firestoreService = FirestoreService()
     private val _writeException = MutableLiveData<java.lang.Exception>()
     val exception: LiveData<Exception>
         get() = _writeException
 
     private var registrationNumber = ""
     private var numberOfVisit = ""
-    private var dateOfVisit = ""
+    var dateOfVisit = 0L
     private var urine = ""
     private var weight = ""
     private var bp = ""
@@ -34,7 +35,7 @@ class SubsequentVisitViewModel(
     private var lie = ""
     private var foetalHeart = ""
     private var foetalMovement = ""
-    private var nextVisit = ""
+    var nextVisit = 0L
 
 
     fun isFieldsValid(): Boolean {
@@ -42,7 +43,6 @@ class SubsequentVisitViewModel(
 
         registrationNumber = mBinding.textSubsequentVisitsRegistrationNumber.text.toString()
         numberOfVisit = mBinding.textSubsequentVisitsNumberOfVisit.text.toString()
-        dateOfVisit = mBinding.textSubsequentVisitsDate.text.toString()
         urine = mBinding.textSubsequentVisitsUrine.text.toString()
         weight = mBinding.textSubsequentVisitsWeight.text.toString()
         bp = mBinding.textSubsequentVisitsBp.text.toString()
@@ -54,7 +54,6 @@ class SubsequentVisitViewModel(
         lie = mBinding.textSubsequentVisitsLie.text.toString()
         foetalHeart = mBinding.textSubsequentVisitsFoetalHeart.text.toString()
         foetalMovement = mBinding.textSubsequentVisitsFoetalMvt.text.toString()
-        nextVisit = mBinding.textSubsequentVisitsNextVisit.text.toString()
 
 
         if (numberOfVisit == "") {
@@ -67,9 +66,9 @@ class SubsequentVisitViewModel(
             mBinding.textLayoutSubsequentVisitsNumberOfVisit.error = "Required"
         }
 
-        if (dateOfVisit == "") {
+        if (dateOfVisit == 0L) {
             isValid = false
-            mBinding.textLayoutSubsequentVisitsDate.error = "Required"
+            mBinding.textLayoutSubsequentVisitsDate.error = "Date Required"
         }
         if (urine == "") {
             isValid = false
@@ -118,14 +117,13 @@ class SubsequentVisitViewModel(
             mBinding.textLayoutSubsequentVisitsFoetalMvt.error = "Required"
         }
 
-        if (nextVisit == "") {
+        if (nextVisit == 0L) {
             isValid = false
-            mBinding.textLayoutSubsequentNextVisit.error = "Required"
+            mBinding.textLayoutSubsequentNextVisit.error = "Next Visit Required"
         }
 
         registrationNumber = mBinding.textSubsequentVisitsRegistrationNumber.text.toString()
         numberOfVisit = mBinding.textSubsequentVisitsNumberOfVisit.text.toString()
-        dateOfVisit = mBinding.textSubsequentVisitsDate.text.toString()
         urine = mBinding.textSubsequentVisitsUrine.text.toString()
         weight = mBinding.textSubsequentVisitsWeight.text.toString()
         bp = mBinding.textSubsequentVisitsBp.text.toString()
@@ -137,12 +135,11 @@ class SubsequentVisitViewModel(
         lie = mBinding.textSubsequentVisitsLie.text.toString()
         foetalHeart = mBinding.textSubsequentVisitsFoetalHeart.text.toString()
         foetalMovement = mBinding.textSubsequentVisitsFoetalMvt.text.toString()
-        nextVisit = mBinding.textSubsequentVisitsNextVisit.text.toString()
 
 
-        if (registrationNumber != "" && numberOfVisit != "" && dateOfVisit != "" && urine != "" && weight != ""
+        if (registrationNumber != "" && numberOfVisit != "" && dateOfVisit != 0L && urine != "" && weight != ""
             && bp != "" && hb != "" && pallor != "" && maturity != "" && fundalHeight != ""
-            && presentation != "" && lie != "" && foetalHeart != "" && presentation != "" && foetalMovement != "" && nextVisit != ""
+            && presentation != "" && lie != "" && foetalHeart != "" && presentation != "" && foetalMovement != "" && nextVisit != 0L
         ) {
             isValid = true
         }
@@ -158,7 +155,7 @@ class SubsequentVisitViewModel(
             foetalHeart, foetalMovement, nextVisit
         )
 
-        firestoreServiceViewModel.saveSubsequentVisit(subsequentVisit).also {writeException->
+        firestoreService.saveSubsequentVisit(subsequentVisit).also {writeException->
             if(writeException.value == null){
                 _writeException.value = null
             }else{

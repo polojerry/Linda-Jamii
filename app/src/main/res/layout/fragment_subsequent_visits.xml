@@ -55,7 +55,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="ANC Number"
-                        android:inputType="text"
+                        android:inputType="number"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -96,7 +96,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Date of Visit"
-                        android:inputType="date"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -117,7 +116,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Urine"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -159,7 +158,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="B.P. "
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -180,7 +179,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="H.B."
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -201,7 +200,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Pallor"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -221,8 +220,8 @@
                         android:id="@+id/text_subsequent_visits_maturity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="maturity"
-                        android:inputType="text"
+                        android:hint="Maturity"
+                        android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -264,7 +263,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Presentation"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -285,7 +284,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Lie"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -306,7 +305,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Foetal Heart"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -327,7 +326,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Foetal Mvt"
-                        android:inputType="text"
+                        android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -348,7 +347,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Next Visit"
-                        android:inputType="date"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>

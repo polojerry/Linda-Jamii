@@ -38,7 +38,6 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
         inflateSearchMenu()
         setDisplayDetails()
         setObservers()
-
         return mBinding.root
     }
 
@@ -58,16 +57,16 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun setDisplayDetails() {
         val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ reportedIncident->
-            Toast.makeText(context?.applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context?.applicationContext, "${reportedIncident.maternalProfile?.nameOfClient}", Toast.LENGTH_SHORT).show()
         })
 
         mBinding.recyclerPatients.adapter = adapter
         mViewModel.patientsListData.observe(viewLifecycleOwner, Observer {patientsList->
+            mViewModel.fetchPatients()
             adapter.submitList(patientsList)
 
         })
     }
-
 
     private fun setObservers(){
         mViewModel.repoIsLoading.observe(viewLifecycleOwner, Observer {isLoading->

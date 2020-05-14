@@ -11,15 +11,13 @@ import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
  */
 
 class SubsequentVisitViewModelFactory(
-    val mBinding: FragmentSubsequentVisitsBinding,
-    private val firestoreServiceViewModel: FirestoreServiceViewModel
+    val mBinding: FragmentSubsequentVisitsBinding
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SubsequentVisitViewModel::class.java)) {
             return SubsequentVisitViewModel(
-                mBinding,
-                firestoreServiceViewModel
+                mBinding
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

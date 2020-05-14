@@ -26,7 +26,7 @@ class LindaJamiiApplication : Application() {
     private fun setUpSchedule() {
 
         val constraints = Constraints.Builder()
-            .setRequiresCharging(true)
+            .setRequiresCharging(false)
             .setRequiresBatteryNotLow(true)
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .apply {
@@ -37,8 +37,8 @@ class LindaJamiiApplication : Application() {
 
 
         val repeatingRequest = PeriodicWorkRequestBuilder<RefreshPatientsWork>(
-            6,
-            TimeUnit.HOURS
+            1,
+            TimeUnit.MINUTES
         ).setConstraints(constraints).build()
 
 

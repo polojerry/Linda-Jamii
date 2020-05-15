@@ -72,11 +72,11 @@
     </fragment>
     <fragment
         android:id="@+id/patientsDetailsFragment"
-        android:name="com.polotechnologies.lindajamii.ui.patientsDetails.PatientsDetailsFragment"
+        android:name="com.polotechnologies.lindajamii.ui.patientsDetails.PatientDetailsFragment"
         android:label="PatientsDetailsFragment"
         tools:layout="@layout/fragment_patients_details">
         <argument
-            android:name="expectantPatient"
-            app:argType="com.polotechnologies.lindajamii.dataModels.ExpectantDetails" />
+            android:name="ancNumber"
+            app:argType="string" />
     </fragment>
 </navigation>

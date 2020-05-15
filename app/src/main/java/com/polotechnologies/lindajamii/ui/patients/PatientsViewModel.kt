@@ -36,8 +36,6 @@ class PatientsViewModel(application: Application) : ViewModel() {
     val patientsListData = patientRepository.patients
 
 
-
-
     init{
         fetchPatients()
         _repoIsLoading.value = true
@@ -49,6 +47,13 @@ class PatientsViewModel(application: Application) : ViewModel() {
         _repoIsLoading.value = false
     }
 
+    fun displaySelectedPatient(expectantDetails: ExpectantDetails){
+        _selectedPatient.value = expectantDetails
+    }
+
+    fun displaySelectedPatientDone(){
+        _selectedPatient.value = null
+    }
 
     override fun onCleared() {
         viewModelJob.cancel()

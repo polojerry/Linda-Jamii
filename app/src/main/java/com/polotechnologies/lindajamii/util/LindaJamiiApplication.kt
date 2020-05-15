@@ -37,8 +37,8 @@ class LindaJamiiApplication : Application() {
 
 
         val repeatingRequest = PeriodicWorkRequestBuilder<RefreshPatientsWork>(
-            1,
-            TimeUnit.MINUTES
+            12,
+            TimeUnit.HOURS
         ).setConstraints(constraints).build()
 
 

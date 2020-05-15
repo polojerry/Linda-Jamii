@@ -13,6 +13,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.firebase.ui.firestore.paging.LoadingState
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
@@ -58,10 +59,10 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun setDisplayDetails() {
-        val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ reportedIncident->
-            Toast.makeText(context?.applicationContext, "${reportedIncident.maternalProfile?.nameOfClient}", Toast.LENGTH_SHORT).show()
-            ExpectantVisitNotification.notify(context!!, "Expectant Visit", reportedIncident.maternalProfile?.nameOfClient!!, "12/05/2020")
-
+        val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ selectedPatient->
+           /* Toast.makeText(context?.applicationContext, "${reportedIncident.maternalProfile?.nameOfClient}", Toast.LENGTH_SHORT).show()
+            ExpectantVisitNotification.notify(context!!, "Expectant Visit", reportedIncident.maternalProfile?.nameOfClient!!, "12/05/2020")*/
+            mViewModel.displaySelectedPatient(selectedPatient)
         })
 
         mBinding.recyclerPatients.adapter = adapter
@@ -81,7 +82,9 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
         mViewModel.selectedPatient.observe(viewLifecycleOwner, Observer {expectantDetails->
             if(expectantDetails!=null){
-                TODO()
+                val action = PatientsFragmentDirections.actionPatientsFragmentToPatientsDetailsFragment(expectantDetails.patientId)
+                findNavController().navigate(action)
+                mViewModel.displaySelectedPatientDone()
             }
         })
 

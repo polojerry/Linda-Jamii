@@ -36,7 +36,7 @@ data class ExpectantDetails(
     val physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding? = null,
 
     @ColumnInfo(name = "next_visit")
-    val nextVisit: String = ""
+    val nextVisit: Long? = null
 ) : Parcelable {
     @Parcelize
     data class ExpectantMaternalProfile(

@@ -3,13 +3,11 @@ package com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import java.lang.Exception
-import java.util.UUID
 
 class MaternalProfileViewModel(
     val firestoreServiceViewModel: FirestoreServiceViewModel,
@@ -175,7 +173,7 @@ class MaternalProfileViewModel(
             getExpectantMotherProfile(),
             null,
             null,
-            ""
+            null
         )
 
         firestoreServiceViewModel.saveInitialVisitMaternalProfile(expectantDetails).also {writeException->

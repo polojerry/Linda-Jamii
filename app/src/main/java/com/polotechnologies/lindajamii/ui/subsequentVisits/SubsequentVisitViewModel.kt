@@ -151,11 +151,10 @@ class SubsequentVisitViewModel(
     }
 
     fun saveMedicalSurgicalHistory() {
-        val dateFormat = SimpleDateFormat("dd, MM, yyyy, ")
         val subsequentVisit = ExpectantSubsequentVisit(
-            registrationNumber, numberOfVisit, dateFormat.format(Date(dateOfVisit)), urine, weight,
+            registrationNumber, numberOfVisit,dateOfVisit, urine, weight,
             bp, hb, pallor, maturity, fundalHeight, presentation, lie,
-            foetalHeart, foetalMovement, dateFormat.format(Date(nextVisit))
+            foetalHeart, foetalMovement, nextVisit
         )
 
         firestoreService.saveSubsequentVisit(subsequentVisit).also {writeException->

@@ -26,7 +26,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+        >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -136,8 +137,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:alpha="0.65"
-                    android:text="@{patient.nextVisit}"
                     android:textStyle="bold"
+                    nextVisit="@{patient}"
                     app:layout_constraintBottom_toBottomOf="@+id/text_label_patient_next_visit"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/text_label_patient_next_visit"

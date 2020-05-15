@@ -1,11 +1,10 @@
 package com.polotechnologies.lindajamii.dataModels
 
-import java.util.Date
 
 data class ExpectantSubsequentVisit(
     val registrationNumber: String = "",
     val numberOfVisit: String = "",
-    val dateOfVisit: String = "",
+    val dateOfVisit: Long? = null,
     val urine: String = "",
     val weight: String = "",
     val bp: String = "",
@@ -17,5 +16,5 @@ data class ExpectantSubsequentVisit(
     val lie: String = "",
     val foetalHeart: String = "",
     val foetalMovement: String = "",
-    val nextVisit: String = ""
+    val nextVisit: Long? = null
 )

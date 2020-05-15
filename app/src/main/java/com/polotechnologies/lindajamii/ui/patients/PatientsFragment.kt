@@ -19,6 +19,7 @@ import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
 import com.polotechnologies.lindajamii.network.FirestoreService
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
+import com.polotechnologies.lindajamii.util.ExpectantVisitNotification
 
 class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
@@ -59,6 +60,8 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun setDisplayDetails() {
         val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ reportedIncident->
             Toast.makeText(context?.applicationContext, "${reportedIncident.maternalProfile?.nameOfClient}", Toast.LENGTH_SHORT).show()
+            ExpectantVisitNotification.notify(context!!, "Expectant Visit", reportedIncident.maternalProfile?.nameOfClient!!, "12/05/2020")
+
         })
 
         mBinding.recyclerPatients.adapter = adapter

@@ -1,5 +1,9 @@
 package com.polotechnologies.lindajamii
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -16,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationView
 import com.polotechnologies.lindajamii.databinding.ActivityMainBinding
+import com.polotechnologies.lindajamii.util.ExpectantVisitNotification
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
@@ -28,6 +33,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setNavControllerOptions()
+        registerNotificationChannel()
+
+    }
+
+    private fun registerNotificationChannel() {
+       if(Build.VERSION.SDK_INT > Build.VERSION_CODES.O){
+           val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+           val channel  = NotificationChannel(ExpectantVisitNotification.NOTIFICATION_CHANNEL,
+               "Linda Jamii",
+               NotificationManager.IMPORTANCE_HIGH)
+           nm.createNotificationChannel(channel)
+
+       }
     }
 
     private fun setNavControllerOptions() {
@@ -50,6 +68,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         }
     }
+
     private fun setUpToolbar(destination: NavDestination) {
         mBinding.toolbarMain.visibility = View.VISIBLE
         mBinding.toolbarMain.title = destination.label

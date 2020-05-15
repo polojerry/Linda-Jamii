@@ -1,9 +1,11 @@
 package com.polotechnologies.lindajamii.util
 
+import android.graphics.Color
 import android.text.format.DateFormat
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.database.collection.LLRBNode
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import java.util.Calendar
@@ -23,7 +25,6 @@ fun bind(textView: AppCompatTextView, expectantDetails: ExpectantDetails){
 
 }
 
-
 @BindingAdapter("visitBackground")
 fun bind(expectantCard: MaterialCardView, expectantDetails: ExpectantDetails){
     expectantDetails.nextVisit.let {nextVisit->
@@ -31,7 +32,7 @@ fun bind(expectantCard: MaterialCardView, expectantDetails: ExpectantDetails){
             val dateToday = Calendar.getInstance().timeInMillis
 
             if(dateToday > nextVisit){
-                expectantCard.setBackgroundColor(R.color.colorLightRed)
+                expectantCard.setBackgroundColor(Color.RED)
             }
         }
 

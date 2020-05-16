@@ -1,4 +1,4 @@
-package com.polotechnologies.lindajamii.ui.patientsDetails
+package com.polotechnologies.lindajamii.ui.patientsAvailable.patientsDetails
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -6,11 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.database.ExpectantDetailsDao
-import com.polotechnologies.lindajamii.database.LindaJamiiDatabase.Companion.getDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 
 class PatientDetailsViewModel(application: Application, val ancNumber : String, private val expectantDetailsDao: ExpectantDetailsDao) : ViewModel() {
 

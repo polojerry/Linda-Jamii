@@ -1,9 +1,8 @@
-package com.polotechnologies.lindajamii.ui.patients
+package com.polotechnologies.lindajamii.ui.patientsAvailable.patients
 
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +13,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.firebase.ui.firestore.paging.LoadingState
-import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
-import com.polotechnologies.lindajamii.network.FirestoreService
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import com.polotechnologies.lindajamii.util.ExpectantVisitNotification
 
 class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {

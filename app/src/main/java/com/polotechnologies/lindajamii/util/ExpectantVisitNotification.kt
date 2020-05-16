@@ -8,7 +8,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.navigation.NavDeepLinkBuilder
 import com.polotechnologies.lindajamii.R
-import com.polotechnologies.lindajamii.ui.patientsDetails.PatientDetailsFragmentArgs
+import com.polotechnologies.lindajamii.ui.patientsAvailable.patientsDetails.PatientDetailsFragmentArgs
 
 object ExpectantVisitNotification {
 

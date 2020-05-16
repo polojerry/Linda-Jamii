@@ -1,4 +1,4 @@
-package com.polotechnologies.lindajamii.ui.patientsDetails
+package com.polotechnologies.lindajamii.ui.patientsAvailable.patientsDetails
 
 import android.content.Intent
 import android.net.Uri
@@ -17,8 +17,6 @@ import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.database.LindaJamiiDatabase.Companion.getDatabase
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsDetailsBinding
-import com.polotechnologies.lindajamii.util.DateConverter
-import com.polotechnologies.lindajamii.util.ExpectantVisitNotification
 
 class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 

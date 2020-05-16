@@ -73,7 +73,7 @@
     <fragment
         android:id="@+id/patientsDetailsFragment"
         android:name="com.polotechnologies.lindajamii.ui.patientsDetails.PatientDetailsFragment"
-        android:label="PatientsDetailsFragment"
+        android:label="Patient Details"
         tools:layout="@layout/fragment_patients_details">
         <argument
             android:name="ancNumber"

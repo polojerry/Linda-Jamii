@@ -21,7 +21,7 @@ object ExpectantVisitNotification {
 
         val builder = NotificationCompat.Builder(context,NOTIFICATION_CHANNEL)
             .setDefaults(Notification.DEFAULT_ALL)
-            .setSmallIcon(R.drawable.linda_jamii_logo)
+            .setSmallIcon(R.drawable.linda_jamii_logo_white)
             .setContentTitle(titleText)
             .setContentText(notificationMessage)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)

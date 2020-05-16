@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Call Patient"
+        app:showAsAction="ifRoom"
+        android:id="@+id/action_call_patient"
+        android:icon="@drawable/ic_baseline_call_24"
+        android:iconTint="@color/colorTextIcons"/>
+
+    <item android:title="Remind later"
+        app:showAsAction="never"
+        android:id="@+id/action_remind_later"
+        android:iconTint="@color/colorTextIcons"/>
+
+</menu>

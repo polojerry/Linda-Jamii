@@ -24,21 +24,20 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
     private lateinit var mBinding: FragmentPatientsDetailsBinding
     private lateinit var mViewModel: PatientDetailsViewModel
-    private lateinit var mPatientDetails : ExpectantDetails
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_patients_details, container, false)
+        mBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_patients_details, container, false)
         val activity = activity!!.application
         val dataSource = getDatabase(activity).expectantDetailsDao
 
         val ancNumber = PatientDetailsFragmentArgs.fromBundle(requireArguments()).ancNumber
-        val factory = PatientDetailsViewModelFactory(activity, ancNumber,dataSource)
+        val factory = PatientDetailsViewModelFactory(activity, ancNumber, dataSource)
         mViewModel = ViewModelProvider(this, factory)[PatientDetailsViewModel::class.java]
 
-        setObservers()
         setClickListeners()
 
         return mBinding.root
@@ -51,23 +50,6 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         }
     }
 
-    private fun setObservers() {
-        mViewModel.patientDetails.observe(viewLifecycleOwner, Observer { details ->
-            Toast.makeText(
-                context,
-                "PatientName: ${details.maternalProfile!!.nameOfClient}",
-                Toast.LENGTH_SHORT
-            ).show()
-            ExpectantVisitNotification.notify(
-                context!!,
-                "Expectant Visit",
-                details.maternalProfile.nameOfClient,
-                DateConverter.getStringDate(details.nextVisit!!)
-            )
-        })
-
-
-    }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
 
@@ -78,20 +60,15 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         return true
     }
-
-
+    
     private fun remindLater() {
         Toast.makeText(context, "Remind Later.....", Toast.LENGTH_SHORT).show()
     }
 
     private fun callPatient() {
-
         val phoneNumber = mViewModel.patientDetails.value!!.maternalProfile!!.telephone
-
-        if (phoneNumber != "") {
-            val callIntent = Intent(Intent.ACTION_CALL, Uri.fromParts("tel", phoneNumber, null))
-            startActivity(callIntent)
-        }
-
+        val phoneIntent = Intent(Intent.ACTION_DIAL)
+        phoneIntent.data = Uri.parse("tel:${phoneNumber}")
+        startActivity(phoneIntent)
     }
 }

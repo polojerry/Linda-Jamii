@@ -61,7 +61,11 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun setDisplayDetails() {
         val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ selectedPatient->
             Toast.makeText(context?.applicationContext, "${selectedPatient.maternalProfile?.nameOfClient}", Toast.LENGTH_SHORT).show()
-            ExpectantVisitNotification.notify(context!!, "Expectant Visit", selectedPatient.maternalProfile?.nameOfClient!!, "12/05/2020")
+            ExpectantVisitNotification.notify(
+                context!!,
+                selectedPatient.maternalProfile?.nameOfClient!!,
+                "12/05/2020",
+                selectedPatient.patientId)
             mViewModel.displaySelectedPatient(selectedPatient)
         })
 

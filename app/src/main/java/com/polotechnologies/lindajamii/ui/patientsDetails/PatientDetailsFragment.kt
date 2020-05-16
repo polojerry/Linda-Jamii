@@ -24,6 +24,7 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
     private lateinit var mBinding: FragmentPatientsDetailsBinding
     private lateinit var mViewModel: PatientDetailsViewModel
+    private lateinit var mExpectantDetails: ExpectantDetails
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +38,9 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         val ancNumber = PatientDetailsFragmentArgs.fromBundle(requireArguments()).ancNumber
         val factory = PatientDetailsViewModelFactory(activity, ancNumber, dataSource)
         mViewModel = ViewModelProvider(this, factory)[PatientDetailsViewModel::class.java]
+        mViewModel.patientDetails.observe(viewLifecycleOwner, Observer {expectantDetails->
+            mExpectantDetails = expectantDetails
+        })
 
         setClickListeners()
 
@@ -60,14 +64,15 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         return true
     }
-    
+
     private fun remindLater() {
         Toast.makeText(context, "Remind Later.....", Toast.LENGTH_SHORT).show()
     }
 
     private fun callPatient() {
-        val phoneNumber = mViewModel.patientDetails.value!!.maternalProfile!!.telephone
-        val phoneIntent = Intent(Intent.ACTION_DIAL)
+
+        val phoneNumber = mExpectantDetails.maternalProfile?.telephone
+        val phoneIntent = Intent(Intent.ACTION_CALL)
         phoneIntent.data = Uri.parse("tel:${phoneNumber}")
         startActivity(phoneIntent)
     }

@@ -24,7 +24,9 @@ class PatientRepository(val database: LindaJamiiDatabase) {
     val patients: LiveData<List<ExpectantDetails>> =
         Transformations.map(database.expectantDetailsDao.getPatients()) { expectantList ->
             expectantList.asDomainModel()
-
-
         }
+
+
 }
+
+

@@ -26,7 +26,8 @@ class PatientDetailsFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_patients_details, container, false)
 
-        val ancNumber  = PatientsDetailsFragmentArgs.fromBundle(requireArguments()).ancNumber
+
+        val ancNumber = PatientDetailsFragmentArgs.fromBundle(requireArguments()).ancNumber
         val factory = PatientDetailsViewModelFactory(activity!!.application, ancNumber)
         mViewModelFactory = ViewModelProvider(this, factory)[PatientDetailsViewModel::class.java]
 
@@ -36,7 +37,7 @@ class PatientDetailsFragment : Fragment() {
     }
 
     private fun setObservers() {
-        mViewModelFactory.patientDetails.observe(viewLifecycleOwner, Observer {details->
+        mViewModelFactory.patientDetails?.observe(viewLifecycleOwner, Observer {details->
             Toast.makeText(context, "PatientName: ${details.maternalProfile!!.nameOfClient}", Toast.LENGTH_SHORT).show()
             ExpectantVisitNotification.notify(context!!,"Expectant Visit", details.maternalProfile.nameOfClient, DateConverter.getStringDate(details.nextVisit!!))
         })
@@ -44,19 +45,9 @@ class PatientDetailsFragment : Fragment() {
 
     }
 
-    /*private fun displayPatientDetails() {
-        mBinding.textPatientName.setText(patient.patientName)
-        mBinding.textPatientPhoneNumber.setText(patient.patientsPhoneNumber)
-        mBinding.textPatientPreviousVisit.setText(patient.patientsPrevious_Visit)
-        mBinding.textPatientNextVisit.setText(patient.patientsNextVisit)
-        mBinding.textPatientMaritalStatus.setText(patient.patientsMaritalStatus)
-
-    }
-
-    private fun callPatient() {
+   /* private fun callPatient() {
         val callIntent = Intent(Intent.ACTION_CALL, Uri.fromParts("tel", patient.patientsPhoneNumber,null))
         startActivity(callIntent)
     }
 */
-
 }

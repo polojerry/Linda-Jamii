@@ -15,8 +15,8 @@ class PatientDetailsViewModel(application: Application, val ancNumber : String) 
 
     //Patient Details
     private val _patientDetails = MutableLiveData<LiveData<ExpectantDetails>>()
-    val patientDetails : LiveData<ExpectantDetails>
-        get () = _patientDetails.value!!
+    val patientDetails : LiveData<ExpectantDetails>?
+        get () = _patientDetails.value
 
     private var viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)

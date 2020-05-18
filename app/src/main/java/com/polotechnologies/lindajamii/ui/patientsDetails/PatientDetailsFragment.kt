@@ -1,4 +1,4 @@
-package com.polotechnologies.lindajamii.ui.patientsAvailable.patientsDetails
+package com.polotechnologies.lindajamii.ui.patientsDetails
 
 import android.content.Intent
 import android.net.Uri

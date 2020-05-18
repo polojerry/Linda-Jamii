@@ -1,4 +1,4 @@
-package com.polotechnologies.lindajamii.ui.patientsAvailable.patients
+package com.polotechnologies.lindajamii.ui.patients
 
 import android.app.SearchManager
 import android.content.Context

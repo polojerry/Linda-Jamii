@@ -63,7 +63,7 @@
         tools:layout="@layout/fragment_subsequent_visits" />
     <fragment
         android:id="@+id/patientsFragment"
-        android:name="com.polotechnologies.lindajamii.ui.patientsAvailable.patients.PatientsFragment"
+        android:name="com.polotechnologies.lindajamii.ui.patients.PatientsFragment"
         android:label="PatientsFragment"
         tools:layout="@layout/fragment_patients">
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/patientsDetailsFragment"
-        android:name="com.polotechnologies.lindajamii.ui.patientsAvailable.patientsDetails.PatientDetailsFragment"
+        android:name="com.polotechnologies.lindajamii.ui.patientsDetails.PatientDetailsFragment"
         android:label="Patient Details"
         tools:layout="@layout/fragment_patients_details">
         <argument

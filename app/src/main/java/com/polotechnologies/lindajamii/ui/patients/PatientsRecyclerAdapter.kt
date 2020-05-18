@@ -1,4 +1,4 @@
-package com.polotechnologies.lindajamii.ui.patientsAvailable.patients
+package com.polotechnologies.lindajamii.ui.patients
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.databinding.ItemPatientBinding
-import com.polotechnologies.lindajamii.ui.patientsAvailable.patients.PatientsRecyclerAdapter.*
+import com.polotechnologies.lindajamii.ui.patients.PatientsRecyclerAdapter.*
 
 class PatientsRecyclerAdapter(private val onClickListener: OnClickListener)  :
     ListAdapter<ExpectantDetails, PatientsViewHolder>(PatientsDiffCallBack()) {

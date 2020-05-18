@@ -1,4 +1,4 @@
-package com.polotechnologies.lindajamii.ui.patientsAvailable.patientsDetails
+package com.polotechnologies.lindajamii.ui.patientsDetails
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

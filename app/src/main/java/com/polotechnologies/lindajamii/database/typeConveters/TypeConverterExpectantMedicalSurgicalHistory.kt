@@ -11,14 +11,14 @@ class TypeConverterExpectantMedicalSurgicalHistory {
         if (expectantMedicalSurgicalHistory == null) {
             return medicalSurgicalHistory
         } else {
-            medicalSurgicalHistory = "${expectantMedicalSurgicalHistory.surgicalOperation}," +
-                    "${expectantMedicalSurgicalHistory.diabetes}," +
-                    "${expectantMedicalSurgicalHistory.hypertension}," +
-                    "${expectantMedicalSurgicalHistory.bloodTransfusion},"+
-                    "${expectantMedicalSurgicalHistory.tuberculosis}," +
-                    "${expectantMedicalSurgicalHistory.specificDrugAllergy},"+
-                    "${expectantMedicalSurgicalHistory.otherDrugAllergies}," +
-                    "${expectantMedicalSurgicalHistory.familyHistoryTwins}," +
+            medicalSurgicalHistory = "${expectantMedicalSurgicalHistory.surgicalOperation}=" +
+                    "${expectantMedicalSurgicalHistory.diabetes}=" +
+                    "${expectantMedicalSurgicalHistory.hypertension}=" +
+                    "${expectantMedicalSurgicalHistory.bloodTransfusion}="+
+                    "${expectantMedicalSurgicalHistory.tuberculosis}=" +
+                    "${expectantMedicalSurgicalHistory.specificDrugAllergy}="+
+                    "${expectantMedicalSurgicalHistory.otherDrugAllergies}=" +
+                    "${expectantMedicalSurgicalHistory.familyHistoryTwins}=" +
                     expectantMedicalSurgicalHistory.familyHistoryTuberculosis
         }
         return medicalSurgicalHistory
@@ -40,7 +40,7 @@ class TypeConverterExpectantMedicalSurgicalHistory {
 
         } else {
 
-            val stats: List<String> = medicalSurgicalHistory!!.split(",")
+            val stats: List<String> = medicalSurgicalHistory!!.split("=")
 
             expectantSurgicalHistory = ExpectantMedicalSurgicalHistory(
                 stats[0], stats[1],

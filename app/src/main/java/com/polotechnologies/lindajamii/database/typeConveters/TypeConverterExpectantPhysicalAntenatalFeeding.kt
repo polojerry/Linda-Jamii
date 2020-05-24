@@ -11,27 +11,27 @@ class TypeConverterExpectantPhysicalAntenatalFeeding {
         if (expectantPhysicalAntenatalFeeding == null) {
             return physicalAntenatalFeeding
         } else {
-            physicalAntenatalFeeding = "${expectantPhysicalAntenatalFeeding.general}," +
-                    "${expectantPhysicalAntenatalFeeding.bp}," +
-                    "${expectantPhysicalAntenatalFeeding.height}," +
-                    "${expectantPhysicalAntenatalFeeding.cvs}," +
-                    "${expectantPhysicalAntenatalFeeding.resp}," +
-                    "${expectantPhysicalAntenatalFeeding.breasts}," +
-                    "${expectantPhysicalAntenatalFeeding.abdomen}," +
-                    "${expectantPhysicalAntenatalFeeding.vaginalExamination}," +
-                    "${expectantPhysicalAntenatalFeeding.height}," +
-                    "${expectantPhysicalAntenatalFeeding.dischargeGenitalUlcers}," +
-                    "${expectantPhysicalAntenatalFeeding.hb}," +
-                    "${expectantPhysicalAntenatalFeeding.bloodGroup}," +
-                    "${expectantPhysicalAntenatalFeeding.rhesus}," +
-                    "${expectantPhysicalAntenatalFeeding.serology}," +
-                    "${expectantPhysicalAntenatalFeeding.tbScreening},"+
-                    "${expectantPhysicalAntenatalFeeding.dateIPTIsonaziadGiven}," +
-                    "${expectantPhysicalAntenatalFeeding.nextVisit}," +
-                    "${expectantPhysicalAntenatalFeeding.hiv}," +
-                    "${expectantPhysicalAntenatalFeeding.urianalysis},"+
-                    "${expectantPhysicalAntenatalFeeding.givenHIVCounsellingAndTest}," +
-                    "${expectantPhysicalAntenatalFeeding.feedingCounsellingDone}," +
+            physicalAntenatalFeeding =
+                "${expectantPhysicalAntenatalFeeding.general}=" +
+                    "${expectantPhysicalAntenatalFeeding.bp}=" +
+                    "${expectantPhysicalAntenatalFeeding.height}=" +
+                    "${expectantPhysicalAntenatalFeeding.cvs}=" +
+                    "${expectantPhysicalAntenatalFeeding.resp}=" +
+                    "${expectantPhysicalAntenatalFeeding.breasts}=" +
+                    "${expectantPhysicalAntenatalFeeding.abdomen}=" +
+                    "${expectantPhysicalAntenatalFeeding.vaginalExamination}=" +
+                    "${expectantPhysicalAntenatalFeeding.dischargeGenitalUlcers}=" +
+                    "${expectantPhysicalAntenatalFeeding.hb}=" +
+                    "${expectantPhysicalAntenatalFeeding.bloodGroup}=" +
+                    "${expectantPhysicalAntenatalFeeding.rhesus}=" +
+                    "${expectantPhysicalAntenatalFeeding.serology}=" +
+                    "${expectantPhysicalAntenatalFeeding.tbScreening}="+
+                    "${expectantPhysicalAntenatalFeeding.dateIPTIsonaziadGiven}=" +
+                    "${expectantPhysicalAntenatalFeeding.nextVisit}=" +
+                    "${expectantPhysicalAntenatalFeeding.hiv}=" +
+                    "${expectantPhysicalAntenatalFeeding.urianalysis}="+
+                    "${expectantPhysicalAntenatalFeeding.givenHIVCounsellingAndTest}=" +
+                    "${expectantPhysicalAntenatalFeeding.feedingCounsellingDone}=" +
                     expectantPhysicalAntenatalFeeding.counselingOnExclusiveBreastfeedingDone
 
         }
@@ -41,7 +41,7 @@ class TypeConverterExpectantPhysicalAntenatalFeeding {
     }
 
     @TypeConverter
-    fun toExpectantMaternalProfile(expectantPhysicalAntenatalFeeding: String?): ExpectantPhysicalAntenatalFeeding? {
+    fun toPhysicalAntenatalFeeding(expectantPhysicalAntenatalFeeding: String?): ExpectantPhysicalAntenatalFeeding? {
 
         var physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding? =
             ExpectantPhysicalAntenatalFeeding(
@@ -56,16 +56,30 @@ class TypeConverterExpectantPhysicalAntenatalFeeding {
 
         } else {
 
-            val stats: List<String> = expectantPhysicalAntenatalFeeding!!.split(",")
+            val stats: List<String> = expectantPhysicalAntenatalFeeding!!.split("=")
 
             physicalAntenatalFeeding = ExpectantPhysicalAntenatalFeeding(
-                stats[0], stats[1], stats[2],
-                stats[3], stats[4], stats[5],
-                stats[6], stats[7], stats[8],
-                stats[9], stats[10], stats[11],
-                stats[12], stats[13], stats[14],
-                stats[15], stats[16], stats[17],
-                stats[18], stats[19], stats[20]
+                stats[0],
+                stats[1],
+                stats[2],
+                stats[3],
+                stats[4],
+                stats[5],
+                stats[6],
+                stats[7],
+                stats[8],
+                stats[9],
+                stats[10],
+                stats[11],
+                stats[12],
+                stats[13],
+                stats[14],
+                stats[15],
+                stats[16],
+                stats[17],
+                stats[18],
+                stats[19],
+                stats[20]
             )
 
             return physicalAntenatalFeeding

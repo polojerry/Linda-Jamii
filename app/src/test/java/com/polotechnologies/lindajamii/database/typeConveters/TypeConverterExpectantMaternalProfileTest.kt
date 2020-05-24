@@ -21,7 +21,6 @@ class TypeConverterExpectantMaternalProfileTest {
         val expectedNullExpectantProfile = ""
         val nullOutput = typeConverterMaternalProfile.toString(nullExpectantProfile)
 
-
         val output = typeConverterMaternalProfile.toString(expectantProfile)
 
         assertEquals(expectedNullExpectantProfile, nullOutput)

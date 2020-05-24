@@ -68,7 +68,8 @@
         tools:layout="@layout/fragment_patients">
         <action
             android:id="@+id/action_patientsFragment_to_patientsDetailsFragment"
-            app:destination="@id/patientsDetailsFragment" />
+            app:destination="@id/patientsDetailsFragment"
+            app:enterAnim="@anim/nav_enter_from_bottom" />
     </fragment>
     <fragment
         android:id="@+id/patientsDetailsFragment"

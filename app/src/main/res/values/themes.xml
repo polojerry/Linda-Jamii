@@ -14,6 +14,11 @@
         <item name="boxBackgroundColor">@color/colorTextIcons</item>
     </style>
 
+    <style name="Theme.LindaJamii.TextInputLayout.Outlined.Disabled" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/colorTextIcons</item>
+        <item name="android:enabled">true</item>
+    </style>
+
     <style name="Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
         <item name="boxBackgroundColor">@color/colorTextIcons</item>
     </style>
@@ -44,6 +49,7 @@
         <item name="android:layout_marginStart">4dp</item>
         <item name="android:textSize">22sp</item>
         <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

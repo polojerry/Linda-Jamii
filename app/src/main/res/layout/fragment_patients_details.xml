@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -18,21 +18,28 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar_patients_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="Patient Details"
-                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
                 android:theme="@style/Theme.LindaJamii.DarkActionBar"
-                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
                 app:menu="@menu/menu_patient_details"
-                />
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+                app:title="Patient Details" />
 
         </com.google.android.material.appbar.AppBarLayout>
+
+        <!--<include
+            layout="@layout/fragment_maternal_profile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_patient_details" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

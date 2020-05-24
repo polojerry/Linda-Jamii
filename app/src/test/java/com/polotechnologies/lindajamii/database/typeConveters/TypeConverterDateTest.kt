@@ -1,12 +1,11 @@
 package com.polotechnologies.lindajamii.database.typeConveters
 
-import android.util.Log
 import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.Before
-import java.time.LocalDate
-import java.util.*
+import java.util.Date
+import java.util.Calendar
 
 class TypeConverterDateTest {
     lateinit var typeConverterDate: TypeConverterDate

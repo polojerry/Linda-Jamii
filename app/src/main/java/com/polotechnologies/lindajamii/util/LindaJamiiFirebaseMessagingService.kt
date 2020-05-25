@@ -1,6 +1,7 @@
 package com.polotechnologies.lindajamii.util
 
 import android.util.Log
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -9,6 +10,7 @@ class LindaJamiiFirebaseMessagingService: FirebaseMessagingService() {
         private const val TAG = "LindaJamiiFirebaseMessagingService"
     }
 
+    var newFcmToken = ""
     override fun onMessageReceived(message: RemoteMessage) {
         var notificationTitle = ""
         var notificationBody = ""
@@ -30,5 +32,23 @@ class LindaJamiiFirebaseMessagingService: FirebaseMessagingService() {
 
     override fun onDeletedMessages() {
         super.onDeletedMessages()
+    }
+
+    override fun onNewToken(newToken: String) {
+        Log.d(TAG, "onNewToken: $newToken")
+        newFcmToken = newToken
+        sendTokenToFirestore(newToken)
+    }
+
+    private fun sendTokenToFirestore(newToken: String) {
+        Log.d(TAG, "onNewToken: Sending Token to Firebase:::: $newToken")
+
+        val tokenMap = HashMap<String, String>()
+        tokenMap["token"] = newToken
+
+        FirebaseFirestore.getInstance()
+            .collection("users")
+            .document("testUser")
+            .set(tokenMap)
     }
 }

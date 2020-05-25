@@ -1,6 +1,7 @@
 package com.polotechnologies.lindajamii.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +10,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.iid.FirebaseInstanceId
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.HomeOption
 import com.polotechnologies.lindajamii.databinding.FragmentHomeBinding
+import com.polotechnologies.lindajamii.util.LindaJamiiFirebaseMessagingService
 
 /**
  * A fragment used to offer option that can be offered to patients
  */
 class HomeFragment : Fragment() {
+    private val TAG = "HomeFragment"
 
     lateinit var mBinding:  FragmentHomeBinding
     lateinit var mViewModel :HomeFragmentViewModel
@@ -30,7 +34,19 @@ class HomeFragment : Fragment() {
 
         displayOptions()
         setObserver()
+        initFcm()
         return mBinding.root
+    }
+
+    private fun initFcm() {
+        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {instanceTask->
+            if(!instanceTask.isSuccessful){
+                Log.w(TAG, "initFcm: getInstanceFailed: ${instanceTask.exception}")
+                return@addOnCompleteListener
+            }
+            mViewModel.fcmToken  = instanceTask.result?.token.toString()
+            mViewModel.sendTokenToFirestore(mViewModel.fcmToken)
+        }
     }
 
     private fun displayOptions() {
@@ -72,6 +88,8 @@ class HomeFragment : Fragment() {
             HomeOption(R.drawable.linda_jamii_logo, "Patients")
         )
     }
+
+
 
 
 }

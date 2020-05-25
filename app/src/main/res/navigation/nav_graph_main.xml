@@ -24,6 +24,7 @@
         <action
             android:id="@+id/action_homeFragment_to_initialVisitFragment"
             app:destination="@id/initialVisitFragment"
+            app:enterAnim="@anim/nav_enter_from_bottom"
             app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_homeFragment_to_deliveryFragment"

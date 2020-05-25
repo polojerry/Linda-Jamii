@@ -27,7 +27,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/linda_jamii_logo" />
+                tools:srcCompat="@drawable/linda_jamii_logo"
+                imageSrc="@{option}"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_home_option_title"

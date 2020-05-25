@@ -81,7 +81,9 @@ dependencies {
 
     //Firebase Fire-store
     implementation "com.google.firebase:firebase-firestore-ktx:21.4.3"
-    implementation "com.google.firebase:firebase-core:17.0.1"
+    
+    //Firebase Cloud Messaging
+    implementation "com.google.firebase:firebase-messaging:20.2.0"
 
     // Firestore FirebaseUI Library
     implementation 'com.firebaseui:firebase-ui-firestore:5.0.0'
@@ -99,6 +101,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
 
-    //Listenable future duplicate solution
+    //Listenable future duplicate solution- guava
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
 }

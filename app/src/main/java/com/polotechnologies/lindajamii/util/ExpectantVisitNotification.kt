@@ -14,7 +14,7 @@ object ExpectantVisitNotification {
 
     private const val NOTIFICATION_TAG = "expectantReminder"
     const val NOTIFICATION_CHANNEL = "expectant_reminder"
-    private const val NOTIFICATION_TITTLE = "Expectant Details"
+    private const val NOTIFICATION_TITTLE = "Expectant Next Visit"
     fun notify(
         context: Context,
         patientName: String, visitDate: String, ancNumber : String) {

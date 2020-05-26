@@ -29,7 +29,8 @@ class LindaJamiiFirebaseMessagingService : FirebaseMessagingService() {
         Log.d(TAG, "onMessageReceived: AncNumber: $ancNumber")
 
 
-        ExpectantVisitNotification.notify(baseContext, patientName, visitDate, ancNumber)
+        val patientVisitDate = DateConverter.getStringDate(visitDate.toLong())
+        ExpectantVisitNotification.notify(baseContext, patientName, patientVisitDate, ancNumber)
     }
 
     override fun onDeletedMessages() {

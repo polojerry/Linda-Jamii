@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="expectantDetails"
+            type="com.polotechnologies.lindajamii.dataModels.ExpectantDetails" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,14 +36,444 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <!--<include
-            layout="@layout/fragment_maternal_profile"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_patient_details"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/app_bar_patient_details" />-->
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_patient_details">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_maternal_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tittle_maternal_profile"
+                        style="@style/Theme.LindaJamii.TextVisitHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Maternal Profile" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_maternal_profile_details"
+                        style="@style/Theme.LindaJamii.Card.Details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tittle_maternal_profile">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_name_of_institution"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_name_of_institution"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Name of Institution"
+                                    android:text='@{expectantDetails.maternalProfile.nameOfInstitution}'
+                                    tools:text="Mur-Malanga Dispensary" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_mfl_number"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toStartOf="@+id/layout_anc_number"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_name_of_institution">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_mfl_number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="MFL No."
+                                    android:text='@{expectantDetails.maternalProfile.mflNumber}'
+                                    tools:text="1998" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_anc_number"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/layout_mfl_number"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_name_of_institution">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_anc_number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="ANC No."
+                                    android:text='@{expectantDetails.maternalProfile.ancNumber}'
+                                    tools:text="007/19" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_name_of_client"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_mfl_number">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_name_of_client"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Name of Client"
+                                    android:text='@{expectantDetails.maternalProfile.nameOfClient}'
+                                    tools:text="Lucy Wanjiro" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_age"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toStartOf="@+id/layout_gravida"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_name_of_client">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_age"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Age"
+                                    android:text='@{expectantDetails.maternalProfile.ageOfClient}'
+                                    tools:text="17" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_gravida"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toStartOf="@+id/layout_parity"
+                                app:layout_constraintStart_toEndOf="@+id/layout_age"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_name_of_client">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_gravida"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Gravida"
+                                    android:text='@{expectantDetails.maternalProfile.gravida}'
+                                    tools:text="1" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_parity"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/layout_gravida"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_name_of_client">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_parity"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Parity"
+                                    android:text='@{expectantDetails.maternalProfile.parity}'
+                                    tools:text="0+" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_height"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toStartOf="@+id/layout_weight"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_age">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_height"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Height"
+                                    android:text='@{expectantDetails.maternalProfile.height}'
+                                    tools:text="150cm" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_weight"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/layout_height"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_age">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_weight"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Weight"
+                                    android:text='@{expectantDetails.maternalProfile.weight}'
+                                    tools:text="76kg" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_lmp"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toStartOf="@+id/layout_edd"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_height">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_lmp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="L.M.P"
+                                    android:text='@{expectantDetails.maternalProfile.lmp}'
+                                    tools:text="20/10/2020" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_edd"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/layout_lmp"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_height">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_edd"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="E.D.D"
+                                    android:text='@{expectantDetails.maternalProfile.weight}'
+                                    tools:text="01/2/2021" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_address"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/layout_lmp">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_address"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Address"
+                                    android:text='@{expectantDetails.maternalProfile.address}'
+                                    tools:text="Matera" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_marital_status"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toStartOf="@+id/layout_education"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_address">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_marital_status"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Marital Status"
+                                    android:text='@{expectantDetails.maternalProfile.maritalStatus}'
+                                    tools:text="Single" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_education"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/layout_marital_status"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_address">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_education"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Education"
+                                    android:text='@{expectantDetails.maternalProfile.education}'
+                                    tools:text="Form II" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_next_of_kin"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toStartOf="@+id/layout_next_of_kin_relationship"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_marital_status">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_next_of_kin"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Next of Kin"
+                                    android:text='@{expectantDetails.maternalProfile.nextOfKin}'
+                                    tools:text="Joyce Awino" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_next_of_kin_relationship"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/layout_next_of_kin"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_marital_status">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_next_of_kin_relatioship"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Relationship"
+                                    android:text='@{expectantDetails.maternalProfile.relationShip}'
+                                    tools:text="Aunt" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_telephone_number"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toStartOf="@+id/layout_next_of_kin_contact"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_next_of_kin">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_next_telephone_number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Telephone Number "
+                                    android:text='@{expectantDetails.maternalProfile.telephone}'
+                                    tools:text="0790689212" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layout_next_of_kin_contact"
+                                style="@style/Theme.LindaJamii.TextInputLayout.Boxed.Patient"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/layout_telephone_number"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_next_of_kin_relationship">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/text_next_of_kin_contact"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:hint="Next od Kin's Contact"
+                                    android:text='@{expectantDetails.maternalProfile.nextOfKinContact}'
+                                    tools:text="0721339824" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

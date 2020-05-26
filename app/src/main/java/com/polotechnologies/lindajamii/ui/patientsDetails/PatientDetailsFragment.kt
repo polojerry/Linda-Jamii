@@ -35,10 +35,14 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
 
         val ancNumber = PatientDetailsFragmentArgs.fromBundle(requireArguments()).ancNumber
         val factory = PatientDetailsViewModelFactory(activity, ancNumber, dataSource)
+
         mViewModel = ViewModelProvider(this, factory)[PatientDetailsViewModel::class.java]
         mViewModel.patientDetails.observe(viewLifecycleOwner, Observer {expectantDetails->
             mExpectantDetails = expectantDetails
+            mBinding.expectantDetails = expectantDetails
         })
+
+
 
         setClickListeners()
 
@@ -68,7 +72,6 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     }
 
     private fun callPatient() {
-
         val phoneNumber = mExpectantDetails.maternalProfile?.telephone
         val phoneIntent = Intent(Intent.ACTION_CALL)
         phoneIntent.data = Uri.parse("tel:${phoneNumber}")

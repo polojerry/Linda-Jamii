@@ -64,7 +64,7 @@ class MedicalSurgicalHistoryFragment : Fragment() {
                 findNavController().navigate(action)
             } else {
                 Toast.makeText(
-                    context!!.applicationContext,
+                    requireContext().applicationContext,
                     "Failed: ${exception.localizedMessage}",
                     Toast.LENGTH_SHORT
                 )
@@ -76,7 +76,7 @@ class MedicalSurgicalHistoryFragment : Fragment() {
     private fun setFilledDropDownMenu() {
         val yes_no_drop_down = resources.getStringArray(R.array.filled_drop_down_yes_no)
         val categoryAdapter  = ArrayAdapter<String>(
-            context!!.applicationContext,
+            requireContext().applicationContext,
             R.layout.layout_dropdown_menu_popup,
             yes_no_drop_down
         )

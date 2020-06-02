@@ -55,11 +55,11 @@ class DeliveryFragment : Fragment() {
         mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarDelivery.visibility = View.INVISIBLE
             if (exception == null) {
-                Toast.makeText(context!!.applicationContext, "Delivery Details Done", Toast.LENGTH_SHORT).show()
-                activity!!.onBackPressed()
+                Toast.makeText(requireContext().applicationContext, "Delivery Details Done", Toast.LENGTH_SHORT).show()
+                requireActivity().onBackPressed()
             } else {
                 Toast.makeText(
-                    context!!.applicationContext,
+                    requireContext().applicationContext,
                     "Failed: ${exception.localizedMessage}",
                     Toast.LENGTH_SHORT
                 )
@@ -73,12 +73,12 @@ class DeliveryFragment : Fragment() {
         val hiv_couselling_category = resources.getStringArray(R.array.filled_drop_down_hiv)
 
         val categoryYesNoAdapter  = ArrayAdapter<String>(
-            context!!.applicationContext,
+            requireContext().applicationContext,
             R.layout.layout_dropdown_menu_popup,
             yes_no_drop_down
         )
         val categoryHivAdapter  = ArrayAdapter<String>(
-            context!!.applicationContext,
+            requireContext().applicationContext,
             R.layout.layout_dropdown_menu_popup,
             hiv_couselling_category
         )

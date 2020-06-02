@@ -83,7 +83,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navController.graph.startDestination = R.id.homeFragment
 
         setSupportActionBar(mBinding.toolbarMain)
-        supportActionBar!!.setDefaultDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
         NavigationUI.setupActionBarWithNavController(this, navController, mBinding.drawerLayoutMain)

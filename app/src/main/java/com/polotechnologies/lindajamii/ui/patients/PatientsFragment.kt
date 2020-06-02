@@ -30,7 +30,7 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
         mBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_patients, container, false)
         mBinding.lifecycleOwner = this
 
-        val factory = PatientsViewModelFactory(activity!!.application)
+        val factory = PatientsViewModelFactory(requireActivity().application)
         mViewModel = ViewModelProvider(this,factory)[PatientsViewModel::class.java]
 
         inflateSearchMenu()
@@ -41,11 +41,11 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun inflateSearchMenu() {
         val toolbar = mBinding.toolbarSearchPatient
-        val searchManager = context!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchManager = requireContext().getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = toolbar.menu.findItem(R.id.action_search_patient).actionView as SearchView
 
         searchView.apply {
-            setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
+            setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName))
             setOnQueryTextListener(this@PatientsFragment)
             setIconifiedByDefault(true)
             isSubmitButtonEnabled = false
@@ -57,7 +57,7 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
         val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ selectedPatient->
             Toast.makeText(context?.applicationContext, "${selectedPatient.maternalProfile?.nameOfClient}", Toast.LENGTH_SHORT).show()
             ExpectantVisitNotification.notify(
-                context!!,
+                requireContext(),
                 selectedPatient.maternalProfile?.nameOfClient!!,
                 "12/05/2020",
                 selectedPatient.patientId)

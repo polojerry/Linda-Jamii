@@ -45,11 +45,7 @@ object ExpectantVisitNotification {
     @TargetApi(Build.VERSION_CODES.ECLAIR)
     private fun notify(context: Context, notification: Notification) {
         val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
-            nm.notify(NOTIFICATION_TAG, 0, notification)
-        } else {
-            nm.notify(NOTIFICATION_TAG.hashCode(), notification)
-        }
+        nm.notify(NOTIFICATION_TAG, 0, notification)
     }
 
     /**
@@ -59,11 +55,7 @@ object ExpectantVisitNotification {
     @TargetApi(Build.VERSION_CODES.ECLAIR)
     fun cancel(context: Context) {
         val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
-            nm.cancel(NOTIFICATION_TAG, 0)
-        } else {
-            nm.cancel(NOTIFICATION_TAG.hashCode())
-        }
+        nm.cancel(NOTIFICATION_TAG, 0)
     }
 
 }

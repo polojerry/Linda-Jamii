@@ -56,11 +56,11 @@ class PhysicalAntenatalFeeding : Fragment() {
         mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = View.INVISIBLE
             if (exception == null) {
-                Toast.makeText(context!!.applicationContext, "Initial Visit Done", Toast.LENGTH_SHORT).show()
-                activity!!.onBackPressed()
+                Toast.makeText(requireContext().applicationContext, "Initial Visit Done", Toast.LENGTH_SHORT).show()
+                requireActivity().onBackPressed()
             } else {
                 Toast.makeText(
-                    context!!.applicationContext,
+                    requireContext().applicationContext,
                     "Failed: ${mViewModel.exception.value!!.localizedMessage}",
                     Toast.LENGTH_SHORT
                 )
@@ -74,13 +74,13 @@ class PhysicalAntenatalFeeding : Fragment() {
         val hiv_drop_down = resources.getStringArray(R.array.filled_drop_down_hiv)
 
         val categoryAdapterYesNo  = ArrayAdapter<String>(
-            context!!.applicationContext,
+            requireContext().applicationContext,
             R.layout.layout_dropdown_menu_popup,
             yes_no_drop_down
         )
 
         val categoryAdapterHiv  = ArrayAdapter<String>(
-            context!!.applicationContext,
+            requireContext().applicationContext,
             R.layout.layout_dropdown_menu_popup,
             hiv_drop_down
         )

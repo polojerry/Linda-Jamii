@@ -15,7 +15,7 @@ import com.polotechnologies.lindajamii.dataModels.HomeOption
 import java.util.Calendar
 
 @BindingAdapter("imageSrc")
-fun bind(imageView: AppCompatImageView, option: HomeOption){
+fun bind(imageView: AppCompatImageView){
     Glide.with(imageView.context)
         .load(R.drawable.linda_jamii_logo)
         .into(imageView)

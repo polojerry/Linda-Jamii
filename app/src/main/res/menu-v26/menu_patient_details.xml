@@ -5,10 +5,12 @@
     <item android:title="Call Patient"
         app:showAsAction="ifRoom"
         android:id="@+id/action_call_patient"
-        android:icon="@drawable/ic_baseline_call_24" />
+        android:icon="@drawable/ic_baseline_call_24"
+        android:iconTint="@color/colorTextIcons"/>
 
     <item android:title="Remind later"
         app:showAsAction="never"
-        android:id="@+id/action_remind_later" />
+        android:id="@+id/action_remind_later"
+        android:iconTint="@color/colorTextIcons"/>
 
 </menu>

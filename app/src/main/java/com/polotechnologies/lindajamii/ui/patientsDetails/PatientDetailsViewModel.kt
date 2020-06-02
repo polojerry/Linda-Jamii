@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-class PatientDetailsViewModel(application: Application, val ancNumber : String, private val expectantDetailsDao: ExpectantDetailsDao) : ViewModel() {
+class PatientDetailsViewModel(val ancNumber : String, private val expectantDetailsDao: ExpectantDetailsDao) : ViewModel() {
 
     //Patient Details
     private val _patientDetails = MutableLiveData<LiveData<ExpectantDetails>>()

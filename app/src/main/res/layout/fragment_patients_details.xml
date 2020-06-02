@@ -62,7 +62,9 @@
                         style="@style/Theme.LindaJamii.TextVisitHeading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Maternal Profile" />
+                        android:text="Maternal Profile"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card_maternal_profile_details"
@@ -92,7 +94,7 @@
                                     android:id="@+id/text_name_of_institution"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Name of Institution"
                                     android:text='@{expectantDetails.maternalProfile.nameOfInstitution}'
                                     tools:text="Mur-Malanga Dispensary" />
@@ -115,7 +117,7 @@
                                     android:id="@+id/text_mfl_number"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="MFL No."
                                     android:text='@{expectantDetails.maternalProfile.mflNumber}'
                                     tools:text="1998" />
@@ -137,7 +139,7 @@
                                     android:id="@+id/text_anc_number"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="ANC No."
                                     android:text='@{expectantDetails.maternalProfile.ancNumber}'
                                     tools:text="007/19" />
@@ -156,7 +158,7 @@
                                     android:id="@+id/text_name_of_client"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Name of Client"
                                     android:text='@{expectantDetails.maternalProfile.nameOfClient}'
                                     tools:text="Lucy Wanjiro" />
@@ -177,7 +179,7 @@
                                     android:id="@+id/text_age"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Age"
                                     android:text='@{expectantDetails.maternalProfile.ageOfClient}'
                                     tools:text="17" />
@@ -198,7 +200,7 @@
                                     android:id="@+id/text_gravida"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Gravida"
                                     android:text='@{expectantDetails.maternalProfile.gravida}'
                                     tools:text="1" />
@@ -219,7 +221,7 @@
                                     android:id="@+id/text_parity"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Parity"
                                     android:text='@{expectantDetails.maternalProfile.parity}'
                                     tools:text="0+" />
@@ -240,7 +242,7 @@
                                     android:id="@+id/text_height"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Height"
                                     android:text='@{expectantDetails.maternalProfile.height}'
                                     tools:text="150cm" />
@@ -261,7 +263,7 @@
                                     android:id="@+id/text_weight"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Weight"
                                     android:text='@{expectantDetails.maternalProfile.weight}'
                                     tools:text="76kg" />
@@ -283,7 +285,7 @@
                                     android:id="@+id/text_lmp"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="L.M.P"
                                     android:text='@{expectantDetails.maternalProfile.lmp}'
                                     tools:text="20/10/2020" />
@@ -304,7 +306,7 @@
                                     android:id="@+id/text_edd"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="E.D.D"
                                     android:text='@{expectantDetails.maternalProfile.weight}'
                                     tools:text="01/2/2021" />
@@ -323,7 +325,7 @@
                                     android:id="@+id/text_address"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Address"
                                     android:text='@{expectantDetails.maternalProfile.address}'
                                     tools:text="Matera" />
@@ -345,7 +347,7 @@
                                     android:id="@+id/text_marital_status"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Marital Status"
                                     android:text='@{expectantDetails.maternalProfile.maritalStatus}'
                                     tools:text="Single" />
@@ -366,7 +368,7 @@
                                     android:id="@+id/text_education"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Education"
                                     android:text='@{expectantDetails.maternalProfile.education}'
                                     tools:text="Form II" />
@@ -387,7 +389,7 @@
                                     android:id="@+id/text_next_of_kin"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Next of Kin"
                                     android:text='@{expectantDetails.maternalProfile.nextOfKin}'
                                     tools:text="Joyce Awino" />
@@ -408,7 +410,7 @@
                                     android:id="@+id/text_next_of_kin_relatioship"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Relationship"
                                     android:text='@{expectantDetails.maternalProfile.relationShip}'
                                     tools:text="Aunt" />
@@ -429,7 +431,7 @@
                                     android:id="@+id/text_next_telephone_number"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Telephone Number "
                                     android:text='@{expectantDetails.maternalProfile.telephone}'
                                     tools:text="0790689212" />
@@ -450,16 +452,11 @@
                                     android:id="@+id/text_next_of_kin_contact"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:editable="false"
+
                                     android:hint="Next od Kin's Contact"
                                     android:text='@{expectantDetails.maternalProfile.nextOfKinContact}'
                                     tools:text="0721339824" />
                             </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>

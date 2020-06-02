@@ -4,6 +4,4 @@
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#8BC34A</color>
     <color name="colorTextIcons">#FFFFFF</color>
-    <color name="colorDivider">#BDBDBD</color>
-    <color name="colorLightRed">@android:color/holo_red_light</color>
 </resources>

@@ -2,7 +2,7 @@
 buildscript {
     ext {
         version_kotlin = '1.3.72'
-        version_gradle_build = "4.1.0-alpha08"
+        version_gradle_build = '4.1.0-alpha10'
 
         version_material_design = '1.2.0-alpha06'
 

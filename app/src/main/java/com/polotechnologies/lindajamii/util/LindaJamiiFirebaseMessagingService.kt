@@ -7,7 +7,7 @@ import com.google.firebase.messaging.RemoteMessage
 
 class LindaJamiiFirebaseMessagingService : FirebaseMessagingService() {
     companion object {
-        private const val TAG = "LindaJamiiFirebaseMessagingService"
+        private const val TAG = "FMS"
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
@@ -21,12 +21,8 @@ class LindaJamiiFirebaseMessagingService : FirebaseMessagingService() {
             ancNumber = message.data["patientAncNumber"].toString()
 
         } catch (exception: NullPointerException) {
-            Log.d(TAG, "onMessageReceived: Null Pointer Exception: ${exception.localizedMessage}")
+            Log.d(TAG, "onMessageReceived:${exception.localizedMessage}")
         }
-
-        Log.d(TAG, "onMessageReceived: Name: $patientName")
-        Log.d(TAG, "onMessageReceived: Visit Date: $visitDate")
-        Log.d(TAG, "onMessageReceived: AncNumber: $ancNumber")
 
 
         val patientVisitDate = DateConverter.getStringDate(visitDate.toLong())
@@ -42,8 +38,6 @@ class LindaJamiiFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun sendTokenToFirestore(newToken: String) {
-        Log.d(TAG, "onNewToken: Sending Token to Firebase:::: $newToken")
-
         val tokenMap = HashMap<String, String>()
         tokenMap["token"] = newToken
 

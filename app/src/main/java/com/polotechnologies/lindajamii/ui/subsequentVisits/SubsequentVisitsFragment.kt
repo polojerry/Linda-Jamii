@@ -53,12 +53,12 @@ class SubsequentVisitsFragment : Fragment() {
     }
 
     private fun setClickListeners() {
-        mBinding.textSubsequentVisitsDate.setOnFocusChangeListener { v, hasFocus ->
+        mBinding.textSubsequentVisitsDate.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus){
                 displayDatePicker("Today's Date")
             }
         }
-        mBinding.textSubsequentVisitsNextVisit.setOnFocusChangeListener { v, hasFocus ->
+        mBinding.textSubsequentVisitsNextVisit.setOnFocusChangeListener { _, hasFocus ->
             if(hasFocus){
                 displayDatePicker("Next Visit")
             }
@@ -71,7 +71,7 @@ class SubsequentVisitsFragment : Fragment() {
         dateBuilder.setTitleText(title)
 
         val materialDatePicker = dateBuilder.build()
-        materialDatePicker.show(activity!!.supportFragmentManager, "DATE_PICKER")
+        materialDatePicker.show(requireActivity().supportFragmentManager, "DATE_PICKER")
         materialDatePicker.addOnPositiveButtonClickListener {date->
             when(title){
                 "Today's Date"->{
@@ -95,11 +95,11 @@ class SubsequentVisitsFragment : Fragment() {
         mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarSubsequentVisit.visibility = View.INVISIBLE
             if (exception == null) {
-                Toast.makeText(context!!.applicationContext, "Subsequent Visit Done", Toast.LENGTH_SHORT).show()
-                activity!!.onBackPressed()
+                Toast.makeText(requireContext().applicationContext, "Subsequent Visit Done", Toast.LENGTH_SHORT).show()
+                requireActivity().onBackPressed()
             } else {
                 Toast.makeText(
-                    context!!.applicationContext,
+                    requireActivity().applicationContext,
                     "Failed: ${exception.localizedMessage}",
                     Toast.LENGTH_SHORT
                 )

@@ -60,7 +60,7 @@ class MaternalProfileFragment : Fragment() {
                 findNavController().navigate(action)
             } else {
                 Toast.makeText(
-                    context!!.applicationContext,
+                    requireContext().applicationContext,
                     "Failed: ${exception.localizedMessage}",
                     Toast.LENGTH_SHORT
                 )

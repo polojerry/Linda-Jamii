@@ -30,11 +30,11 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
         // Inflate the layout for this fragment
         mBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_patients_details, container, false)
-        val activity = activity!!.application
-        val dataSource = getDatabase(activity).expectantDetailsDao
+
+        val dataSource = getDatabase(requireNotNull(context)).expectantDetailsDao
 
         val ancNumber = PatientDetailsFragmentArgs.fromBundle(requireArguments()).ancNumber
-        val factory = PatientDetailsViewModelFactory(activity, ancNumber, dataSource)
+        val factory = PatientDetailsViewModelFactory(ancNumber, dataSource)
 
         mViewModel = ViewModelProvider(this, factory)[PatientDetailsViewModel::class.java]
         mViewModel.patientDetails.observe(viewLifecycleOwner, Observer {expectantDetails->
@@ -52,7 +52,7 @@ class PatientDetailsFragment : Fragment(), Toolbar.OnMenuItemClickListener {
     private fun setClickListeners() {
         mBinding.toolbarPatientsDetails.setOnMenuItemClickListener(this)
         mBinding.toolbarPatientsDetails.setNavigationOnClickListener {
-            activity!!.onBackPressed()
+            requireActivity().onBackPressed()
         }
     }
 

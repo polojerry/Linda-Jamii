@@ -245,7 +245,8 @@
                         android:textAlignment="textStart"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_layout_antenatal_profile_hb"
@@ -429,8 +430,10 @@
                         android:text="Infant Feeding"
                         android:textAlignment="textStart"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/text_layout_infant_feeding_couseling_done"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_layout_infant_feeding_couseling_done"

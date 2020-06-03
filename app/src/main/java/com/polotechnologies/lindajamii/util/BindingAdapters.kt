@@ -15,10 +15,12 @@ import com.polotechnologies.lindajamii.dataModels.HomeOption
 import java.util.Calendar
 
 @BindingAdapter("imageSrc")
-fun bind(imageView: AppCompatImageView){
+fun bind(imageView: AppCompatImageView, homeOption: HomeOption){
+    homeOption.option_image.let {image->
     Glide.with(imageView.context)
-        .load(R.drawable.linda_jamii_logo)
+        .load(image)
         .into(imageView)
+        }
 }
 
 @BindingAdapter("nextVisit")

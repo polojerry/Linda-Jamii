@@ -359,7 +359,7 @@
                     style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="-1dp"
+                    android:layout_marginEnd="4dp"
                     app:layout_constraintEnd_toStartOf="@+id/text_layout_post_natal_visit_baby_umblical_cord"
                     app:layout_constraintStart_toStartOf="@+id/text_label_post_natal_examination_mother"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_breaths_per_minute">
@@ -380,7 +380,7 @@
                     style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="-1dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/text_layout_post_natal_visit_baby_breastfeeding_position"

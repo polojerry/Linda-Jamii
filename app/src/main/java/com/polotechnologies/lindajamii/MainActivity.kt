@@ -25,7 +25,7 @@ import com.polotechnologies.lindajamii.databinding.ActivityMainBinding
 import com.polotechnologies.lindajamii.util.ExpectantVisitNotification
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mNavController: NavController
     private lateinit var mAuth: FirebaseAuth
@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mBinding.toolbarMain.setupWithNavController(mNavController, appBarConfiguration)
 
         mBinding.navigationViewMain.setupWithNavController(mNavController)
-        mBinding.navigationViewMain.setNavigationItemSelectedListener(this)
         mBinding.drawerLayoutMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 
     }
@@ -87,42 +86,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
         }
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
-        if (mNavController.currentDestination!!.id == R.id.homeFragment) {
-            when (item.itemId) {
-                R.id.action_initial_visit -> {
-                    mNavController.navigate(R.id.action_homeFragment_to_initialVisitFragment)
-                    mBinding.drawerLayoutMain.closeDrawers()
-                }
-                R.id.action_subsequent_visit -> {
-                    mNavController.navigate(R.id.action_homeFragment_to_subsequentVisitsFragment)
-                    mBinding.drawerLayoutMain.closeDrawers()
-                }
-
-                R.id.action_delivery -> {
-                    mNavController.navigate(R.id.action_homeFragment_to_deliveryFragment)
-                    mBinding.drawerLayoutMain.closeDrawers()
-                }
-
-                R.id.action_post_natal_visit -> {
-                    mNavController.navigate(R.id.action_homeFragment_to_postNatalVisitFragment)
-                    mBinding.drawerLayoutMain.closeDrawers()
-                }
-
-                R.id.action_patients -> {
-                    mNavController.navigate(R.id.action_homeFragment_to_patientsFragment)
-                    mBinding.drawerLayoutMain.closeDrawers()
-                }
-                else -> {
-                    return true
-                }
-            }
-        }
-
-        return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

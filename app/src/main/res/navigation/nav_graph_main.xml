@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/patientsFragment"
         android:name="com.polotechnologies.lindajamii.ui.patients.PatientsFragment"
-        android:label="PatientsFragment"
+        android:label="Patients"
         tools:layout="@layout/fragment_patients">
         <action
             android:id="@+id/action_patientsFragment_to_patientsDetailsFragment"

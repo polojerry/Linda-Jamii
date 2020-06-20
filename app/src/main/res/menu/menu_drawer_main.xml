@@ -4,17 +4,17 @@
     <group android:checkableBehavior="single"
         >
 
-        <item android:id="@+id/action_initial_visit"
+        <item android:id="@+id/initialVisitFragment"
             android:title="Initial Visit"
             />
 
-        <item android:id="@+id/action_subsequent_visit"
+        <item android:id="@+id/subsequentVisitsFragment"
             android:title="Subsequent Visit"
             />
-        <item android:id="@+id/action_delivery"
+        <item android:id="@+id/deliveryFragment"
             android:title="Delivery"
             />
-        <item android:id="@+id/action_post_natal_visit"
+        <item android:id="@+id/postNatalVisitFragment"
             android:title="Post Natal Visit"
             />
 
@@ -23,7 +23,7 @@
     <group android:checkableBehavior="single"
         >
 
-        <item android:id="@+id/action_patients"
+        <item android:id="@+id/patientsFragment"
             android:title="Patients Reports"
             />
 

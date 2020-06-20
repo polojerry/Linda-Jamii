@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/linda_jamii_logo"
-            android:contentDescription="Logo image of Linda Jamii Application"/>
+            android:contentDescription="Image Logo of Linda Jamii Application"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_login"
@@ -71,7 +71,7 @@
                 android:id="@+id/text_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Login Email"
+                android:hint="Login Password"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>

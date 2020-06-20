@@ -12,8 +12,8 @@ class HomeFragmentViewModel : ViewModel() {
     val TAG = "HomeFragmentViewModel"
 
     //selected Shop Category
-    private val _selectedHomeOption = MutableLiveData<HomeOption>()
-    val selectedHomeOption: LiveData<HomeOption>
+    private val _selectedHomeOption = MutableLiveData<HomeOption?>()
+    val selectedHomeOption: LiveData<HomeOption?>
         get() = _selectedHomeOption
 
     var fcmToken = ""

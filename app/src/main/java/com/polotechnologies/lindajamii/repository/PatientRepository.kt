@@ -1,6 +1,5 @@
 package com.polotechnologies.lindajamii.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
@@ -17,7 +16,7 @@ class PatientRepository(val database: LindaJamiiDatabase) {
         withContext(Dispatchers.IO) {
             firestoreService.getPatients()
             val patientsList = firestoreService.patients
-            database.expectantDetailsDao.insert(*patientsList.toTypedArray())
+            /*database.expectantDetailsDao.insert(*patientsList.toTypedArray())*/
         }
     }
 

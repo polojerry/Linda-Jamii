@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.loginFragment -> {
                     mBinding.toolbarMain.visibility = View.GONE
                     mBinding.drawerLayoutMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                    navController.graph.startDestination = R.id.loginFragment
                 }
                 R.id.patientsDetailsFragment->{
                     mBinding.appBarMain.visibility = View.GONE

@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.iid.FirebaseInstanceId
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.HomeOption
@@ -24,6 +25,7 @@ class HomeFragment : Fragment() {
 
     lateinit var mBinding:  FragmentHomeBinding
     lateinit var mViewModel :HomeFragmentViewModel
+    lateinit var mAuth : FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +33,11 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         mViewModel = ViewModelProvider(this)[HomeFragmentViewModel::class.java]
+        mAuth = FirebaseAuth.getInstance()
+
+        if(mAuth.currentUser == null){
+            findNavController().navigate(R.id.loginFragment)
+        }
 
         displayOptions()
         setObserver()

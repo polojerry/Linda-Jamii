@@ -16,7 +16,7 @@ class FirestoreService {
     val TAG = "FIRESTORE- SERVICE"
     val mDatabase = FirebaseFirestore.getInstance()
 
-    var patients = listOf<ExpectantDetails>()
+    var patients = listOf<ExpectantDetails?>()
     var writeException = MutableLiveData<Exception>()
 
     private fun patientsDetailsReference(): CollectionReference {

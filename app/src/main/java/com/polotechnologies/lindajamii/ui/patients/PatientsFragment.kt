@@ -15,23 +15,33 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
+import com.polotechnologies.lindajamii.network.FirestoreService
+import com.polotechnologies.lindajamii.network.Resource
 import com.polotechnologies.lindajamii.util.ExpectantVisitNotification
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
-    lateinit var mBinding : FragmentPatientsBinding
-    lateinit var mViewModel: PatientsViewModel
+    private lateinit var mBinding: FragmentPatientsBinding
+    private lateinit var mViewModel: PatientsViewModel
+    private lateinit var mAdapter : PatientsRecyclerAdapter
+
+    private val uiScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_patients, container, false)
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_patients, container, false)
         mBinding.lifecycleOwner = this
 
         val factory = PatientsViewModelFactory(requireActivity().application)
-        mViewModel = ViewModelProvider(this,factory)[PatientsViewModel::class.java]
+        mViewModel = ViewModelProvider(this, factory)[PatientsViewModel::class.java]
 
         inflateSearchMenu()
         setDisplayDetails()
@@ -39,9 +49,59 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
         return mBinding.root
     }
 
+    private fun setDisplayDetails() {
+        mAdapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener { selectedPatient ->
+                mViewModel.displaySelectedPatient(selectedPatient)
+            })
+
+        mBinding.recyclerPatients.adapter = mAdapter
+
+        uiScope.launch {
+            fetchPatients()
+        }
+
+    }
+
+    private suspend fun fetchPatients() {
+
+        mViewModel.fetchPatients().collect { resource ->
+            when (resource) {
+
+                is Resource.Loading -> {
+                    mBinding.swipeRefreshPatients.isRefreshing = true
+                }
+
+                is Resource.Success -> {
+                    mAdapter.submitList(resource.data)
+                    mBinding.swipeRefreshPatients.isRefreshing = false
+                }
+                is Resource.Failed -> {
+                    Toast.makeText(requireContext(), "Failed: ${resource.message}", Toast.LENGTH_SHORT).show()
+                    mBinding.swipeRefreshPatients.isRefreshing = false
+                }
+            }
+
+
+        }
+    }
+
+    private fun setObservers() {
+        mViewModel.selectedPatient.observe(viewLifecycleOwner, Observer { expectantDetails ->
+            if (expectantDetails != null) {
+                val action =
+                    PatientsFragmentDirections.actionPatientsFragmentToPatientsDetailsFragment(
+                        expectantDetails.patientId
+                    )
+                findNavController().navigate(action)
+                mViewModel.displaySelectedPatientDone()
+            }
+        })
+    }
+
     private fun inflateSearchMenu() {
         val toolbar = mBinding.toolbarSearchPatient
-        val searchManager = requireContext().getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchManager =
+            requireContext().getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView = toolbar.menu.findItem(R.id.action_search_patient).actionView as SearchView
 
         searchView.apply {
@@ -53,46 +113,6 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
-    private fun setDisplayDetails() {
-        val adapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener{ selectedPatient->
-            Toast.makeText(context?.applicationContext, "${selectedPatient.maternalProfile?.nameOfClient}", Toast.LENGTH_SHORT).show()
-            ExpectantVisitNotification.notify(
-                requireContext(),
-                selectedPatient.maternalProfile?.nameOfClient!!,
-                "12/05/2020",
-                selectedPatient.patientId)
-            mViewModel.displaySelectedPatient(selectedPatient)
-        })
-
-        mBinding.recyclerPatients.adapter = adapter
-        mViewModel.patientsListData.observe(viewLifecycleOwner, Observer {patientsList->
-            mViewModel.fetchPatients()
-            adapter.submitList(patientsList)
-
-        })
-
-
-    }
-
-    private fun setObservers(){
-        mViewModel.repoIsLoading.observe(viewLifecycleOwner, Observer {isLoading->
-                mBinding.swipeRefreshPatients.isRefreshing = isLoading
-        })
-
-        mViewModel.selectedPatient.observe(viewLifecycleOwner, Observer {expectantDetails->
-            if(expectantDetails!=null){
-                val action = PatientsFragmentDirections.actionPatientsFragmentToPatientsDetailsFragment(expectantDetails.patientId)
-                findNavController().navigate(action)
-                mViewModel.displaySelectedPatientDone()
-            }
-        })
-
-        mBinding.swipeRefreshPatients.setOnRefreshListener {
-            mViewModel.fetchPatients()
-        }
-
-    }
-
     override fun onQueryTextSubmit(query: String?): Boolean {
         return true
     }
@@ -100,5 +120,6 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onQueryTextChange(newText: String?): Boolean {
         return false
     }
+
 
 }

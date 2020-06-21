@@ -11,11 +11,19 @@ import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.tasks.await
 
 class FirestoreService {
+    private val mDatabase = FirebaseFirestore.getInstance()
+    private val patientsCollectionReference = mDatabase.collection("patients")
+        .document("maternalVisit").collection("initialVisit")
+
     //region Old Implementation
     val TAG = "FIRESTORE- SERVICE"
-    val mDatabase = FirebaseFirestore.getInstance()
 
     var patients = listOf<ExpectantDetails?>()
     var writeException = MutableLiveData<Exception>()
@@ -25,6 +33,7 @@ class FirestoreService {
             .document("maternalVisit")
             .collection("initialVisit")
     }
+
     fun getPatients() {
         patientsDetailsReference().addSnapshotListener { snapshot, exception ->
             if (exception != null) {
@@ -46,8 +55,8 @@ class FirestoreService {
             .collection("subsequentVisits").document()
 
     }
-    
-    fun  saveSubsequentVisit(subsequentVisit: ExpectantSubsequentVisit): LiveData<java.lang.Exception> {
+
+    fun saveSubsequentVisit(subsequentVisit: ExpectantSubsequentVisit): LiveData<java.lang.Exception> {
         subsequentReference().set(subsequentVisit).addOnSuccessListener {
             writeException.value = null
         }.addOnFailureListener { exception ->
@@ -97,6 +106,19 @@ class FirestoreService {
     }
     //endregion
 
+    fun getAllPatients(facilityId: String) = flow<Resource<List<ExpectantDetails>>> {
+        //Loading
+        emit(Resource.loading())
+
+        val patientsSnapshot = patientsCollectionReference.get().await()
+        val patientsList = patientsSnapshot.toObjects(ExpectantDetails::class.java)
+
+        //Success
+        emit(Resource.success(patientsList))
+
+    }.catch {
+        emit(Resource.failed(it.localizedMessage!!))
+    }.flowOn(Dispatchers.IO)
 
 
 }

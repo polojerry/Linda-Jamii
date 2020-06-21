@@ -5,11 +5,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.HomeOption
 import com.polotechnologies.lindajamii.util.LindaJamiiFirebaseMessagingService
 
 class HomeFragmentViewModel : ViewModel() {
-    val TAG = "HomeFragmentViewModel"
+
+    private val _homeOptions = listOf<HomeOption>(
+        HomeOption(R.drawable.linda_jamii_logo, "Initial Visit"),
+        HomeOption(R.drawable.linda_jamii_logo, "Subsequent Visits"),
+        HomeOption(R.drawable.linda_jamii_logo, "Delivery"),
+        HomeOption(R.drawable.linda_jamii_logo, "Post Natal Visits"),
+        HomeOption(R.drawable.linda_jamii_logo, "Patients")
+    )
 
     //selected Shop Category
     private val _selectedHomeOption = MutableLiveData<HomeOption?>()
@@ -17,6 +25,10 @@ class HomeFragmentViewModel : ViewModel() {
         get() = _selectedHomeOption
 
     var fcmToken = ""
+
+    fun homeOptions(): List<HomeOption> {
+        return _homeOptions
+    }
 
     fun displaySelectedProductCategory(homeOption: HomeOption) {
         _selectedHomeOption.value = homeOption
@@ -26,9 +38,8 @@ class HomeFragmentViewModel : ViewModel() {
         _selectedHomeOption.value = null
     }
 
-    fun sendTokenToFirestore(newToken: String) {
-        Log.d(TAG, "onNewToken: Sending Token to Firebase:::: $newToken")
 
+    fun sendTokenToFirestore(newToken: String) {
         val token = HashMap<String, String>()
         token["token"] = newToken
 

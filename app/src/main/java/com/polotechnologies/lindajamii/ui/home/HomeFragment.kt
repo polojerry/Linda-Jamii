@@ -23,21 +23,17 @@ import com.polotechnologies.lindajamii.util.LindaJamiiFirebaseMessagingService
 class HomeFragment : Fragment() {
     private val TAG = "HomeFragment"
 
-    lateinit var mBinding:  FragmentHomeBinding
-    lateinit var mViewModel :HomeFragmentViewModel
-    lateinit var mAuth : FirebaseAuth
+    lateinit var mBinding: FragmentHomeBinding
+    lateinit var mViewModel: HomeFragmentViewModel
+    lateinit var mAuth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         mViewModel = ViewModelProvider(this)[HomeFragmentViewModel::class.java]
         mAuth = FirebaseAuth.getInstance()
-
-        if(mAuth.currentUser == null){
-            findNavController().navigate(R.id.loginFragment)
-        }
 
         displayOptions()
         setObserver()
@@ -45,34 +41,41 @@ class HomeFragment : Fragment() {
         return mBinding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (mAuth.currentUser == null) {
+            findNavController().navigate(R.id.loginFragment)
+        }
+    }
+
     private fun initFcm() {
-        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {instanceTask->
-            if(!instanceTask.isSuccessful){
+        FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener { instanceTask ->
+            if (!instanceTask.isSuccessful) {
                 Log.w(TAG, "initFcm: getInstanceFailed: ${instanceTask.exception}")
                 return@addOnCompleteListener
             }
-            mViewModel.fcmToken  = instanceTask.result?.token.toString()
+            mViewModel.fcmToken = instanceTask.result?.token.toString()
             mViewModel.sendTokenToFirestore(mViewModel.fcmToken)
         }
     }
 
     private fun displayOptions() {
         mBinding.recyclerHome.adapter =
-            HomeFragmentRecyclerAdapter(HOME_OPTIONS,
+            HomeFragmentRecyclerAdapter(mViewModel.homeOptions(),
                 HomeFragmentRecyclerAdapter.OnClickListener { productCategory ->
                     mViewModel.displaySelectedProductCategory(productCategory)
                 })
     }
 
     private fun setObserver() {
-        mViewModel.selectedHomeOption.observe(viewLifecycleOwner, Observer {homeOption->
-            if(homeOption!=null){
-                when(homeOption.option_title){
-                    "Initial Visit"-> navigateToOption(R.id.action_homeFragment_to_initialVisitFragment)
-                    "Subsequent Visits"-> navigateToOption(R.id.action_homeFragment_to_subsequentVisitsFragment)
-                    "Delivery"-> navigateToOption(R.id.action_homeFragment_to_deliveryFragment)
-                    "Post Natal Visits"-> navigateToOption(R.id.action_homeFragment_to_postNatalVisitFragment)
-                    "Patients"->navigateToOption(R.id.action_homeFragment_to_patientsFragment)
+        mViewModel.selectedHomeOption.observe(viewLifecycleOwner, Observer { homeOption ->
+            if (homeOption != null) {
+                when (homeOption.option_title) {
+                    "Initial Visit" -> navigateToOption(R.id.action_homeFragment_to_initialVisitFragment)
+                    "Subsequent Visits" -> navigateToOption(R.id.action_homeFragment_to_subsequentVisitsFragment)
+                    "Delivery" -> navigateToOption(R.id.action_homeFragment_to_deliveryFragment)
+                    "Post Natal Visits" -> navigateToOption(R.id.action_homeFragment_to_postNatalVisitFragment)
+                    "Patients" -> navigateToOption(R.id.action_homeFragment_to_patientsFragment)
                 }
             }
 
@@ -85,18 +88,5 @@ class HomeFragment : Fragment() {
         mViewModel.displaySelectedProductCategoryComplete()
 
     }
-
-    companion object{
-        val HOME_OPTIONS = listOf<HomeOption>(
-            HomeOption(R.drawable.linda_jamii_logo, "Initial Visit"),
-            HomeOption(R.drawable.linda_jamii_logo, "Subsequent Visits"),
-            HomeOption(R.drawable.linda_jamii_logo, "Delivery"),
-            HomeOption(R.drawable.linda_jamii_logo, "Post Natal Visits"),
-            HomeOption(R.drawable.linda_jamii_logo, "Patients")
-        )
-    }
-
-
-
 
 }

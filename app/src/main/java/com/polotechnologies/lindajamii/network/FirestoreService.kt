@@ -13,6 +13,7 @@ import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 
 class FirestoreService {
+    //region Old Implementation
     val TAG = "FIRESTORE- SERVICE"
     val mDatabase = FirebaseFirestore.getInstance()
 
@@ -94,5 +95,8 @@ class FirestoreService {
                 "physicalAntenatalFeeding", physicalAntenatalFeeding
             )
     }
+    //endregion
+
+
 
 }

@@ -39,6 +39,7 @@ class LoginFragment : Fragment() {
 
         mAuth.signInWithEmailAndPassword(userName, userPass).addOnSuccessListener {
             Toast.makeText(requireContext(), "Login Successful", Toast.LENGTH_SHORT).show()
+            findNavController().popBackStack()
             navigateToHomeScreen()
         }.addOnFailureListener { exception ->
             Toast.makeText(requireContext(), "Login Failed: ${exception.localizedMessage}", Toast.LENGTH_SHORT).show()

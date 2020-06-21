@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -25,7 +26,7 @@ import com.polotechnologies.lindajamii.databinding.ActivityMainBinding
 import com.polotechnologies.lindajamii.util.ExpectantVisitNotification
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mNavController: NavController
     private lateinit var mAuth: FirebaseAuth
@@ -41,14 +42,15 @@ class MainActivity : AppCompatActivity() {
         setUpToolBarAndDrawer()
         setNavControllerOptions()
 
-
         registerNotificationChannel()
-
     }
 
     private fun setUpToolBarAndDrawer() {
-        val appBarConfiguration = AppBarConfiguration(mNavController.graph, mBinding.drawerLayoutMain)
+        val appBarConfiguration =
+            AppBarConfiguration(mNavController.graph, mBinding.drawerLayoutMain)
         mBinding.toolbarMain.setupWithNavController(mNavController, appBarConfiguration)
+        mBinding.toolbarMain.inflateMenu(R.menu.menu_main)
+        mBinding.toolbarMain.setOnMenuItemClickListener(this)
 
         mBinding.navigationViewMain.setupWithNavController(mNavController)
         mBinding.drawerLayoutMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
@@ -82,17 +84,10 @@ class MainActivity : AppCompatActivity() {
                     mBinding.drawerLayoutMain.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
 
                 }
-
             }
 
         }
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
 
     override fun onBackPressed() {
         if (mBinding.drawerLayoutMain.isDrawerOpen(GravityCompat.START)) {
@@ -103,24 +98,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+    private fun signOutUser() {
+        mAuth.signOut()
+        findNavController(R.id.nav_host_main).navigate(R.id.homeFragment)
+        Toast.makeText(baseContext.applicationContext, "Signed Out Successfully", Toast.LENGTH_SHORT).show()
+
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
             R.id.action_sign_out -> {
                 signOutUser()
                 true
             }
-            else -> super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item!!)
         }
-
-    }
-
-    private fun signOutUser() {
-        mAuth.signOut()
-        Toast.makeText(
-            baseContext.applicationContext,
-            "Signed Out Successfully",
-            Toast.LENGTH_SHORT
-        ).show()
-        findNavController(R.id.nav_host_main).navigate(R.id.homeFragment)
     }
 }

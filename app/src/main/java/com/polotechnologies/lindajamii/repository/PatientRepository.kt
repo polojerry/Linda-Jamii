@@ -28,8 +28,23 @@ class PatientRepository(val database: LindaJamiiDatabase) {
         }
     }
 
-    suspend fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails) =
+    fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails) =
         firestoreService.saveInitialVisitMaternalProfile(expectantDetails)
+
+    fun saveInitialVisitMedicalHistory(
+        ancNumber: String,
+        medicalSurgicalHistory: ExpectantDetails.ExpectantMedicalSurgicalHistory
+    ) =
+        firestoreService.saveInitialVisitMedicalHistory(
+            ancNumber,
+            medicalSurgicalHistory
+        )
+
+    fun saveInitialVisitPhysicalAntenatal(
+        ancNumber: String,
+        physicalAntenatalFeeding: ExpectantDetails.ExpectantPhysicalAntenatalFeeding
+    ) =
+        firestoreService.saveInitialVisitPhysicalAntenatal(ancNumber, physicalAntenatalFeeding)
 
 }
 

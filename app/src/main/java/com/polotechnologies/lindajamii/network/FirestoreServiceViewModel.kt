@@ -30,7 +30,7 @@ class FirestoreServiceViewModel : ViewModel() {
 
         }
         return writeException
-    }*/
+    }*//*
 
     fun saveInitialVisitMedicalHistory(
         ancNumber: String,
@@ -58,5 +58,5 @@ class FirestoreServiceViewModel : ViewModel() {
 
         }
         return writeException
-    }
+    }*/
 }

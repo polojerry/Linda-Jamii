@@ -10,15 +10,15 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
+import com.polotechnologies.lindajamii.network.Resource
 import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryFragmentDirections
-import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryViewModel
-import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryViewModelFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 /**
  *
@@ -32,27 +32,74 @@ class PhysicalAntenatalFeeding : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_physical_antenatal_feeding, container, false)
+        mBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_physical_antenatal_feeding,
+            container,
+            false
+        )
+        mBinding.buttonFinishInitial.setOnClickListener { postPhysicalAntenatalFeeding() }
 
-        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
         val userId = PhysicalAntenatalFeedingArgs.fromBundle(requireArguments()).userId
-        val factory  = PhysicalAntenatalFeedingViewModelFactory(firestoreServiceViewModel, mBinding, userId)
+        val factory = PhysicalAntenatalFeedingViewModelFactory(
+            requireActivity().application,
+            mBinding,
+            userId
+        )
         mViewModel = ViewModelProvider(this, factory)[PhysicalAntenatalFeedingViewModel::class.java]
 
-        setObserver()
-        mBinding.buttonFinishInitial.setOnClickListener {
-            if(mViewModel.isFieldsValid()){
+        //setObserver()
+        /*mBinding.buttonFinishInitial.setOnClickListener {
+            if (mViewModel.isFieldsValid()) {
                 mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = View.VISIBLE
                 mBinding.buttonFinishInitial.isEnabled = false
                 mViewModel.savePhysicalAntenatalFeeding()
 
             }
-        }
+        }*/
 
         setFilledDropDownMenu()
         return mBinding.root
     }
-    private fun setObserver() {
+
+    private fun postPhysicalAntenatalFeeding() {
+        if (!mViewModel.isFieldsValid()) return
+
+        mBinding.buttonFinishInitial.isEnabled = false
+
+        mViewModel.writeStatusLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            when (isLoading) {
+                true -> progressBarVisibility(View.VISIBLE)
+                else -> progressBarVisibility(View.GONE)
+            }
+
+        })
+
+        CoroutineScope(Dispatchers.Main).launch {
+            mViewModel.savePhysicalAntenatalFeeding().collect { resource ->
+
+                when (resource) {
+                    is Resource.Loading -> {
+                        mViewModel.setIsLoading(true)
+                    }
+
+
+                    is Resource.Success -> {
+                        mViewModel.setIsLoading(false)
+                        requireActivity().onBackPressed()
+
+                    }
+
+                    is Resource.Failed -> {
+                        mViewModel.setIsLoading(false)
+                        toastMessage("Failed: ${resource.message}")
+                    }
+                }
+            }
+        }
+    }
+
+    /*private fun setObserver() {
         mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = View.INVISIBLE
             if (exception == null) {
@@ -67,28 +114,36 @@ class PhysicalAntenatalFeeding : Fragment() {
             }
 
         })
-    }
+    }*/
 
     private fun setFilledDropDownMenu() {
-        val yes_no_drop_down = resources.getStringArray(R.array.filled_drop_down_yes_no)
-        val hiv_drop_down = resources.getStringArray(R.array.filled_drop_down_hiv)
+        val yesNoDropDown = resources.getStringArray(R.array.filled_drop_down_yes_no)
+        val hivDropDown = resources.getStringArray(R.array.filled_drop_down_hiv)
 
-        val categoryAdapterYesNo  = ArrayAdapter<String>(
+        val categoryAdapterYesNo = ArrayAdapter<String>(
             requireContext().applicationContext,
             R.layout.layout_dropdown_menu_popup,
-            yes_no_drop_down
+            yesNoDropDown
         )
 
-        val categoryAdapterHiv  = ArrayAdapter<String>(
+        val categoryAdapterHiv = ArrayAdapter<String>(
             requireContext().applicationContext,
             R.layout.layout_dropdown_menu_popup,
-            hiv_drop_down
+            hivDropDown
         )
 
         mBinding.textInfantFeedingCouseling.setAdapter(categoryAdapterYesNo)
         mBinding.textInfantFeedingCouselingBreastfeeding.setAdapter(categoryAdapterYesNo)
         mBinding.textAntenatalProfileHiv.setAdapter(categoryAdapterHiv)
 
+    }
+
+    private fun toastMessage(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun progressBarVisibility(visibility: Int) {
+        mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = visibility
     }
 
 }

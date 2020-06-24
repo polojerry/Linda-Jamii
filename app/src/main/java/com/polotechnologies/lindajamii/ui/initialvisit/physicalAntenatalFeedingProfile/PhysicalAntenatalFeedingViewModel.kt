@@ -1,25 +1,30 @@
 package com.polotechnologies.lindajamii.ui.initialvisit.physicalAntenatalFeedingProfile
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
+import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
+import com.polotechnologies.lindajamii.repository.PatientRepository
 import java.lang.Exception
 
 class PhysicalAntenatalFeedingViewModel(
-    val firestoreServiceViewModel: FirestoreServiceViewModel,
+    val application: Application,
     val mBinding: FragmentPhysicalAntenatalFeedingBinding,
-    val mUserId :String
+    private val mUserId :String
 ) : ViewModel() {
 
-    private val _writeException = MutableLiveData<Exception?>()
-    val exception: LiveData<Exception?>
-        get() = _writeException
+    private val patientsRepository = PatientRepository(LindaJamiiDatabase.getDatabase(application))
+
+    private val _writeStatusLoading = MutableLiveData<Boolean>()
+    val writeStatusLoading: LiveData<Boolean>
+        get() = _writeStatusLoading
 
 
     //Physical Examination
@@ -186,23 +191,22 @@ class PhysicalAntenatalFeedingViewModel(
         return isValid
     }
 
-    fun savePhysicalAntenatalFeeding() {
-        val physicalAntenatalFeeding = ExpectantPhysicalAntenatalFeeding(
+    private fun createPhysicalAntenatalFeeding() : ExpectantPhysicalAntenatalFeeding{
+        return ExpectantPhysicalAntenatalFeeding(
             general, bp, height, cvs, resp,
             breasts, abdomen, vaginalExamination, dischargeGenitalUlcers,
             hb, bloodGroup, rhesus, serology, tbScreening, dateIPTIsonaziadGiven,
             nextVisit, hiv, urianalysis, givenHIVCounsellingAndTest, feedingCounsellingDone,
             counselingOnExclusiveBreastfeedingDone
             )
+    }
 
-        firestoreServiceViewModel.saveInitialVisitPhysicalAntenatal(mUserId,physicalAntenatalFeeding ).also {writeException->
-            if(writeException.value == null){
-                _writeException.value = null
-            }else{
-                _writeException.value = writeException.value
+    suspend fun savePhysicalAntenatalFeeding() =
+        patientsRepository.saveInitialVisitPhysicalAntenatal(mUserId, createPhysicalAntenatalFeeding())
 
-            }
-        }
+    fun setIsLoading(isLoading: Boolean) {
+        _writeStatusLoading.value = isLoading
+
     }
 
 

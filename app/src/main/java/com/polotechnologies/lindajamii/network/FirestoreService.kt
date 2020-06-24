@@ -56,7 +56,7 @@ class FirestoreService {
             )
     }
 
-    fun saveInitialVisitMedicalHistory(
+    /*fun saveInitialVisitMedicalHistory(
         ancNumber: String,
         medicalSurgicalHistory: ExpectantMedicalSurgicalHistory
     ): Task<Void> {
@@ -65,9 +65,9 @@ class FirestoreService {
             .collection("initialVisit").document(ancNumber).update(
                 "medicalSurgicalHistory", medicalSurgicalHistory
             )
-    }
+    }*/
 
-    fun saveInitialVisitPhysicalAntenatal(
+    /*fun saveInitialVisitPhysicalAntenatal(
         ancNumber: String,
         physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding
     ): Task<Void> {
@@ -76,7 +76,7 @@ class FirestoreService {
             .collection("initialVisit").document(ancNumber).update(
                 "physicalAntenatalFeeding", physicalAntenatalFeeding
             )
-    }
+    }*/
     //endregion
 
 
@@ -94,7 +94,6 @@ class FirestoreService {
         emit(Resource.failed(it.localizedMessage!!))
     }.flowOn(Dispatchers.IO)
 
-
     fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails)
             = flow<Resource<Boolean>> {
 
@@ -103,6 +102,39 @@ class FirestoreService {
         val profileReference = patientsInitialVisitCollectionReference
             .document(expectantDetails.maternalProfile!!.ancNumber)
             .set(expectantDetails).await()
+
+        emit(Resource.success(true))
+    }.catch { exception ->
+        emit(Resource.failed(exception.localizedMessage!!))
+    }.flowOn(Dispatchers.IO)
+
+    fun saveInitialVisitMedicalHistory(ancNumber: String,
+                                       medicalSurgicalHistory: ExpectantMedicalSurgicalHistory)
+            = flow<Resource<Boolean>> {
+
+        emit(Resource.loading())
+
+        val profileReference = patientsInitialVisitCollectionReference
+            .document(ancNumber).update(
+                "medicalSurgicalHistory", medicalSurgicalHistory)
+            .await()
+
+        emit(Resource.success(true))
+    }.catch { exception ->
+        emit(Resource.failed(exception.localizedMessage!!))
+    }.flowOn(Dispatchers.IO)
+
+    fun saveInitialVisitPhysicalAntenatal(
+        ancNumber: String,
+        physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding)
+            = flow<Resource<Boolean>> {
+
+        emit(Resource.loading())
+
+        val profileReference = patientsInitialVisitCollectionReference
+            .document(ancNumber).update(
+                "physicalAntenatalFeeding", physicalAntenatalFeeding)
+            .await()
 
         emit(Resource.success(true))
     }.catch { exception ->

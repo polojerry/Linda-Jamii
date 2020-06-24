@@ -11,13 +11,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
+import com.polotechnologies.lindajamii.network.Resource
 import com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileFragmentDirections
-import com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileViewModel
-import com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile.MaternalProfileViewModelFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 /**
  *
@@ -32,28 +33,67 @@ class MedicalSurgicalHistoryFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_medical_surgical_history, container, false)
+        mBinding.buttonNextPhysicalAntenatalInfantFeeding.setOnClickListener { postMedicalSurgicalHistory() }
 
-        val firestoreServiceViewModel = ViewModelProvider(this)[FirestoreServiceViewModel::class.java]
         val mUserId = MedicalSurgicalHistoryFragmentArgs.fromBundle(requireArguments()).userId
-
-        val factory  = MedicalSurgicalHistoryViewModelFactory(firestoreServiceViewModel, mBinding, mUserId)
+        val factory  = MedicalSurgicalHistoryViewModelFactory(requireActivity().application, mBinding, mUserId)
         mViewModel = ViewModelProvider(this, factory)[MedicalSurgicalHistoryViewModel::class.java]
 
-        setObserver()
-        mBinding.buttonNextPhysicalAntenatalInfantFeeding.setOnClickListener {
+
+        /*mBinding.buttonNextPhysicalAntenatalInfantFeeding.setOnClickListener {
             if(mViewModel.isFieldsValid()){
                 mBinding.progressBarMedicalSurgicalHistory.visibility = View.VISIBLE
                 mBinding.buttonNextPhysicalAntenatalInfantFeeding.isEnabled = false
                 mViewModel.saveMedicalSurgicalHistory()
 
             }
-        }
+        }*/
 
         setFilledDropDownMenu()
         return mBinding.root
     }
 
-    private fun setObserver() {
+    private fun postMedicalSurgicalHistory() {
+        if (!mViewModel.isFieldsValid()) return
+
+        mBinding.buttonNextPhysicalAntenatalInfantFeeding.isEnabled = false
+
+        mViewModel.writeStatusLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            when (isLoading) {
+                true -> progressBarVisibility(View.VISIBLE)
+                else -> progressBarVisibility(View.GONE)
+            }
+
+        })
+
+        CoroutineScope(Dispatchers.Main).launch {
+            mViewModel.saveMedicalSurgicalHistory().collect { resource ->
+
+                when (resource) {
+                    is Resource.Loading -> {
+                        mViewModel.setIsLoading(true)
+                    }
+
+
+                    is Resource.Success -> {
+                        mViewModel.setIsLoading(false)
+                        val action =
+                            MedicalSurgicalHistoryFragmentDirections.actionMedicalSurgicalHistoryFragmentToPhysicalAntenatalFeeding(
+                                mViewModel.mUserId
+                            )
+                        findNavController().navigate(action)
+                    }
+
+                    is Resource.Failed -> {
+                        mViewModel.setIsLoading(false)
+                        toastMessage("Failed: ${resource.message}")
+                    }
+                }
+            }
+        }
+    }
+
+    /*private fun setObserver() {
         mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
             mBinding.progressBarMedicalSurgicalHistory.visibility = View.INVISIBLE
             if (exception == null) {
@@ -71,14 +111,14 @@ class MedicalSurgicalHistoryFragment : Fragment() {
             }
 
         })
-    }
+    }*/
 
     private fun setFilledDropDownMenu() {
-        val yes_no_drop_down = resources.getStringArray(R.array.filled_drop_down_yes_no)
+        val yesNoDropDown = resources.getStringArray(R.array.filled_drop_down_yes_no)
         val categoryAdapter  = ArrayAdapter<String>(
             requireContext().applicationContext,
             R.layout.layout_dropdown_menu_popup,
-            yes_no_drop_down
+            yesNoDropDown
         )
 
         mBinding.textMedicalSurgicalHistoryDiabetes.setAdapter(categoryAdapter)
@@ -87,6 +127,14 @@ class MedicalSurgicalHistoryFragment : Fragment() {
         mBinding.textMedicalSurgicalHistoryTuberculosis.setAdapter(categoryAdapter)
         mBinding.textMedicalSurgicalHistoryTwins.setAdapter(categoryAdapter)
         mBinding.textMedicalSurgicalHistoryFamilyHistoryTuberculosis.setAdapter(categoryAdapter)
+    }
+
+    private fun toastMessage(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun progressBarVisibility(visibility: Int) {
+        mBinding.progressBarMedicalSurgicalHistory.visibility = visibility
     }
 
 }

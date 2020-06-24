@@ -1,24 +1,29 @@
 package com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
+import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
 import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
+import com.polotechnologies.lindajamii.repository.PatientRepository
 import java.lang.Exception
 
 class MedicalSurgicalHistoryViewModel(
-    val firestoreServiceViewModel: FirestoreServiceViewModel,
+    val application: Application,
     val mBinding: FragmentMedicalSurgicalHistoryBinding,
     val mUserId: String
 ) : ViewModel() {
 
-    private val _writeException = MutableLiveData<Exception?>()
-    val exception: LiveData<Exception?>
-        get() = _writeException
+    private val patientsRepository = PatientRepository(LindaJamiiDatabase.getDatabase(application))
+
+    private val _writeStatusLoading = MutableLiveData<Boolean>()
+    val writeStatusLoading: LiveData<Boolean>
+        get() = _writeStatusLoading
 
     private var surgicalOperation = ""
     private var diabetes = ""
@@ -98,8 +103,8 @@ class MedicalSurgicalHistoryViewModel(
 
     }
 
-    fun saveMedicalSurgicalHistory() {
-        val medicalHistory = ExpectantMedicalSurgicalHistory(
+    private fun createMedicalSurgicalHistory() : ExpectantMedicalSurgicalHistory {
+        return ExpectantMedicalSurgicalHistory(
             surgicalOperation,
             diabetes,
             hypertension,
@@ -111,7 +116,7 @@ class MedicalSurgicalHistoryViewModel(
             familyHistoryTuberculosis
         )
 
-        firestoreServiceViewModel.saveInitialVisitMedicalHistory(mUserId,medicalHistory ).also {writeException->
+        /*firestoreServiceViewModel.saveInitialVisitMedicalHistory(mUserId,medicalHistory ).also {writeException->
             if(writeException.value == null){
                 _writeException.value = null
             }else{
@@ -119,8 +124,15 @@ class MedicalSurgicalHistoryViewModel(
 
             }
         }
-
+*/
     }
 
+    suspend fun saveMedicalSurgicalHistory() =
+        patientsRepository.saveInitialVisitMedicalHistory(mUserId, createMedicalSurgicalHistory())
+
+    fun setIsLoading(isLoading: Boolean) {
+        _writeStatusLoading.value = isLoading
+
+    }
 
 }

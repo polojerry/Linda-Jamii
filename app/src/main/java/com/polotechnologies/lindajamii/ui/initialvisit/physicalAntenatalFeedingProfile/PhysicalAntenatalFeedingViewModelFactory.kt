@@ -1,5 +1,6 @@
 package com.polotechnologies.lindajamii.ui.initialvisit.physicalAntenatalFeedingProfile
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
@@ -8,7 +9,7 @@ import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistor
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
-class PhysicalAntenatalFeedingViewModelFactory (val firestoreServiceViewModel: FirestoreServiceViewModel,
+class PhysicalAntenatalFeedingViewModelFactory (val application: Application,
                                                 private val mBinding: FragmentPhysicalAntenatalFeedingBinding,
                                                 private val mUserId : String
 ) : ViewModelProvider.Factory {
@@ -16,7 +17,7 @@ class PhysicalAntenatalFeedingViewModelFactory (val firestoreServiceViewModel: F
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(PhysicalAntenatalFeedingViewModel::class.java)) {
                 return PhysicalAntenatalFeedingViewModel(
-                    firestoreServiceViewModel,
+                    application,
                     mBinding,
                     mUserId
                 ) as T

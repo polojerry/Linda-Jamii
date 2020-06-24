@@ -1,5 +1,6 @@
 package com.polotechnologies.lindajamii.ui.delivery
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.polotechnologies.lindajamii.databinding.FragmentDeliveryBinding
@@ -9,14 +10,14 @@ import com.polotechnologies.lindajamii.databinding.FragmentDeliveryBinding
  */
 
 class DeliveryViewModelFactory(
-    private val firestoreServiceViewModel: FirestoreServiceViewModel,
+    val application: Application,
     val mBinding: FragmentDeliveryBinding
 ) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DeliveryViewModel::class.java)) {
             return DeliveryViewModel(
-                firestoreServiceViewModel,
+                application,
                 mBinding
             ) as T
         }

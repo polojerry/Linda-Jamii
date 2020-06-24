@@ -1,21 +1,28 @@
 package com.polotechnologies.lindajamii.ui.delivery
 
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
+import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
 import com.polotechnologies.lindajamii.databinding.FragmentDeliveryBinding
+import com.polotechnologies.lindajamii.repository.PatientRepository
 
 
 class DeliveryViewModel(
-    private val firestoreServiceViewModel: FirestoreServiceViewModel,
+    val application: Application,
     val mBinding: FragmentDeliveryBinding
 ) :
     ViewModel() {
-    private val _writeException = MutableLiveData<Exception?>()
-    val exception: LiveData<Exception?>
-        get() = _writeException
+
+    private val patientsRepository = PatientRepository(LindaJamiiDatabase.getDatabase(application))
+
+    private val _writeStatusLoading = MutableLiveData<Boolean>()
+    val writeStatusLoading: LiveData<Boolean>
+        get() = _writeStatusLoading
+
 
     private var registrationNumber = ""
     private var duringOfPregnancy = ""
@@ -153,23 +160,20 @@ class DeliveryViewModel(
 
     }
 
-    fun saveDeliveryDetails() {
-        val deliveryDetails = DeliveryDetails(
+    private fun createDeliveryDetails() : DeliveryDetails {
+        return DeliveryDetails(
             registrationNumber, duringOfPregnancy, hivTested, counselAndTest,
             modeOfDelivery, dateOfDelivery, bloodLoss, preEclapsia, eclampsia,
             apgarScore, rescusitationDone, babayVitK, babyTeo, birthWeight,
             birthLength, headCircumference, placeOfDelivery, conductedBy
         )
+    }
+
+    fun saveDeliveryDetails() = patientsRepository.saveDeliveryDetails(createDeliveryDetails())
 
 
-        firestoreServiceViewModel.saveDeliveryDetails(deliveryDetails).also {writeException->
-            if(writeException.value == null){
-                _writeException.value = null
-            }else{
-                _writeException.value = writeException.value
-
-            }
-        }
+    fun setIsLoading(isLoading: Boolean) {
+        _writeStatusLoading.value = isLoading
 
     }
 

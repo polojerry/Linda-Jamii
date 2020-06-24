@@ -1,24 +1,30 @@
 package com.polotechnologies.lindajamii.ui.subsequentVisits
 
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
+import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
 import com.polotechnologies.lindajamii.network.FirestoreService
+import com.polotechnologies.lindajamii.repository.PatientRepository
 import java.lang.Exception
 
 
 class SubsequentVisitViewModel(
+    val application: Application,
     val mBinding: FragmentSubsequentVisitsBinding
 ) :
     ViewModel() {
 
-    private val firestoreService = FirestoreService()
-    private val _writeException = MutableLiveData<Exception?>()
-    val exception: LiveData<Exception?>
-        get() = _writeException
+    private val patientsRepository = PatientRepository(LindaJamiiDatabase.getDatabase(application))
+
+    private val _writeStatusLoading = MutableLiveData<Boolean>()
+    val writeStatusLoading: LiveData<Boolean>
+        get() = _writeStatusLoading
+
 
     private var registrationNumber = ""
     private var numberOfVisit = ""
@@ -147,23 +153,19 @@ class SubsequentVisitViewModel(
 
     }
 
-    fun saveMedicalSurgicalHistory() {
-        val subsequentVisit = ExpectantSubsequentVisit(
+    private fun createExpectantSubsequentVisit() : ExpectantSubsequentVisit {
+        return  ExpectantSubsequentVisit(
             registrationNumber, numberOfVisit,dateOfVisit, urine, weight,
             bp, hb, pallor, maturity, fundalHeight, presentation, lie,
             foetalHeart, foetalMovement, nextVisit
         )
-
-        /*firestoreService.saveSubsequentVisit(subsequentVisit).also {writeException->
-            if(writeException.value == null){
-                _writeException.value = null
-            }else{
-                _writeException.value = writeException.value
-
-            }
-        }*/
-
     }
 
+    fun saveSubsequentVisit() = patientsRepository.saveSubsequentVisit(createExpectantSubsequentVisit())
+
+    fun setIsLoading(isLoading: Boolean) {
+        _writeStatusLoading.value = isLoading
+
+    }
 
 }

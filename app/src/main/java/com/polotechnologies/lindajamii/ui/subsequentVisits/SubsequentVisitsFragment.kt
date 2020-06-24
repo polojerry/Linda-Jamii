@@ -12,7 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
-import com.polotechnologies.lindajamii.ui.initialvisit.medicalSurgicalHistory.MedicalSurgicalHistoryFragmentDirections
+import com.polotechnologies.lindajamii.network.Resource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 
 /**
@@ -28,26 +32,53 @@ class SubsequentVisitsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_subsequent_visits, container, false)
+        mBinding.buttonFinishSubsequentVisit.setOnClickListener { postSubsequentVisit() }
 
-        val factory = SubsequentVisitViewModelFactory(mBinding)
+        val factory = SubsequentVisitViewModelFactory(requireActivity().application,mBinding)
         mViewModel = ViewModelProvider(this, factory)[SubsequentVisitViewModel::class.java]
 
-        setObserver()
-        mBinding.buttonFinishSubsequentVisit.setOnClickListener {
-            if(mViewModel.isFieldsValid()){
-                mBinding.progressBarSubsequentVisit.visibility = View.VISIBLE
-                mBinding.buttonFinishSubsequentVisit.isEnabled = false
-                mViewModel.saveMedicalSurgicalHistory()
-
-            }
-        }
-
-        setClickListeners()
+        setDateListeners()
 
         return mBinding.root
     }
 
-    private fun setClickListeners() {
+    private fun postSubsequentVisit() {
+        if (!mViewModel.isFieldsValid()) return
+
+        mBinding.buttonFinishSubsequentVisit.isEnabled = false
+
+        mViewModel.writeStatusLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            when (isLoading) {
+                true -> progressBarVisibility(View.VISIBLE)
+                else -> progressBarVisibility(View.GONE)
+            }
+
+        })
+
+        CoroutineScope(Dispatchers.Main).launch {
+            mViewModel.saveSubsequentVisit().collect { resource ->
+
+                when (resource) {
+                    is Resource.Loading -> {
+                        mViewModel.setIsLoading(true)
+                    }
+
+
+                    is Resource.Success -> {
+                        mViewModel.setIsLoading(false)
+                        requireActivity().onBackPressed()
+                    }
+
+                    is Resource.Failed -> {
+                        mViewModel.setIsLoading(false)
+                        toastMessage("Failed: ${resource.message}")
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setDateListeners() {
         mBinding.textSubsequentVisitsDate.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus){
                 displayDatePicker("Today's Date")
@@ -85,22 +116,12 @@ class SubsequentVisitsFragment : Fragment() {
 
     }
 
+    private fun toastMessage(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
 
-    private fun setObserver() {
-        mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
-            mBinding.progressBarSubsequentVisit.visibility = View.INVISIBLE
-            if (exception == null) {
-                Toast.makeText(requireContext().applicationContext, "Subsequent Visit Done", Toast.LENGTH_SHORT).show()
-                requireActivity().onBackPressed()
-            } else {
-                Toast.makeText(
-                    requireActivity().applicationContext,
-                    "Failed: ${exception.localizedMessage}",
-                    Toast.LENGTH_SHORT
-                )
-            }
-
-        })
+    private fun progressBarVisibility(visibility: Int) {
+        mBinding.progressBarSubsequentVisit.visibility = visibility
     }
 
 }

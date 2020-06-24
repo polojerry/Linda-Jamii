@@ -17,8 +17,8 @@ class PhysicalAntenatalFeedingViewModel(
     val mUserId :String
 ) : ViewModel() {
 
-    private val _writeException = MutableLiveData<Exception>()
-    val exception: LiveData<Exception>
+    private val _writeException = MutableLiveData<Exception?>()
+    val exception: LiveData<Exception?>
         get() = _writeException
 
 

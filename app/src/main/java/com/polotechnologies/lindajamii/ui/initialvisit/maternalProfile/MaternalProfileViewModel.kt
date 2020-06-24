@@ -18,8 +18,8 @@ class MaternalProfileViewModel(
     val userId: LiveData<String>
         get() = _userId
 
-    private val _writeException = MutableLiveData<Exception>()
-    val exception: LiveData<Exception>
+    private val _writeException = MutableLiveData<Exception?>()
+    val exception: LiveData<Exception?>
         get() = _writeException
 
     private var nameOfInstitution = ""

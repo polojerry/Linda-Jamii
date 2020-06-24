@@ -19,8 +19,8 @@ class SubsequentVisitViewModel(
     ViewModel() {
 
     private val firestoreService = FirestoreService()
-    private val _writeException = MutableLiveData<java.lang.Exception>()
-    val exception: LiveData<Exception>
+    private val _writeException = MutableLiveData<Exception?>()
+    val exception: LiveData<Exception?>
         get() = _writeException
 
     private var registrationNumber = ""

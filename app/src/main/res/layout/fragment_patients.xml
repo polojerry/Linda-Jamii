@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         tools:context=".ui.patients.PatientsFragment">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,9 +20,9 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:layout_marginEnd="8dp"
-            app:cardBackgroundColor="@color/colorPrimary"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="8dp"
             app:cardUseCompatPadding="true"
+            app:elevation="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -30,16 +30,15 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar_search_patient"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:background="@color/colorTextIcons"
-                android:padding="4dp"
+                android:layout_height="wrap_content"
                 android:theme="@style/Theme.LindaJamii.DarkActionBar"
+                android:background="@color/colorTextIcons"
                 app:menu="@menu/menu_patient_search"
-                app:title="search by anc no."
+                app:title="Search"
                 app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
                 android:backgroundTint="@color/colorPrimary"/>
 
-        </com.google.android.material.appbar.AppBarLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_patients"

@@ -15,22 +15,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentPatientsBinding
-import com.polotechnologies.lindajamii.network.FirestoreService
 import com.polotechnologies.lindajamii.network.Resource
-import com.polotechnologies.lindajamii.util.ExpectantVisitNotification
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var mBinding: FragmentPatientsBinding
     private lateinit var mViewModel: PatientsViewModel
-    private lateinit var mAdapter : PatientsRecyclerAdapter
-
-    private val uiScope = CoroutineScope(Dispatchers.Main)
+    private lateinit var mAdapter: PatientsRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,15 +42,16 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun setDisplayDetails() {
-        mAdapter = PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener { selectedPatient ->
+        mAdapter =
+            PatientsRecyclerAdapter(PatientsRecyclerAdapter.OnClickListener { selectedPatient ->
                 mViewModel.displaySelectedPatient(selectedPatient)
             })
 
         mBinding.recyclerPatients.adapter = mAdapter
 
-        uiScope.launch {
+        /*uiScope.launch {
             fetchPatients()
-        }
+        }*/
 
     }
 
@@ -76,7 +69,7 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
                     mBinding.swipeRefreshPatients.isRefreshing = false
                 }
                 is Resource.Failed -> {
-                    Toast.makeText(requireContext(), "Failed: ${resource.message}", Toast.LENGTH_SHORT).show()
+                    toastMessage("Failed: ${resource.message}")
                     mBinding.swipeRefreshPatients.isRefreshing = false
                 }
             }
@@ -94,6 +87,12 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
                     )
                 findNavController().navigate(action)
                 mViewModel.displaySelectedPatientDone()
+            }
+        })
+
+        mViewModel.patientsData.observe(viewLifecycleOwner, Observer { expectantDetails ->
+            if(expectantDetails != null){
+                mAdapter.submitList(expectantDetails)
             }
         })
     }
@@ -119,6 +118,10 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return false
+    }
+
+    private fun toastMessage(message: String){
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
 

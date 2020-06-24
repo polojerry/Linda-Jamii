@@ -28,26 +28,6 @@ class FirestoreService {
     var patients = listOf<ExpectantDetails?>()
     var writeException = MutableLiveData<Exception>()
 
-    private fun patientsDetailsReference(): CollectionReference {
-        return mDatabase.collection("patients")
-            .document("maternalVisit")
-            .collection("initialVisit")
-    }
-
-    fun getPatients() {
-        patientsDetailsReference().addSnapshotListener { snapshot, exception ->
-            if (exception != null) {
-                Log.d(TAG, "getPatients: $exception")
-                patients = emptyList()
-            }
-            val patientsList: MutableList<ExpectantDetails> = mutableListOf()
-            snapshot?.forEach { docSnapshot ->
-                val patient = docSnapshot.toObject(ExpectantDetails::class.java)
-                patientsList.add(patient)
-            }
-            patients = patientsList
-        }
-    }
 
     private fun subsequentReference(): DocumentReference {
         return mDatabase.collection("patients")

@@ -22,7 +22,7 @@ class RefreshPatientsWork(val context: Context,params: WorkerParameters) :
 
         return try{
             Log.d(WORK_NAME, "doWork: Updating...........")
-            repository.refreshPatients()
+            repository.refreshPatients("")
             Result.success()
         }catch (exception: FirebaseFirestoreException){
             Log.d(WORK_NAME, "doWork: Updating Failed...${exception.localizedMessage}")

@@ -1,5 +1,6 @@
 package com.polotechnologies.lindajamii.repository
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
@@ -7,9 +8,7 @@ import com.polotechnologies.lindajamii.dataModels.asDomainModel
 import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
 import com.polotechnologies.lindajamii.network.FirestoreService
 import com.polotechnologies.lindajamii.network.Resource
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.withContext
 
 class PatientRepository(val database: LindaJamiiDatabase) {
     private val firestoreService = FirestoreService()
@@ -22,7 +21,7 @@ class PatientRepository(val database: LindaJamiiDatabase) {
         }
     }*/
 
-    suspend fun refreshPatients() {
+    /*suspend fun refreshPatients() {
         withContext(Dispatchers.IO) {
             firestoreService.getAllPatients("").collect{resource->
                 when(resource){
@@ -38,7 +37,23 @@ class PatientRepository(val database: LindaJamiiDatabase) {
         Transformations.map(database.expectantDetailsDao.getPatients()) { expectantList ->
             expectantList.asDomainModel()
         }
+*/
 
+    val patients: LiveData<List<ExpectantDetails>> =
+        Transformations.map(database.expectantDetailsDao.getPatients()) { expectantList ->
+            expectantList.asDomainModel()
+        }
+
+    suspend fun refreshPatients(facilityId: String) {
+        firestoreService.getAllPatients(facilityId).collect { resource ->
+            if (resource is Resource.Success) {
+
+                database.expectantDetailsDao.insert(*resource.data.toTypedArray())
+
+            }
+
+        }
+    }
 
 }
 

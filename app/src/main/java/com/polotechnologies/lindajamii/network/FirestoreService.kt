@@ -3,8 +3,7 @@ package com.polotechnologies.lindajamii.network
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
-import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.ExpectantMedicalSurgicalHistory
-import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.ExpectantPhysicalAntenatalFeeding
+import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -46,33 +45,31 @@ class FirestoreService {
 
     //region Patients Initial Visit
     /**Post Maternal Profile*/
-    fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails) =
-        flow<Resource<Boolean>> {
+    fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails)
+            = flow<Resource<Boolean>> {
 
-            emit(Resource.loading())
+        emit(Resource.loading())
 
-            patientsInitialVisitCollectionReference
-                .document(expectantDetails.maternalProfile!!.ancNumber)
-                .set(expectantDetails).await()
+        patientsInitialVisitCollectionReference
+            .document(expectantDetails.maternalProfile!!.ancNumber)
+            .set(expectantDetails).await()
 
-            emit(Resource.success(true))
-        }.catch { exception ->
-            emit(Resource.failed(exception.localizedMessage!!))
-        }.flowOn(Dispatchers.IO)
+        emit(Resource.success(true))
+    }.catch { exception ->
+        emit(Resource.failed(exception.localizedMessage!!))
+    }.flowOn(Dispatchers.IO)
 
 
     /**Post Medical Surgical History*/
-    fun saveInitialVisitMedicalHistory(
-        ancNumber: String,
-        medicalSurgicalHistory: ExpectantMedicalSurgicalHistory
-    ) = flow<Resource<Boolean>> {
+    fun saveInitialVisitMedicalHistory(ancNumber: String,
+                                       medicalSurgicalHistory: ExpectantMedicalSurgicalHistory)
+            = flow<Resource<Boolean>> {
 
         emit(Resource.loading())
 
         patientsInitialVisitCollectionReference
             .document(ancNumber).update(
-                "medicalSurgicalHistory", medicalSurgicalHistory
-            )
+                "medicalSurgicalHistory", medicalSurgicalHistory)
             .await()
 
         emit(Resource.success(true))
@@ -81,18 +78,18 @@ class FirestoreService {
     }.flowOn(Dispatchers.IO)
 
 
+
     /**Post Physical Antenatal Feeding Profile*/
     fun saveInitialVisitPhysicalAntenatal(
         ancNumber: String,
-        physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding
-    ) = flow<Resource<Boolean>> {
+        physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding)
+            = flow<Resource<Boolean>> {
 
         emit(Resource.loading())
 
         patientsInitialVisitCollectionReference
             .document(ancNumber).update(
-                "physicalAntenatalFeeding", physicalAntenatalFeeding
-            )
+                "physicalAntenatalFeeding", physicalAntenatalFeeding)
             .await()
 
         emit(Resource.success(true))
@@ -102,7 +99,8 @@ class FirestoreService {
     //endregion
 
     /**Saving Subsequent Visit*/
-    fun saveSubsequentVisit(subsequentVisit: ExpectantSubsequentVisit) = flow<Resource<Boolean>> {
+    fun saveSubsequentVisit(subsequentVisit: ExpectantSubsequentVisit)
+            = flow<Resource<Boolean>> {
 
         emit(Resource.loading())
 
@@ -116,7 +114,8 @@ class FirestoreService {
 
 
     /**Saving Delivery Visit*/
-    fun saveDeliveryDetails(deliveryDetails: DeliveryDetails) = flow<Resource<Boolean>> {
+    fun saveDeliveryDetails(deliveryDetails: DeliveryDetails)
+            = flow<Resource<Boolean>> {
 
         emit(Resource.loading())
 

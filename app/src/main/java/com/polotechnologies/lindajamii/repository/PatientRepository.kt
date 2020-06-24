@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
+import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 import com.polotechnologies.lindajamii.dataModels.asDomainModel
 import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
@@ -36,14 +37,24 @@ class PatientRepository(val database: LindaJamiiDatabase) {
     fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails) =
         firestoreService.saveInitialVisitMaternalProfile(expectantDetails)
 
-    /** Save  Medical Surgical History*/
+    /** Save Medical Surgical History*/
     fun saveInitialVisitMedicalHistory(
         ancNumber: String,
-        medicalSurgicalHistory: ExpectantDetails.ExpectantMedicalSurgicalHistory
+        medicalSurgicalHistory: ExpectantMedicalSurgicalHistory
     ) =
         firestoreService.saveInitialVisitMedicalHistory(
             ancNumber,
             medicalSurgicalHistory
+        )
+
+    /** Save physical Antenatal*/
+    fun saveInitialVisitPhysicalAntenatal(
+        ancNumber: String,
+        physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding
+    ) =
+        firestoreService.saveInitialVisitPhysicalAntenatal(
+            ancNumber,
+            physicalAntenatalFeeding
         )
 
     /** Save Subsequent Visit*/

@@ -2,9 +2,7 @@ package com.polotechnologies.lindajamii.ui.delivery
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.databinding.FragmentDeliveryBinding
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
 /**
  * Simple ViewModel factory for Devilery Visit ViewModel

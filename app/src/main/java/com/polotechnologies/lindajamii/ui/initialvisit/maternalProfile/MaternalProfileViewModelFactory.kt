@@ -3,9 +3,7 @@ package com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
 class MaternalProfileViewModelFactory (val application: Application,
                              private val mBinding: FragmentMaternalProfileBinding) : ViewModelProvider.Factory {

@@ -13,9 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentDeliveryBinding
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
-import com.polotechnologies.lindajamii.ui.subsequentVisits.SubsequentVisitViewModel
-import com.polotechnologies.lindajamii.ui.subsequentVisits.SubsequentVisitViewModelFactory
 
 /**
  */

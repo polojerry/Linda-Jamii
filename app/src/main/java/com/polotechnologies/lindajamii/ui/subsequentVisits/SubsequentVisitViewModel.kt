@@ -7,10 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
 import com.polotechnologies.lindajamii.network.FirestoreService
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import java.lang.Exception
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class SubsequentVisitViewModel(
@@ -157,14 +154,14 @@ class SubsequentVisitViewModel(
             foetalHeart, foetalMovement, nextVisit
         )
 
-        firestoreService.saveSubsequentVisit(subsequentVisit).also {writeException->
+        /*firestoreService.saveSubsequentVisit(subsequentVisit).also {writeException->
             if(writeException.value == null){
                 _writeException.value = null
             }else{
                 _writeException.value = writeException.value
 
             }
-        }
+        }*/
 
     }
 

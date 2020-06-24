@@ -4,14 +4,8 @@ package com.polotechnologies.lindajamii.ui.delivery
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
-import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
-import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
-import com.polotechnologies.lindajamii.dataModels.SubsequentVisit
 import com.polotechnologies.lindajamii.databinding.FragmentDeliveryBinding
-import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
 
 class DeliveryViewModel(

@@ -48,33 +48,9 @@ class PatientsFragment : Fragment(), SearchView.OnQueryTextListener {
             })
 
         mBinding.recyclerPatients.adapter = mAdapter
-
-        /*uiScope.launch {
-            fetchPatients()
-        }*/
-
-    }
-
-    private suspend fun fetchPatients() {
-
-        mViewModel.fetchPatients().collect { resource ->
-            when (resource) {
-
-                is Resource.Loading -> {
-                    mBinding.swipeRefreshPatients.isRefreshing = true
-                }
-
-                is Resource.Success -> {
-                    mAdapter.submitList(resource.data)
-                    mBinding.swipeRefreshPatients.isRefreshing = false
-                }
-                is Resource.Failed -> {
-                    toastMessage("Failed: ${resource.message}")
-                    mBinding.swipeRefreshPatients.isRefreshing = false
-                }
-            }
-
-
+        mBinding.swipeRefreshPatients.setOnRefreshListener {
+            mViewModel.fetchPatients()
+            mBinding.swipeRefreshPatients.isRefreshing = false
         }
     }
 

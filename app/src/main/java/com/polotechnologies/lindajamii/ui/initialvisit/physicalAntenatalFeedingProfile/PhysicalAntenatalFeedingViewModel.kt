@@ -4,16 +4,10 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.FirebaseFirestore
-import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
-import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 import com.polotechnologies.lindajamii.repository.PatientRepository
-import java.lang.Exception
-
 class PhysicalAntenatalFeedingViewModel(
     val application: Application,
     val mBinding: FragmentPhysicalAntenatalFeedingBinding,
@@ -201,7 +195,7 @@ class PhysicalAntenatalFeedingViewModel(
             )
     }
 
-    suspend fun savePhysicalAntenatalFeeding() =
+    fun savePhysicalAntenatalFeeding() =
         patientsRepository.saveInitialVisitPhysicalAntenatal(mUserId, createPhysicalAntenatalFeeding())
 
     fun setIsLoading(isLoading: Boolean) {

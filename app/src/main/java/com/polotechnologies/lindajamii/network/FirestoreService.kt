@@ -56,27 +56,6 @@ class FirestoreService {
             )
     }
 
-    /*fun saveInitialVisitMedicalHistory(
-        ancNumber: String,
-        medicalSurgicalHistory: ExpectantMedicalSurgicalHistory
-    ): Task<Void> {
-        return mDatabase.collection("patients")
-            .document("maternalVisit")
-            .collection("initialVisit").document(ancNumber).update(
-                "medicalSurgicalHistory", medicalSurgicalHistory
-            )
-    }*/
-
-    /*fun saveInitialVisitPhysicalAntenatal(
-        ancNumber: String,
-        physicalAntenatalFeeding: ExpectantPhysicalAntenatalFeeding
-    ): Task<Void> {
-        return mDatabase.collection("patients")
-            .document("maternalVisit")
-            .collection("initialVisit").document(ancNumber).update(
-                "physicalAntenatalFeeding", physicalAntenatalFeeding
-            )
-    }*/
     //endregion
 
 
@@ -94,6 +73,7 @@ class FirestoreService {
         emit(Resource.failed(it.localizedMessage!!))
     }.flowOn(Dispatchers.IO)
 
+
     fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails)
             = flow<Resource<Boolean>> {
 
@@ -107,6 +87,8 @@ class FirestoreService {
     }.catch { exception ->
         emit(Resource.failed(exception.localizedMessage!!))
     }.flowOn(Dispatchers.IO)
+
+
 
     fun saveInitialVisitMedicalHistory(ancNumber: String,
                                        medicalSurgicalHistory: ExpectantMedicalSurgicalHistory)
@@ -123,6 +105,8 @@ class FirestoreService {
     }.catch { exception ->
         emit(Resource.failed(exception.localizedMessage!!))
     }.flowOn(Dispatchers.IO)
+
+
 
     fun saveInitialVisitPhysicalAntenatal(
         ancNumber: String,

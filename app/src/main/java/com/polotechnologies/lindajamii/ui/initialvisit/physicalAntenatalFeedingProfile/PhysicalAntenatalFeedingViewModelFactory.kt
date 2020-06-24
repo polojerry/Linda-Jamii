@@ -3,11 +3,7 @@ package com.polotechnologies.lindajamii.ui.initialvisit.physicalAntenatalFeeding
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.firestore.FirebaseFirestore
-import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
-import com.polotechnologies.lindajamii.databinding.FragmentMedicalSurgicalHistoryBinding
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
 class PhysicalAntenatalFeedingViewModelFactory (val application: Application,
                                                 private val mBinding: FragmentPhysicalAntenatalFeedingBinding,

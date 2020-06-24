@@ -181,7 +181,7 @@ class MaternalProfileViewModel(
         )
     }
 
-    suspend fun saveMaternalProfile() = patientsRepository.saveInitialVisitMaternalProfile(createMaternalProfile())
+    fun saveMaternalProfile() = patientsRepository.saveInitialVisitMaternalProfile(createMaternalProfile())
 
     private fun getExpectantMotherProfile(): ExpectantMaternalProfile? {
 

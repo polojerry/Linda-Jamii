@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentPhysicalAntenatalFeedingBinding
 import com.polotechnologies.lindajamii.network.Resource
@@ -48,15 +47,6 @@ class PhysicalAntenatalFeeding : Fragment() {
         )
         mViewModel = ViewModelProvider(this, factory)[PhysicalAntenatalFeedingViewModel::class.java]
 
-        //setObserver()
-        /*mBinding.buttonFinishInitial.setOnClickListener {
-            if (mViewModel.isFieldsValid()) {
-                mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = View.VISIBLE
-                mBinding.buttonFinishInitial.isEnabled = false
-                mViewModel.savePhysicalAntenatalFeeding()
-
-            }
-        }*/
 
         setFilledDropDownMenu()
         return mBinding.root
@@ -98,23 +88,6 @@ class PhysicalAntenatalFeeding : Fragment() {
             }
         }
     }
-
-    /*private fun setObserver() {
-        mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
-            mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = View.INVISIBLE
-            if (exception == null) {
-                Toast.makeText(requireContext().applicationContext, "Initial Visit Done", Toast.LENGTH_SHORT).show()
-                requireActivity().onBackPressed()
-            } else {
-                Toast.makeText(
-                    requireContext().applicationContext,
-                    "Failed: ${mViewModel.exception.value!!.localizedMessage}",
-                    Toast.LENGTH_SHORT
-                )
-            }
-
-        })
-    }*/
 
     private fun setFilledDropDownMenu() {
         val yesNoDropDown = resources.getStringArray(R.array.filled_drop_down_yes_no)

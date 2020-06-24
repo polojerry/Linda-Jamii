@@ -39,16 +39,6 @@ class MedicalSurgicalHistoryFragment : Fragment() {
         val factory  = MedicalSurgicalHistoryViewModelFactory(requireActivity().application, mBinding, mUserId)
         mViewModel = ViewModelProvider(this, factory)[MedicalSurgicalHistoryViewModel::class.java]
 
-
-        /*mBinding.buttonNextPhysicalAntenatalInfantFeeding.setOnClickListener {
-            if(mViewModel.isFieldsValid()){
-                mBinding.progressBarMedicalSurgicalHistory.visibility = View.VISIBLE
-                mBinding.buttonNextPhysicalAntenatalInfantFeeding.isEnabled = false
-                mViewModel.saveMedicalSurgicalHistory()
-
-            }
-        }*/
-
         setFilledDropDownMenu()
         return mBinding.root
     }
@@ -92,26 +82,6 @@ class MedicalSurgicalHistoryFragment : Fragment() {
             }
         }
     }
-
-    /*private fun setObserver() {
-        mViewModel.exception.observe(viewLifecycleOwner, Observer { exception ->
-            mBinding.progressBarMedicalSurgicalHistory.visibility = View.INVISIBLE
-            if (exception == null) {
-                val action =
-                    MedicalSurgicalHistoryFragmentDirections.actionMedicalSurgicalHistoryFragmentToPhysicalAntenatalFeeding(
-                        mViewModel.mUserId
-                    )
-                findNavController().navigate(action)
-            } else {
-                Toast.makeText(
-                    requireContext().applicationContext,
-                    "Failed: ${exception.localizedMessage}",
-                    Toast.LENGTH_SHORT
-                )
-            }
-
-        })
-    }*/
 
     private fun setFilledDropDownMenu() {
         val yesNoDropDown = resources.getStringArray(R.array.filled_drop_down_yes_no)

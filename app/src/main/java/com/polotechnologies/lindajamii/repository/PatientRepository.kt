@@ -1,6 +1,5 @@
 package com.polotechnologies.lindajamii.repository
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
@@ -12,32 +11,6 @@ import kotlinx.coroutines.flow.collect
 
 class PatientRepository(val database: LindaJamiiDatabase) {
     private val firestoreService = FirestoreService()
-
-    /*suspend fun refreshPatients() {
-        withContext(Dispatchers.IO) {
-            firestoreService.getPatients()
-            val patientsList = firestoreService.patients
-            *//*database.expectantDetailsDao.insert(*patientsList.toTypedArray())*//*
-        }
-    }*/
-
-    /*suspend fun refreshPatients() {
-        withContext(Dispatchers.IO) {
-            firestoreService.getAllPatients("").collect{resource->
-                when(resource){
-                    is Resource.Success ->{
-                        database.expectantDetailsDao.insert(*resource.data.toTypedArray())
-                    }
-                }
-            }
-        }
-    }
-
-    val patients: LiveData<List<ExpectantDetails>> =
-        Transformations.map(database.expectantDetailsDao.getPatients()) { expectantList ->
-            expectantList.asDomainModel()
-        }
-*/
 
     val patients: LiveData<List<ExpectantDetails>> =
         Transformations.map(database.expectantDetailsDao.getPatients()) { expectantList ->
@@ -54,6 +27,9 @@ class PatientRepository(val database: LindaJamiiDatabase) {
 
         }
     }
+
+    suspend fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails) =
+        firestoreService.saveInitialVisitMaternalProfile(expectantDetails)
 
 }
 

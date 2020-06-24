@@ -22,7 +22,7 @@ class FirestoreServiceViewModel : ViewModel() {
         return writeException
     }
 
-    fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails): MutableLiveData<Exception?> {
+   /* fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails): MutableLiveData<Exception?> {
         firestoreService.saveInitialVisitMaternalProfile(expectantDetails).addOnSuccessListener {
             writeException.value = null
         }.addOnFailureListener { exception ->
@@ -30,7 +30,7 @@ class FirestoreServiceViewModel : ViewModel() {
 
         }
         return writeException
-    }
+    }*/
 
     fun saveInitialVisitMedicalHistory(
         ancNumber: String,

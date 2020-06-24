@@ -1,26 +1,30 @@
 package com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
+import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
-import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
+import com.polotechnologies.lindajamii.repository.PatientRepository
 import java.lang.Exception
 
 class MaternalProfileViewModel(
-    val firestoreServiceViewModel: FirestoreServiceViewModel,
+    val application: Application,
     val mBinding: FragmentMaternalProfileBinding
 ) : ViewModel() {
+
+    private val patientsRepository = PatientRepository(LindaJamiiDatabase.getDatabase(application))
 
     private val _userId = MutableLiveData<String>()
     val userId: LiveData<String>
         get() = _userId
 
-    private val _writeException = MutableLiveData<Exception?>()
-    val exception: LiveData<Exception?>
-        get() = _writeException
+    private val _writeStatusLoading = MutableLiveData<Boolean>()
+    val writeStatusLoading: LiveData<Boolean>
+        get() = _writeStatusLoading
 
     private var nameOfInstitution = ""
     private var mflNumber = ""
@@ -166,8 +170,8 @@ class MaternalProfileViewModel(
 
     }
 
-    fun saveMaternalProfile() {
-        val expectantDetails = ExpectantDetails(
+    private fun createMaternalProfile() : ExpectantDetails {
+        return ExpectantDetails(
             userId.value!!,
             null,
             getExpectantMotherProfile(),
@@ -175,17 +179,9 @@ class MaternalProfileViewModel(
             null,
             null
         )
-
-        firestoreServiceViewModel.saveInitialVisitMaternalProfile(expectantDetails).also {writeException->
-            if(writeException.value == null){
-                _writeException.value = null
-            }else{
-                _writeException.value = writeException.value
-
-            }
-        }
-
     }
+
+    suspend fun saveMaternalProfile() = patientsRepository.saveInitialVisitMaternalProfile(createMaternalProfile())
 
     private fun getExpectantMotherProfile(): ExpectantMaternalProfile? {
 
@@ -195,6 +191,11 @@ class MaternalProfileViewModel(
             height, weight, lmp, edd, maritalStatus, education,
             address, telephone, nextOfKin, relationShip, nextOfKinContact
         )
+    }
+
+    fun setIsLoading(isLoading: Boolean) {
+        _writeStatusLoading.value = isLoading
+
     }
 
 

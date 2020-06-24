@@ -1,10 +1,8 @@
 package com.polotechnologies.lindajamii.network
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.dataModels.DeliveryDetails
@@ -19,8 +17,12 @@ import kotlinx.coroutines.tasks.await
 
 class FirestoreService {
     private val mDatabase = FirebaseFirestore.getInstance()
-    private val patientsCollectionReference = mDatabase.collection("patients")
-        .document("maternalVisit").collection("initialVisit")
+
+    private val patientsDocumentReference = mDatabase.collection("patients")
+        .document("maternalVisit")
+
+    private val patientsInitialVisitCollectionReference = patientsDocumentReference
+        .collection("initialVisit")
 
     //region Old Implementation
     val TAG = "FIRESTORE- SERVICE"
@@ -54,15 +56,6 @@ class FirestoreService {
             )
     }
 
-    fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails): Task<Void> {
-        return mDatabase.collection("patients")
-            .document("maternalVisit")
-            .collection("initialVisit").document(expectantDetails.maternalProfile!!.ancNumber)
-            .set(
-                expectantDetails
-            )
-    }
-
     fun saveInitialVisitMedicalHistory(
         ancNumber: String,
         medicalSurgicalHistory: ExpectantMedicalSurgicalHistory
@@ -86,11 +79,12 @@ class FirestoreService {
     }
     //endregion
 
+
     fun getAllPatients(facilityId: String) = flow<Resource<List<ExpectantDetails>>> {
         //Loading
         emit(Resource.loading())
 
-        val patientsSnapshot = patientsCollectionReference.get().await()
+        val patientsSnapshot = patientsInitialVisitCollectionReference.get().await()
         val patientsList = patientsSnapshot.toObjects(ExpectantDetails::class.java)
 
         //Success
@@ -98,6 +92,21 @@ class FirestoreService {
 
     }.catch {
         emit(Resource.failed(it.localizedMessage!!))
+    }.flowOn(Dispatchers.IO)
+
+
+    fun saveInitialVisitMaternalProfile(expectantDetails: ExpectantDetails)
+            = flow<Resource<Boolean>> {
+
+        emit(Resource.loading())
+
+        val profileReference = patientsInitialVisitCollectionReference
+            .document(expectantDetails.maternalProfile!!.ancNumber)
+            .set(expectantDetails).await()
+
+        emit(Resource.success(true))
+    }.catch { exception ->
+        emit(Resource.failed(exception.localizedMessage!!))
     }.flowOn(Dispatchers.IO)
 
 

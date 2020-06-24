@@ -1,18 +1,19 @@
 package com.polotechnologies.lindajamii.ui.initialvisit.maternalProfile
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
 import com.polotechnologies.lindajamii.network.FirestoreServiceViewModel
 
-class MaternalProfileViewModelFactory (val firestoreServiceViewModel: FirestoreServiceViewModel,
+class MaternalProfileViewModelFactory (val application: Application,
                              private val mBinding: FragmentMaternalProfileBinding) : ViewModelProvider.Factory {
         @Suppress("unchecked_cast")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MaternalProfileViewModel::class.java)) {
                 return MaternalProfileViewModel(
-                    firestoreServiceViewModel,
+                    application,
                     mBinding
                 ) as T
             }

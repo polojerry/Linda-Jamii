@@ -1,12 +1,16 @@
 # Linda-Jamii
-An Android Application used to keep track of Pregnany women for Antenatal Care, Delivery and PostNatal Care. This Starts from the First visit of a mother to a health center, her visits to the clinic, delivery, post natal care of baby till one years old after getting all the required vacination
-# 🚧 Work in progress 👷‍♀️⛏👷🔧️👷🔧 🚧 
+An Android Application used to keep track of Expectant Women for Antenatal Care, Delivery and PostNatal Care. This Starts from the First visit of a mother to a health center, her visits to the clinic, delivery, post natal care of baby and mother till. 🚧 Work in progress 👷‍♀️⛏👷🔧️👷🔧 🚧 
 
 # Introduction
-A new study [BMC Pregnancy and Childbirth](https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-019-2485-2) on Maternal Mortality rate in Siaya County, Maternal Mortality rates are 695 per 100,000 live births; against Kenyan national average of 49/1000 and 488/100,000 . In another study on child mortality in Nyanza [Standard Digital Media](https://www.standardmedia.co.ke/article/2000043800/child-mortality-rates-still-high-in-nyanza) has shown that death rate is still high, with about 149 children out of 1,000 dying every year.Similarly, one out of seven children aged five and below die before celebrating their fifth birthday. 
-The infant mortality is high compared to Central Province where only one out of 20 children die of similar causes. This means that infant mortality risks in Nyanza are three times higher compared to Central.
-Linda-Jamii Seeks to reduce Maternall Mortality rate and Infant Mortality Rate in Nyanza by:
-Enabling Health Practitioner keep track of Expectant Mothers, Encouraging them for Regular visit, Providing them with Relevant Information on Antenatal Care (ANC), Delivery and Post Natal Care. By this we will reduce Maternal Mortality and Infant Mortality rate. #Kulinda Mama,ni Kulinda Jamii
+A new study [BMC Pregnancy and Childbirth](https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-019-2485-2) on Maternal Mortality rate in Siaya County, Maternal Mortality rates is 695 per 100,000 live births; against Kenyan national average of 49/1000 and 488/100,000. In another study on child mortality in Nyanza [Standard Digital Media](https://www.standardmedia.co.ke/article/2000043800/child-mortality-rates-still-high-in-nyanza) has shown that death rate is still high, with about 149 children out of 1,000 dying every year. Similarly, one out of seven children aged five and below die before celebrating their fifth birthday. 
+The infant mortality is high compared to Central Province where only one out of 20 children die of similar causes. This means that infant mortality risks in Nyanza is three times higher compared to Central.
+**Linda-Jamii** Seeks to reduce Maternall Mortality rate and Infant Mortality Rate in Nyanza by:
+- Enabling Health Practitioner keep track of Expectant Mothers
+- Encouraging them for Regular visit
+- Providing them with Relevant Information on Antenatal Care (ANC)
+- Delivery and Post Natal Care
+
+By this we will reduce Maternal Mortality and Infant Mortality rate. **#Kulinda Mama,ni Kulinda Jamii**
 
 # Development Environment
 * The app is written in Kotlin and uses the Gradle build system.

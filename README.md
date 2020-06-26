@@ -1,5 +1,7 @@
 # Linda-Jamii
-An Android Application used to keep track of Expectant Women for Antenatal Care, Delivery and PostNatal Care. This Starts from the First visit of a mother to a health center, her visits to the clinic, delivery, post natal care of baby and mother till. 🚧 Work in progress 👷‍♀️⛏👷🔧️👷🔧 🚧 
+[![CircleCI](https://circleci.com/gh/polojerry/Linda-Jamii.svg?style=shield)](https://circleci.com/gh/polojerry/Linda-Jamii.svg)
+
+Linda Jamii is an Android Application used to keep track of Expectant Women for Antenatal Care, Delivery and PostNatal Care. This Starts from the First visit of a mother to a health center, her visits to the clinic, delivery, post natal care of baby and mother till. 🚧 Work in progress 👷‍♀️⛏👷🔧️👷🔧 🚧 
 
 # Introduction
 A new study [BMC Pregnancy and Childbirth](https://bmcpregnancychildbirth.biomedcentral.com/articles/10.1186/s12884-019-2485-2) on Maternal Mortality rate in Siaya County, Maternal Mortality rates is 695 per 100,000 live births; against Kenyan national average of 49/1000 and 488/100,000. In another study on child mortality in Nyanza [Standard Digital Media](https://www.standardmedia.co.ke/article/2000043800/child-mortality-rates-still-high-in-nyanza) has shown that death rate is still high, with about 149 children out of 1,000 dying every year. Similarly, one out of seven children aged five and below die before celebrating their fifth birthday. 

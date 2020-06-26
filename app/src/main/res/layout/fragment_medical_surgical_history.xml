@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="Medical and Surgical History"
+            android:text="@string/surgical_history_label_medical_and_surgical_history"
             android:textAlignment="textStart"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +56,7 @@
                         android:id="@+id/text_medical_surgical_history_surgical_operation_specific"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Surgical Operation- Specify"
+                        android:hint="@string/surgical_history_hint_surgical_operation_specify"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -75,7 +75,7 @@
                         android:id="@+id/text_medical_surgical_history_diabetes"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="Diabetes "
+                        android:hint="@string/surgical_history_hint_diabetes"
                         android:inputType="text"
                         android:padding="10dp" />
 
@@ -96,7 +96,7 @@
                         android:id="@+id/text_medical_surgical_history_hypertension"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="Hypertension "
+                        android:hint="@string/surgical_history_hint_hypertension"
                         android:inputType="text"
                         android:padding="10dp" />
 
@@ -117,7 +117,7 @@
                         android:id="@+id/text_medical_surgical_history_blood_transfusion"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="Blood Transfusion "
+                        android:hint="@string/surgical_history_hint_blood_transfusion"
                         android:inputType="text"
                         android:padding="10dp" />
 
@@ -138,7 +138,7 @@
                         android:id="@+id/text_medical_surgical_history_tuberculosis"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="Tuberculosis "
+                        android:hint="@string/surgical_history_hint_tuberculosis"
                         android:inputType="text"
                         android:padding="10dp" />
 
@@ -159,7 +159,7 @@
                         android:id="@+id/text_medical_surgical_history_drug_allergy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Any drug Allergy? Specify "
+                        android:hint="@string/surgical_history_hint_any_drug_allergy_specify"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -179,7 +179,7 @@
                         android:id="@+id/text_medical_surgical_history_others_drug_allergy_specify"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Others Specify "
+                        android:hint="@string/surgical_history_hint_others_specify"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -191,7 +191,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:gravity="center"
-                    android:text="Family History"
+                    android:text="@string/surgical_history_hint_family_history"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/text_layout_medical_surgical_history_twins"
                     app:layout_constraintEnd_toStartOf="@+id/text_layout_medical_surgical_history_twins"
@@ -213,7 +213,7 @@
                         android:id="@+id/text_medical_surgical_history_twins"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="Twins "
+                        android:hint="@string/surgical_history_hint_twins"
                         android:inputType="text"
                         android:padding="10dp" />
 
@@ -233,7 +233,7 @@
                         android:id="@+id/text_medical_surgical_history_family_history_tuberculosis"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:hint="Tuberculosis "
+                        android:hint="@string/surgical_history_hint_tuberculosis"
                         android:inputType="text"
                         android:padding="10dp" />
 
@@ -246,7 +246,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Physical and  Antenatal Profile"
+                    android:text="@string/button_physical_and_antenatal_profile"
                     app:icon="@drawable/ic_baseline_arrow_forward_24"
                     app:layout_constraintEnd_toEndOf="@+id/text_layout_medical_surgical_history_family_history_tuberculosis"
                     app:layout_constraintStart_toStartOf="@+id/text_label_family_history"

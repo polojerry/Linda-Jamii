@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/linda_jamii_logo"
-            android:contentDescription="Image Logo of Linda Jamii Application"/>
+            android:contentDescription="@string/image_content_description_image_logo_of_linda_jamii_application"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_login"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Login"
+            android:text="@string/login_text_label_login"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/image_linda_jamii_logo"
@@ -51,7 +51,7 @@
                 android:id="@+id/text_login_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Login Email"
+                android:hint="@string/login_hint_login_email"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +71,7 @@
                 android:id="@+id/text_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Login Password"
+                android:hint="@string/login_hint_login_password"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -81,7 +81,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Login"
+            android:text="@string/button_login"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="@+id/text_layout_login_password"
             app:layout_constraintStart_toStartOf="@+id/text_layout_login_password"

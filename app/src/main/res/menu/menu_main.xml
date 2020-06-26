@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:title="Sign Out"
+    <item android:title="@string/menu_main_title_sign_out"
         android:id="@+id/action_sign_out"
         app:showAsAction="never"/>
 

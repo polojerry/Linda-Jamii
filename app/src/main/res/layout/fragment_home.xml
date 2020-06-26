@@ -32,7 +32,7 @@
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="4dp"
                 android:gravity="center"
-                android:text="Welcome to Linda Jamii"
+                android:text="@string/home_text_welcome_welcome_to_linda_jamii"
                 android:textColor="@color/colorTextIcons" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Choose an Option"
+            android:text="@string/home_text_choose_an_option"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/card_home_welcome"
             app:layout_constraintStart_toStartOf="@+id/card_home_welcome"

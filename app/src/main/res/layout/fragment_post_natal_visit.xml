@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
-                    android:text="Present Pregnancy"
+                    android:text="@string/post_natal_label_present_pregnancy"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="A. Mother"
+                    android:text="@string/post_natal_label_a_mother"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -67,7 +67,7 @@
                         android:id="@+id/text_post_natal_visit_timing_of_visit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Timing of Visit "
+                        android:hint="@string/post_natal_hint_timing_of_visit"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -88,7 +88,7 @@
                         android:id="@+id/text_post_natal_visit_date_of_visit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Date/ Visit "
+                        android:hint="@string/post_natal_hint_date_visit"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -108,7 +108,7 @@
                         android:id="@+id/text_post_natal_visit_blood_pressure"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Blood Pressure "
+                        android:hint="@string/post_natal_hint_blood_pressure"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -129,7 +129,7 @@
                         android:id="@+id/text_post_natal_visit_temp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Temp "
+                        android:hint="@string/post_natal_hint_temp"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -149,7 +149,7 @@
                         android:id="@+id/text_post_natal_visit_pulse"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Pulse "
+                        android:hint="@string/post_natal_hint_pulse"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -170,7 +170,7 @@
                         android:id="@+id/text_post_natal_visit_respiratory_rate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Respiratory Rate "
+                        android:hint="@string/post_natal_hint_respiratory_rate"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -190,7 +190,7 @@
                         android:id="@+id/text_post_natal_visit_general_condition"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="General Condition "
+                        android:hint="@string/post_natal_hint_general_condition"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -211,7 +211,7 @@
                         android:id="@+id/text_post_natal_visit_breast"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Breast "
+                        android:hint="@string/post_natal_hint_breast"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -231,7 +231,7 @@
                         android:id="@+id/text_post_natal_visit_cs_scar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="c/S scar "
+                        android:hint="@string/post_natal_hint_c_s_scar"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -252,7 +252,7 @@
                         android:id="@+id/text_post_natal_visit_involution_of_uterus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Involution of Uterus "
+                        android:hint="@string/post_natal_hint_involution_of_uterus"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -265,7 +265,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="B. Baby"
+                    android:text="@string/post_natal_label_b_baby"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -286,7 +286,7 @@
                         android:id="@+id/text_post_natal_visit_baby_general_condition"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="General Condition "
+                        android:hint="@string/post_natal_hint_general_condition"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -307,7 +307,7 @@
                         android:id="@+id/text_post_natal_visit_baby_temp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Baby Temp"
+                        android:hint="@string/post_natal_hint_baby_temp"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -327,7 +327,7 @@
                         android:id="@+id/text_post_natal_visit_baby_breath_per_minute"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Breath Per Minute "
+                        android:hint="@string/post_natal_hint_breath_per_minute"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -348,7 +348,7 @@
                         android:id="@+id/text_post_natal_visit_baby_feeding_method"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="* Baby's feeding Method"
+                        android:hint="@string/post_natal_hint_baby_s_feeding_method"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -368,7 +368,7 @@
                         android:id="@+id/text_post_natal_visit_baby_breastfeeding_position"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="** Breastfeeding Position "
+                        android:hint="@string/post_natal_hint_breastfeeding_position"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -390,7 +390,7 @@
                         android:id="@+id/text_post_natal_visit_baby_umbilical_cord"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Baby's Umbilical Cord"
+                        android:hint="@string/post_natal_hint_baby_s_umbilical_cord"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -410,7 +410,7 @@
                         android:id="@+id/text_post_natal_visit_baby_immunization_started"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Immunization Started "
+                        android:hint="@string/post_natal_hint_immunization_started"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -431,7 +431,7 @@
                         android:id="@+id/text_post_natal_visit_baby_given_art_prophylaxis"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="HEI Infant given ART prophylaxis"
+                        android:hint="@string/post_natal_hint_hei_infant_given_art_prophylaxis"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -451,7 +451,7 @@
                         android:id="@+id/text_post_natal_visit_baby_centrimoxazole_initiated"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Infant Contrimoxazole prophylaxis initiated"
+                        android:hint="@string/post_natal_hint_infant_contrimoxazole_prophylaxis_initiated"
                         android:inputType="text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -463,7 +463,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Save"
+                    android:text="@string/button_finish_post_natal"
                     app:layout_constraintEnd_toEndOf="@+id/text_layout_post_natal_visit_baby_centrimoxazole_initiated"
                     app:layout_constraintStart_toStartOf="@+id/text_layout_post_natal_visit_baby_immunization_started"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_post_natal_visit_baby_centrimoxazole_initiated" />

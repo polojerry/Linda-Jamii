@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
-                    android:text="Present Pregnancy"
+                    android:text="@string/subsequent_visit_label_present_pregnancy"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +54,7 @@
                         android:id="@+id/text_subsequent_visits_registration_number"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="ANC Number"
+                        android:hint="@string/subsequent_visit_hint_anc_number"
                         android:inputType="number"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -75,7 +75,7 @@
                         android:id="@+id/text_subsequent_visits_number_of_visit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Number of Visit"
+                        android:hint="@string/subsequent_visit_hint_number_of_visit"
                         android:inputType="number"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -95,7 +95,7 @@
                         android:id="@+id/text_subsequent_visits_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Date of Visit"
+                        android:hint="@string/subsequent_visit_hint_date_of_visit"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -115,7 +115,7 @@
                         android:id="@+id/text_subsequent_visits_urine"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Urine"
+                        android:hint="@string/subsequent_visit_hint_urine"
                         android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -136,7 +136,7 @@
                         android:id="@+id/text_subsequent_visits_weight"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Weight"
+                        android:hint="@string/subsequent_visit_hint_weight"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -157,7 +157,7 @@
                         android:id="@+id/text_subsequent_visits_bp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="B.P. "
+                        android:hint="@string/subsequent_visit_hint_b_p"
                         android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -178,7 +178,7 @@
                         android:id="@+id/text_subsequent_visits_hb"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="H.B."
+                        android:hint="@string/subsequent_visit_hint_h_b"
                         android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -199,7 +199,7 @@
                         android:id="@+id/text_subsequent_visits_pallor"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Pallor"
+                        android:hint="@string/subsequent_visit_hint_pallor"
                         android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -220,7 +220,7 @@
                         android:id="@+id/text_subsequent_visits_maturity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Maturity"
+                        android:hint="@string/subsequent_visit_hint_maturity"
                         android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -241,7 +241,7 @@
                         android:id="@+id/text_subsequent_visits_fundal_height"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Fundal Height"
+                        android:hint="@string/subsequent_visit_hint_fundal_height"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -262,7 +262,7 @@
                         android:id="@+id/text_subsequent_visits_presentation"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Presentation"
+                        android:hint="@string/subsequent_visit_hint_presentation"
                         android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -283,7 +283,7 @@
                         android:id="@+id/text_subsequent_visits_lie"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Lie"
+                        android:hint="@string/subsequent_visit_hint_lie"
                         android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -304,7 +304,7 @@
                         android:id="@+id/text_subsequent_visits_foetal_heart"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Foetal Heart"
+                        android:hint="@string/subsequent_visit_hint_foetal_heart"
                         android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -325,7 +325,7 @@
                         android:id="@+id/text_subsequent_visits_foetal_mvt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Foetal Mvt"
+                        android:hint="@string/subsequent_visit_hint_foetal_mvt"
                         android:inputType="textCapSentences"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -346,7 +346,7 @@
                         android:id="@+id/text_subsequent_visits_next_visit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Next Visit"
+                        android:hint="@string/subsequent_visit_hint_next_visit"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -357,7 +357,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="Weight Gain"
+                    android:text="@string/subsequent_visit_label_weight_gain"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_foetal_mvt" />
@@ -377,7 +377,7 @@
                         android:id="@+id/text_subsequent_visits_weight_gain"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Current Weight "
+                        android:hint="@string/subsequent_visit_hint_current_weight"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -398,7 +398,7 @@
                         android:id="@+id/text_subsequent_visits_weight_gestation_weeks"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Gestation Week "
+                        android:hint="@string/subsequent_visit_hint_gestation_week"
                         android:inputType="numberDecimal"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_label_maternal_profile" />
@@ -410,7 +410,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Visit Done"
+                    android:text="@string/button_subsequent_visit_visit_done"
                     app:icon="@drawable/ic_baseline_check_24"
                     app:layout_constraintEnd_toEndOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_subsequent_visits_weight_gain_gestation_weeks" />

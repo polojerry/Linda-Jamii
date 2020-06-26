@@ -38,7 +38,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
-                        android:text="Physical Examination"
+                        android:text="@string/physical_examination_label_physical_examination"
                         android:textAlignment="textStart"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
                             android:id="@+id/text_physical_examination_general"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="General"
+                            android:hint="@string/physical_examination_hint_general"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +80,7 @@
                             android:id="@+id/text_physical_examination_bp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="BP"
+                            android:hint="@string/physical_examination_hint_bp"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +100,7 @@
                             android:id="@+id/text_physical_examination_height"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Height"
+                            android:hint="@string/physical_examination_hint_height"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -120,7 +120,7 @@
                             android:id="@+id/text_physical_examination_cvs"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="CVS"
+                            android:hint="@string/physical_examination_hint_cvs"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -140,7 +140,7 @@
                             android:id="@+id/text_physical_examination_resp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Resp"
+                            android:hint="@string/physical_examination_hint_resp"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -160,7 +160,7 @@
                             android:id="@+id/text_physical_examination_breast"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Breast"
+                            android:hint="@string/physical_examination_hint_breast"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -180,7 +180,7 @@
                             android:id="@+id/text_physical_examination_abdomen"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Abdomen"
+                            android:hint="@string/physical_examination_hint_abdomen"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -200,7 +200,7 @@
                             android:id="@+id/text_physical_examination_vaginal_examination"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="VaginalExamination"
+                            android:hint="@string/physical_examination_hint_vaginal_examination"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -220,7 +220,7 @@
                             android:id="@+id/text_physical_examination_discharge_genital_ulcer"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Discharge/ Genital Ulcer"
+                            android:hint="@string/physical_examination_hint_discharge_genital_ulcer"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -241,7 +241,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="Antenatal Profile"
+                        android:text="@string/physical_examination_hint_antenatal_profile"
                         android:textAlignment="textStart"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -263,7 +263,7 @@
                             android:id="@+id/text_antenatal_profile_hb"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="HB"
+                            android:hint="@string/physical_examination_hint_hb"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -283,7 +283,7 @@
                             android:id="@+id/text_antenatal_profile_blood_group"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Blood Group"
+                            android:hint="@string/physical_examination_hint_blood_group"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -303,7 +303,7 @@
                             android:id="@+id/text_antenatal_profile_rhesus_factor"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Rhesus Fact"
+                            android:hint="@string/physical_examination_hint_rhesus_fact"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -323,7 +323,7 @@
                             android:id="@+id/text_antenatal_profile_serelogy"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Serelogy (VDRL/ RPR)"
+                            android:hint="@string/physical_examination_hint_serelogy_vdrl_rpr"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -343,7 +343,7 @@
                             android:id="@+id/text_antenatal_profile_tb_screening"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="TB Screening as per the intensive case finding tool"
+                            android:hint="@string/physical_examination_hint_tb_screening_as_per_the_intensive_case_finding_tool"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -363,7 +363,7 @@
                             android:id="@+id/text_antenatal_profile_hiv"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:hint="HIV"
+                            android:hint="@string/physical_examination_hint_hiv"
                             android:inputType="text"
                             android:padding="10dp" />
 
@@ -384,7 +384,7 @@
                             android:id="@+id/text_antenatal_profile_urinalysis"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Urinalysis"
+                            android:hint="@string/physical_examination_hint_urinalysis"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -404,7 +404,7 @@
                             android:id="@+id/text_antenatal_profile_hiv_counselling_and_testing"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Couple HIV Counselling and testing Done"
+                            android:hint="@string/physical_examination_hint_couple_hiv_counselling_and_testing_done"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -427,7 +427,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="Infant Feeding"
+                        android:text="@string/physical_examination_label_infant_feeding"
                         android:textAlignment="textStart"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/text_layout_infant_feeding_counselling_done"
@@ -450,7 +450,7 @@
                             android:id="@+id/text_infant_feeding_counselling"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:hint="Infant Feed Counseling Done "
+                            android:hint="@string/physical_examination_hint_infant_feed_counseling_done"
                             android:inputType="text"
                             android:padding="10dp" />
 
@@ -471,7 +471,7 @@
                             android:id="@+id/text_infant_feeding_counseling_breastfeeding"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:hint="Exclusive Breastfeeding Counselling Done "
+                            android:hint="@string/physical_examination_hint_exclusive_breastfeeding_counselling_done"
                             android:inputType="text"
                             android:padding="10dp" />
 
@@ -486,7 +486,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Finish Initial Visit"
+                    android:text="@string/physical_examination_hint_finish_initial_visit"
                     app:icon="@drawable/ic_baseline_check_24"
                     app:layout_constraintEnd_toEndOf="@+id/layout_infant_feeding"
                     app:layout_constraintTop_toBottomOf="@+id/layout_infant_feeding" />

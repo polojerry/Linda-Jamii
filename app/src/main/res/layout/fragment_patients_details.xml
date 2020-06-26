@@ -62,7 +62,7 @@
                         style="@style/Theme.LindaJamii.TextVisitHeading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Maternal Profile"
+                        android:text="@string/patients_details_label_maternal_profile"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,8 +94,7 @@
                                     android:id="@+id/text_name_of_institution"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-
-                                    android:hint="Name of Institution"
+                                    android:hint="@string/patients_details_name_of_institution"
                                     android:text='@{expectantDetails.maternalProfile.nameOfInstitution}'
                                     tools:text="Mur-Malanga Dispensary" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -117,7 +116,7 @@
                                     android:id="@+id/text_mfl_number"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="MFL No."
+                                    android:hint="@string/patients_details_mfl_no"
                                     android:text='@{expectantDetails.maternalProfile.mflNumber}'
                                     tools:text="1998" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -139,7 +138,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="ANC No."
+                                    android:hint="@string/patients_details_anc_no"
                                     android:text='@{expectantDetails.maternalProfile.ancNumber}'
                                     tools:text="007/19" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -158,7 +157,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Name of Client"
+                                    android:hint="@string/patients_details_name_of_client"
                                     android:text='@{expectantDetails.maternalProfile.nameOfClient}'
                                     tools:text="Lucy Wanjiro" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -179,7 +178,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Age"
+                                    android:hint="@string/patients_details_age"
                                     android:text='@{expectantDetails.maternalProfile.ageOfClient}'
                                     tools:text="17" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -200,7 +199,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Gravida"
+                                    android:hint="@string/patients_details_gravida"
                                     android:text='@{expectantDetails.maternalProfile.gravida}'
                                     tools:text="1" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -221,7 +220,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Parity"
+                                    android:hint="@string/patients_details_parity"
                                     android:text='@{expectantDetails.maternalProfile.parity}'
                                     tools:text="0+" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -242,7 +241,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Height"
+                                    android:hint="@string/patients_details_height"
                                     android:text='@{expectantDetails.maternalProfile.height}'
                                     tools:text="150cm" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -263,7 +262,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Weight"
+                                    android:hint="@string/patients_details_weight"
                                     android:text='@{expectantDetails.maternalProfile.weight}'
                                     tools:text="76kg" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -285,7 +284,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="L.M.P"
+                                    android:hint="@string/patients_details_l_m_p"
                                     android:text='@{expectantDetails.maternalProfile.lmp}'
                                     tools:text="20/10/2020" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -306,7 +305,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="E.D.D"
+                                    android:hint="@string/patients_details_e_d_d"
                                     android:text='@{expectantDetails.maternalProfile.weight}'
                                     tools:text="01/2/2021" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -325,7 +324,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Address"
+                                    android:hint="@string/patients_details_address"
                                     android:text='@{expectantDetails.maternalProfile.address}'
                                     tools:text="Matera" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -347,7 +346,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Marital Status"
+                                    android:hint="@string/patients_details_marital_status"
                                     android:text='@{expectantDetails.maternalProfile.maritalStatus}'
                                     tools:text="Single" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -368,7 +367,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Education"
+                                    android:hint="@string/patients_details_education"
                                     android:text='@{expectantDetails.maternalProfile.education}'
                                     tools:text="Form II" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -389,7 +388,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Next of Kin"
+                                    android:hint="@string/patients_details_next_of_kin"
                                     android:text='@{expectantDetails.maternalProfile.nextOfKin}'
                                     tools:text="Joyce Awino" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -410,7 +409,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Relationship"
+                                    android:hint="@string/patients_details_relationship"
                                     android:text='@{expectantDetails.maternalProfile.relationShip}'
                                     tools:text="Aunt" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -431,7 +430,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Telephone Number "
+                                    android:hint="@string/patients_details_telephone_number"
                                     android:text='@{expectantDetails.maternalProfile.telephone}'
                                     tools:text="0790689212" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -452,7 +451,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
 
-                                    android:hint="Next od Kin's Contact"
+                                    android:hint="@string/patients_details_next_of_kin_s_contact"
                                     android:text='@{expectantDetails.maternalProfile.nextOfKinContact}'
                                     tools:text="0721339824" />
                             </com.google.android.material.textfield.TextInputLayout>

@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="Maternal Profile"
+            android:text="@string/maternal_profile_title_maternal_profile"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,7 @@
                         android:id="@+id/text_maternal_profile_name_of_institution"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Name of Institution"
+                        android:hint="@string/maternal_profile_hint_name_of_institution"
                         android:inputType="text"
                     />
 
@@ -73,7 +73,7 @@
                         android:id="@+id/text_maternal_profile_mf_number"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="MFL No"
+                        android:hint="@string/maternal_profile_hint_mfl_no"
                         android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -92,7 +92,7 @@
                         android:id="@+id/text_maternal_profile_anc_number"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="ANC No"
+                        android:hint="@string/maternal_profile_hint_anc_no"
                         android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -110,7 +110,7 @@
                         android:id="@+id/text_maternal_profile_pnc_number"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="PNC No"
+                        android:hint="@string/maternal_profile_hint_pnc_no"
                         android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +128,7 @@
                         android:id="@+id/text_maternal_profile_name_of_client"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Name of Client"
+                        android:hint="@string/maternal_profile_hint_name_of_client"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -147,7 +147,7 @@
                         android:id="@+id/text_maternal_profile_age"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Age"
+                        android:hint="@string/maternal_profile_hint_age"
                         android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -167,7 +167,7 @@
                         android:id="@+id/text_maternal_profile_gravida"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Gravida"
+                        android:hint="@string/maternal_profile_hint_gravida"
                         android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -186,7 +186,7 @@
                         android:id="@+id/text_maternal_profile_parity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Parity"
+                        android:hint="@string/maternal_profile_hint_parity"
                         android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -205,7 +205,7 @@
                         android:id="@+id/text_maternal_profile_height"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Height"
+                        android:hint="@string/maternal_profile_hint_height"
                         android:inputType="numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -224,7 +224,7 @@
                         android:id="@+id/text_maternal_profile_weight"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Weight"
+                        android:hint="@string/maternal_profile_hint_weight"
                         android:inputType="numberDecimal" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -244,7 +244,7 @@
                         android:id="@+id/text_maternal_profile_lmp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="L.M.P"
+                        android:hint="@string/maternal_profile_hint_l_m_p"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -263,7 +263,7 @@
                         android:id="@+id/text_maternal_profile_edd"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="E.D.D"
+                        android:hint="@string/maternal_profile_hint_e_d_d"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -282,7 +282,7 @@
                         android:id="@+id/text_maternal_profile_marital_status"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Marital Status"
+                        android:hint="@string/maternal_profile_hint_marital_status"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -301,7 +301,7 @@
                         android:id="@+id/text_maternal_profile_education"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Education"
+                        android:hint="@string/maternal_profile_hint_education"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -319,7 +319,7 @@
                         android:id="@+id/text_maternal_profile_address"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Address"
+                        android:hint="@string/maternal_profile_hint_address"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -337,7 +337,7 @@
                         android:id="@+id/text_maternal_profile_telephone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Telephone"
+                        android:hint="@string/maternal_profile_hint_telephone"
                         android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -356,7 +356,7 @@
                         android:id="@+id/text_maternal_profile_next_of_kin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Next of Kin"
+                        android:hint="@string/maternal_profile_hint_next_of_kin"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -375,7 +375,7 @@
                         android:id="@+id/text_maternal_profile_relationship"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Relationship"
+                        android:hint="@string/maternal_profile_hint_relationship"
                         android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -393,7 +393,7 @@
                         android:id="@+id/text_layout_profile_contact_phone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Next of Kin's Contacts/Phone"
+                        android:hint="@string/maternal_profile_hint_next_of_kin_s_contacts_phone"
                         android:inputType="number" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -403,7 +403,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Medical History"
+                    android:text="@string/maternal_profile_hint_medical_history"
                     app:icon="@drawable/ic_baseline_arrow_forward_24"
                     app:layout_constraintEnd_toEndOf="@+id/text_layout_maternal_profile_relationship"
                     app:layout_constraintTop_toBottomOf="@+id/text_layout_maternal_profile_next_of_kin_contact_phone" />

@@ -5,17 +5,17 @@
         >
 
         <item android:id="@+id/initialVisitFragment"
-            android:title="Initial Visit"
+            android:title="@string/drawer_menu_title_initial_visit"
             />
 
         <item android:id="@+id/subsequentVisitsFragment"
-            android:title="Subsequent Visit"
+            android:title="@string/drawer_menu_title_subsequent_visit"
             />
         <item android:id="@+id/deliveryFragment"
-            android:title="Delivery"
+            android:title="@string/drawer_menu_title_delivery"
             />
         <item android:id="@+id/postNatalVisitFragment"
-            android:title="Post Natal Visit"
+            android:title="@string/drawer_menu_title_post_natal_visit"
             />
 
     </group>
@@ -24,7 +24,7 @@
         >
 
         <item android:id="@+id/patientsFragment"
-            android:title="Patients Reports"
+            android:title="@string/drawer_menu_title_patients_reports"
             />
 
 

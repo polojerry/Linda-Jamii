@@ -1,5 +1,5 @@
 # Linda-Jamii
-[![CircleCI](https://circleci.com/gh/polojerry/Linda-Jamii.svg?style=shield)](https://circleci.com/gh/polojerry/Linda-Jamii.svg)
+[![CircleCI](https://circleci.com/gh/polojerry/Linda-Jamii.svg?style=shield)](https://circleci.com/gh/polojerry/Linda-Jamii)
 
 Linda Jamii is an Android Application used to keep track of Expectant Women for Antenatal Care, Delivery and PostNatal Care. This Starts from the First visit of a mother to a health center, her visits to the clinic, delivery, post natal care of baby and mother till. 🚧 Work in progress 👷‍♀️⛏👷🔧️👷🔧 🚧 
 

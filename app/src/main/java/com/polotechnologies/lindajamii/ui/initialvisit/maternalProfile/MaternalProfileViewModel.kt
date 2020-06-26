@@ -9,7 +9,6 @@ import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
 import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
 import com.polotechnologies.lindajamii.repository.PatientRepository
-import java.lang.Exception
 
 class MaternalProfileViewModel(
     val application: Application,

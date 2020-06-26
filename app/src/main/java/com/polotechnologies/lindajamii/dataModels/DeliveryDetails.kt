@@ -12,7 +12,7 @@ data class DeliveryDetails(
     val eclampsia: String = "",
     val apgarScore: String = "",
     val rescusitationDone: String = "",
-    val babayVitK: String = "",
+    val babyVitK: String = "",
     val babyTeo: String = "",
     val birthWeight: String = "",
     val birthLength: String = "",

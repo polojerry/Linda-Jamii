@@ -48,14 +48,4 @@ object ExpectantVisitNotification {
         nm.notify(NOTIFICATION_TAG, 0, notification)
     }
 
-    /**
-     * Cancels any notifications of this type previously shown using
-     * [.notify].
-     */
-    @TargetApi(Build.VERSION_CODES.ECLAIR)
-    fun cancel(context: Context) {
-        val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        nm.cancel(NOTIFICATION_TAG, 0)
-    }
-
 }

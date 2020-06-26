@@ -117,7 +117,6 @@
                                     android:id="@+id/text_mfl_number"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-
                                     android:hint="MFL No."
                                     android:text='@{expectantDetails.maternalProfile.mflNumber}'
                                     tools:text="1998" />

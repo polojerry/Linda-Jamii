@@ -56,30 +56,30 @@ class PhysicalAntenatalFeedingViewModel(
     fun isFieldsValid(): Boolean {
         var isValid = false
 
-        general = mBinding.textPysicalExaminationGeneral.text.toString()
-        bp = mBinding.textPysicalExaminationBp.text.toString()
-        height = mBinding.textPysicalExaminationHeight.text.toString()
-        cvs = mBinding.textPysicalExaminationCvs.text.toString()
-        resp = mBinding.textPysicalExaminationResp.text.toString()
-        breasts = mBinding.textPysicalExaminationBreast.text.toString()
-        abdomen = mBinding.textPysicalExaminationAbdomen.text.toString()
-        vaginalExamination = mBinding.textPysicalExaminationVaginalExamination.text.toString()
+        general = mBinding.textPhysicalExaminationGeneral.text.toString()
+        bp = mBinding.textPhysicalExaminationBp.text.toString()
+        height = mBinding.textPhysicalExaminationHeight.text.toString()
+        cvs = mBinding.textPhysicalExaminationCvs.text.toString()
+        resp = mBinding.textPhysicalExaminationResp.text.toString()
+        breasts = mBinding.textPhysicalExaminationBreast.text.toString()
+        abdomen = mBinding.textPhysicalExaminationAbdomen.text.toString()
+        vaginalExamination = mBinding.textPhysicalExaminationVaginalExamination.text.toString()
         dischargeGenitalUlcers =
-            mBinding.textPysicalExaminationDischargeGenitalUlcer.text.toString()
+            mBinding.textPhysicalExaminationDischargeGenitalUlcer.text.toString()
 
         hb = mBinding.textAntenatalProfileHb.text.toString()
         bloodGroup = mBinding.textAntenatalProfileBloodGroup.text.toString()
         rhesus = mBinding.textAntenatalProfileRhesusFactor.text.toString()
         serology = mBinding.textAntenatalProfileSerelogy.text.toString()
-        tbScreening = mBinding.textAntenatalProfileTbScreeening.text.toString()
+        tbScreening = mBinding.textAntenatalProfileTbScreening.text.toString()
         hiv = mBinding.textAntenatalProfileHiv.text.toString()
-        urianalysis = mBinding.textAntenatalProfileUrinalisis.text.toString()
+        urianalysis = mBinding.textAntenatalProfileUrinalysis.text.toString()
         givenHIVCounsellingAndTest =
-            mBinding.textAntenatalProfileHivCouselingAndTesting.text.toString()
+            mBinding.textAntenatalProfileHivCounsellingAndTesting.text.toString()
 
-        feedingCounsellingDone = mBinding.textInfantFeedingCouseling.text.toString()
+        feedingCounsellingDone = mBinding.textInfantFeedingCounselling.text.toString()
         counselingOnExclusiveBreastfeedingDone =
-            mBinding.textInfantFeedingCouselingBreastfeeding.text.toString()
+            mBinding.textInfantFeedingCounselingBreastfeeding.text.toString()
 
 
         if (general == "") {
@@ -140,7 +140,7 @@ class PhysicalAntenatalFeedingViewModel(
             mBinding.textLayoutAntenatalProfileSerelogy.error = "Required"
         }
         if (tbScreening == "") {
-            mBinding.textLayoutAntenatalProfileTbScrening.error = "Required"
+            mBinding.textLayoutAntenatalProfileTbScreening.error = "Required"
             isValid = false
         }
         if (hiv == "") {
@@ -149,24 +149,24 @@ class PhysicalAntenatalFeedingViewModel(
         }
         if (urianalysis == "") {
             isValid = false
-            mBinding.textLayoutAntenatalProfileUrinalisis.error = "Required"
+            mBinding.textLayoutAntenatalProfileUrinalysis.error = "Required"
         }
 
         if (givenHIVCounsellingAndTest == "") {
 
             isValid = false
-            mBinding.textLayoutAntenatalProfileHivCouselingAndTesting.error = "Required"
+            mBinding.textLayoutAntenatalProfileHivCounsellingAndTesting.error = "Required"
         }
 
         //Infant Feeding
         if (feedingCounsellingDone == "") {
             isValid = false
-            mBinding.textLayoutInfantFeedingCouselingDone.error = "Required"
+            mBinding.textLayoutInfantFeedingCounsellingDone.error = "Required"
         }
 
         if (counselingOnExclusiveBreastfeedingDone == "") {
             isValid = false
-            mBinding.textLayoutInfantFeedingCouselingBreastfeeding.error = "Required"
+            mBinding.textLayoutInfantFeedingCounsellingBreastfeeding.error = "Required"
         }
 
 

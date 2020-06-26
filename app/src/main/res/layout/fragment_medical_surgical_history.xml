@@ -41,7 +41,7 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/text_layout_medical_surgical_history_sergical_operation"
+                    android:id="@+id/text_layout_medical_surgical_history_surgical_operation"
                     style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,8 +68,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     app:layout_constraintEnd_toStartOf="@+id/text_layout_medical_surgical_history_hyper_tension"
-                    app:layout_constraintStart_toStartOf="@+id/text_layout_medical_surgical_history_sergical_operation"
-                    app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_sergical_operation">
+                    app:layout_constraintStart_toStartOf="@+id/text_layout_medical_surgical_history_surgical_operation"
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_surgical_operation">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_medical_surgical_history_diabetes"
@@ -90,7 +90,7 @@
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/text_layout_medical_surgical_history_diabetes"
-                    app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_sergical_operation">
+                    app:layout_constraintTop_toBottomOf="@+id/text_layout_medical_surgical_history_surgical_operation">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/text_medical_surgical_history_hypertension"

@@ -8,9 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.polotechnologies.lindajamii.dataModels.ExpectantSubsequentVisit
 import com.polotechnologies.lindajamii.database.LindaJamiiDatabase
 import com.polotechnologies.lindajamii.databinding.FragmentSubsequentVisitsBinding
-import com.polotechnologies.lindajamii.network.FirestoreService
 import com.polotechnologies.lindajamii.repository.PatientRepository
-import java.lang.Exception
 
 
 class SubsequentVisitViewModel(

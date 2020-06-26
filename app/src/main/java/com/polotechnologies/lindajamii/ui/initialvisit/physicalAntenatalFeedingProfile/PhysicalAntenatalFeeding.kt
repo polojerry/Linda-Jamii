@@ -105,8 +105,8 @@ class PhysicalAntenatalFeeding : Fragment() {
             hivDropDown
         )
 
-        mBinding.textInfantFeedingCouseling.setAdapter(categoryAdapterYesNo)
-        mBinding.textInfantFeedingCouselingBreastfeeding.setAdapter(categoryAdapterYesNo)
+        mBinding.textInfantFeedingCounselling.setAdapter(categoryAdapterYesNo)
+        mBinding.textInfantFeedingCounselingBreastfeeding.setAdapter(categoryAdapterYesNo)
         mBinding.textAntenatalProfileHiv.setAdapter(categoryAdapterHiv)
 
     }
@@ -116,7 +116,7 @@ class PhysicalAntenatalFeeding : Fragment() {
     }
 
     private fun progressBarVisibility(visibility: Int) {
-        mBinding.progressBarPhysicalAntenatalInfanctFeeding.visibility = visibility
+        mBinding.progressBarPhysicalAntenatalInfantFeeding.visibility = visibility
     }
 
 }

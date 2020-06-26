@@ -1,15 +1,11 @@
 package com.polotechnologies.lindajamii.util
 
 import android.graphics.Color
-import android.text.format.DateFormat
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.google.android.material.card.MaterialCardView
-import com.google.firebase.database.collection.LLRBNode
-import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.HomeOption
 import java.util.Calendar

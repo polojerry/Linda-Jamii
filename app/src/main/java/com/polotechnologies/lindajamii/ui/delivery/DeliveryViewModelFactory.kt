@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.polotechnologies.lindajamii.databinding.FragmentDeliveryBinding
 
 /**
- * Simple ViewModel factory for Devilery Visit ViewModel
+ * Simple ViewModel factory for Delivery Visit ViewModel
  */
 
 class DeliveryViewModelFactory(

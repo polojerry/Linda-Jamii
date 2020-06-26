@@ -8,7 +8,7 @@ import java.util.Date
 import java.util.Calendar
 
 class TypeConverterDateTest {
-    lateinit var typeConverterDate: TypeConverterDate
+    private lateinit var typeConverterDate: TypeConverterDate
 
     @Before
     fun setUp() {

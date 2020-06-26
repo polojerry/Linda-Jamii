@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.polotechnologies.lindajamii.R
-import com.polotechnologies.lindajamii.databinding.ActivityMainBinding
 import com.polotechnologies.lindajamii.databinding.FragmentPostNatalVisitBinding
 
 

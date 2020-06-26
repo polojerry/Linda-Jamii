@@ -28,11 +28,6 @@ class LindaJamiiFirebaseMessagingService : FirebaseMessagingService() {
         val patientVisitDate = DateConverter.getStringDate(visitDate.toLong())
         ExpectantVisitNotification.notify(baseContext, patientName, patientVisitDate, ancNumber)
     }
-
-    override fun onDeletedMessages() {
-        super.onDeletedMessages()
-    }
-
     override fun onNewToken(newToken: String) {
         sendTokenToFirestore(newToken)
     }

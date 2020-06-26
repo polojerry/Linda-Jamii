@@ -69,7 +69,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
     //endregion
 
-
     //Room
     implementation "androidx.room:room-runtime:$version_room"
     kapt "androidx.room:room-compiler:$version_room"
@@ -88,7 +87,7 @@ dependencies {
     implementation "com.google.firebase:firebase-firestore-ktx:21.4.3"
     
     //Firebase Cloud Messaging
-    implementation "com.google.firebase:firebase-messaging:20.2.0"
+    implementation "com.google.firebase:firebase-messaging:20.2.1"
 
     // Firestore FirebaseUI Library
     implementation 'com.firebaseui:firebase-ui-firestore:5.0.0'

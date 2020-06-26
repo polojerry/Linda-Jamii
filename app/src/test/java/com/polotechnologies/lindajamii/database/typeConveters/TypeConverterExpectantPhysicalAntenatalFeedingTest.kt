@@ -1,8 +1,6 @@
 package com.polotechnologies.lindajamii.database.typeConveters
 
-import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails.*
-import com.polotechnologies.lindajamii.ui.initialvisit.physicalAntenatalFeedingProfile.PhysicalAntenatalFeeding
 import org.junit.Before
 import org.junit.Test
 
@@ -10,7 +8,7 @@ import org.junit.Assert.*
 
 class TypeConverterExpectantPhysicalAntenatalFeedingTest {
 
-    lateinit var typeConverterExpectantPhysicalAntenatalFeeding: TypeConverterExpectantPhysicalAntenatalFeeding
+    private lateinit var typeConverterExpectantPhysicalAntenatalFeeding: TypeConverterExpectantPhysicalAntenatalFeeding
 
     @Before
     fun setUp() {

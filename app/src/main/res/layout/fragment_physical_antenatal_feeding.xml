@@ -57,7 +57,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_label_physical_examination">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_pysical_examination_general"
+                            android:id="@+id/text_physical_examination_general"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="General"
@@ -77,7 +77,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_general">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_pysical_examination_bp"
+                            android:id="@+id/text_physical_examination_bp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="BP"
@@ -97,10 +97,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_general">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_pysical_examination_height"
+                            android:id="@+id/text_physical_examination_height"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Heignt"
+                            android:hint="Height"
                             android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -117,7 +117,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_bp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_pysical_examination_cvs"
+                            android:id="@+id/text_physical_examination_cvs"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="CVS"
@@ -137,7 +137,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_height">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_pysical_examination_resp"
+                            android:id="@+id/text_physical_examination_resp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Resp"
@@ -157,7 +157,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_cvs">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_pysical_examination_breast"
+                            android:id="@+id/text_physical_examination_breast"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Breast"
@@ -177,7 +177,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_Resp">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_pysical_examination_abdomen"
+                            android:id="@+id/text_physical_examination_abdomen"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Abdomen"
@@ -197,7 +197,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_breast">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_pysical_examination_vaginal_examination"
+                            android:id="@+id/text_physical_examination_vaginal_examination"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="VaginalExamination"
@@ -217,7 +217,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_physical_examination_abdomen">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_pysical_examination_discharge_genital_ulcer"
+                            android:id="@+id/text_physical_examination_discharge_genital_ulcer"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Discharge/ Genital Ulcer"
@@ -329,7 +329,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_antenatal_profile_tb_screning"
+                        android:id="@+id/text_layout_antenatal_profile_tb_screening"
                         style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -340,7 +340,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_serelogy">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_antenatal_profile_tb_screeening"
+                            android:id="@+id/text_antenatal_profile_tb_screening"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="TB Screening as per the intensive case finding tool"
@@ -355,9 +355,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/text_layout_antenatal_profile_urinalisis"
+                        app:layout_constraintEnd_toStartOf="@+id/text_layout_antenatal_profile_urinalysis"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_tb_screning">
+                        app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_tb_screening">
 
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView
                             android:id="@+id/text_antenatal_profile_hiv"
@@ -370,7 +370,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_antenatal_profile_urinalisis"
+                        android:id="@+id/text_layout_antenatal_profile_urinalysis"
                         style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -378,10 +378,10 @@
                         android:layout_marginEnd="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/text_layout_antenatal_profile_hiv"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_tb_screning">
+                        app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_tb_screening">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_antenatal_profile_urinalisis"
+                            android:id="@+id/text_antenatal_profile_urinalysis"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Urinalysis"
@@ -390,7 +390,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_antenatal_profile_hiv_couseling_and_testing"
+                        android:id="@+id/text_layout_antenatal_profile_hiv_counselling_and_testing"
                         style="@style/Theme.LindaJamii.TextInputLayout.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -401,7 +401,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_layout_antenatal_profile_hiv">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_antenatal_profile_hiv_couseling_and_testing"
+                            android:id="@+id/text_antenatal_profile_hiv_counselling_and_testing"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Couple HIV Counselling and testing Done"
@@ -430,13 +430,13 @@
                         android:text="Infant Feeding"
                         android:textAlignment="textStart"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/text_layout_infant_feeding_couseling_done"
+                        app:layout_constraintBottom_toTopOf="@+id/text_layout_infant_feeding_counselling_done"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_infant_feeding_couseling_done"
+                        android:id="@+id/text_layout_infant_feeding_counselling_done"
                         style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -447,7 +447,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_label_infant_feeding">
 
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                            android:id="@+id/text_infant_feeding_couseling"
+                            android:id="@+id/text_infant_feeding_counselling"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:hint="Infant Feed Counseling Done "
@@ -457,7 +457,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_layout_infant_feeding_couseling_breastfeeding"
+                        android:id="@+id/text_layout_infant_feeding_counselling_breastfeeding"
                         style="@style/Theme.LindaJamii.TextInputLayout.Outlined.ExposedDropMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -465,13 +465,13 @@
                         android:layout_marginEnd="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_layout_infant_feeding_couseling_done">
+                        app:layout_constraintTop_toBottomOf="@+id/text_layout_infant_feeding_counselling_done">
 
                         <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                            android:id="@+id/text_infant_feeding_couseling_breastfeeding"
+                            android:id="@+id/text_infant_feeding_counseling_breastfeeding"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:hint="Exclusive Breastfeeding Couselling Done "
+                            android:hint="Exclusive Breastfeeding Counselling Done "
                             android:inputType="text"
                             android:padding="10dp" />
 
@@ -498,7 +498,7 @@
         </androidx.core.widget.NestedScrollView>
 
         <androidx.core.widget.ContentLoadingProgressBar
-            android:id="@+id/progress_bar_physical_antenatal_infanct_feeding"
+            android:id="@+id/progress_bar_physical_antenatal_infant_feeding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="invisible"

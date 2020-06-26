@@ -1,17 +1,15 @@
 package com.polotechnologies.lindajamii.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.HomeOption
-import com.polotechnologies.lindajamii.util.LindaJamiiFirebaseMessagingService
 
 class HomeFragmentViewModel : ViewModel() {
 
-    private val _homeOptions = listOf<HomeOption>(
+    private val _homeOptions = listOf(
         HomeOption(R.drawable.linda_jamii_logo, "Initial Visit"),
         HomeOption(R.drawable.linda_jamii_logo, "Subsequent Visits"),
         HomeOption(R.drawable.linda_jamii_logo, "Delivery"),

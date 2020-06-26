@@ -51,7 +51,7 @@ class MedicalSurgicalHistoryViewModel(
 
         if (surgicalOperation == "") {
             isValid = false
-            mBinding.textLayoutMedicalSurgicalHistorySergicalOperation.error = "Required"
+            mBinding.textLayoutMedicalSurgicalHistorySurgicalOperation.error = "Required"
         }
 
         if (diabetes == "") {

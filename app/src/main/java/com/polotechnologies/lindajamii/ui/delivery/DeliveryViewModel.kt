@@ -35,7 +35,7 @@ class DeliveryViewModel(
     private var eclampsia = ""
     private var apgarScore = ""
     private var rescusitationDone = ""
-    private var babayVitK = ""
+    private var babyVitK = ""
     private var babyTeo = ""
     private var birthWeight = ""
     private var birthLength = ""
@@ -58,7 +58,7 @@ class DeliveryViewModel(
         eclampsia = mBinding.textDeliveryEclampia.text.toString()
         apgarScore = mBinding.textDeliveryApgarScore.text.toString()
         rescusitationDone = mBinding.textDeliveryRescusitationDone.text.toString()
-        babayVitK = mBinding.textDeliveryBabyVitK.text.toString()
+        babyVitK = mBinding.textDeliveryBabyVitK.text.toString()
         babyTeo = mBinding.textDeliveryBabyTeo.text.toString()
         birthWeight = mBinding.textDeliveryBabyBirthWeight.text.toString()
         birthLength = mBinding.textDeliveryBabyBirthLength.text.toString()
@@ -116,7 +116,7 @@ class DeliveryViewModel(
             isValid = false
             mBinding.textLayoutDeliveryRescusitationDone.error = "Required"
         }
-        if (babayVitK == "") {
+        if (babyVitK == "") {
             isValid = false
             mBinding.textLayoutDeliveryBabyVitK.error = "Required"
         }
@@ -150,7 +150,7 @@ class DeliveryViewModel(
 
         if (registrationNumber != "" && duringOfPregnancy != "" && hivTested != "" && counselAndTest != "" && modeOfDelivery != ""
             && dateOfDelivery != "" && bloodLoss != "" && preEclapsia != "" && eclampsia != "" && apgarScore != ""
-            && rescusitationDone != "" && babayVitK != "" && babyTeo != "" && birthWeight != "" && birthLength != "" && headCircumference != ""
+            && rescusitationDone != "" && babyVitK != "" && babyTeo != "" && birthWeight != "" && birthLength != "" && headCircumference != ""
             && placeOfDelivery != "" && conductedBy != ""
         ) {
             isValid = true
@@ -164,7 +164,7 @@ class DeliveryViewModel(
         return DeliveryDetails(
             registrationNumber, duringOfPregnancy, hivTested, counselAndTest,
             modeOfDelivery, dateOfDelivery, bloodLoss, preEclapsia, eclampsia,
-            apgarScore, rescusitationDone, babayVitK, babyTeo, birthWeight,
+            apgarScore, rescusitationDone, babyVitK, babyTeo, birthWeight,
             birthLength, headCircumference, placeOfDelivery, conductedBy
         )
     }

@@ -8,7 +8,7 @@ import org.junit.Before
 
 class TypeConverterExpectantMaternalProfileTest {
 
-    lateinit var typeConverterMaternalProfile: TypeConverterExpectantMaternalProfile
+    private  lateinit var typeConverterMaternalProfile: TypeConverterExpectantMaternalProfile
 
     @Before
     fun setup() {

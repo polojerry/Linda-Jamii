@@ -9,7 +9,7 @@ import org.junit.Assert.*
 
 class TypeConverterExpectantMedicalSurgicalHistoryTest {
 
-    lateinit var typeConverterExpectantMedicalSurgicalHistory: TypeConverterExpectantMedicalSurgicalHistory
+    private lateinit var typeConverterExpectantMedicalSurgicalHistory: TypeConverterExpectantMedicalSurgicalHistory
 
     @Before
     fun setUp() {

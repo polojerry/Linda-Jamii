@@ -39,8 +39,11 @@
 
     <style name="Theme.LindaJamii.Card.Patient" parent="@style/Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/colorTextIcons</item>
-        <item name="cardCornerRadius">8dp</item>
+        <item name="cardCornerRadius">4dp</item>
         <item name="cardUseCompatPadding">true</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:padding">8dp</item>
+
     </style>
 
     <style name="Theme.LindaJamii.Card.Details" parent="Widget.MaterialComponents.CardView">

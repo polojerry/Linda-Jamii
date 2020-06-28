@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.dataModels.ExpectantDetails
 import com.polotechnologies.lindajamii.dataModels.HomeOption
 import java.util.Calendar
@@ -27,6 +28,27 @@ fun bind(textView: AppCompatTextView, expectantDetails: ExpectantDetails) {
         }
     }
 
+}
+
+@BindingAdapter("age")
+fun bind(textView: AppCompatTextView, age: String){
+    age.let { ageString->
+        textView.text = textView.context.getString(R.string.string_format_age,ageString)
+    }
+}
+
+@BindingAdapter("ancNumber")
+fun bindText(textView: AppCompatTextView, ancNumber: String){
+    ancNumber.let { anc->
+        textView.text = textView.context.getString(R.string.string_format_anc_number,anc)
+    }
+}
+
+@BindingAdapter("edd")
+fun bindEdd(textView: AppCompatTextView, edd: String){
+    edd.let { eDelivery->
+        textView.text = textView.context.getString(R.string.string_format_edd,eDelivery)
+    }
 }
 
 @BindingAdapter("visitBackground")

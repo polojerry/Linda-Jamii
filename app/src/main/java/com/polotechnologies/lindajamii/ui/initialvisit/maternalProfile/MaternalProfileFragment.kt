@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.polotechnologies.lindajamii.R
 import com.polotechnologies.lindajamii.databinding.FragmentMaternalProfileBinding
 import com.polotechnologies.lindajamii.network.Resource
@@ -40,7 +41,47 @@ class MaternalProfileFragment : Fragment() {
         mViewModel = ViewModelProvider(this, factory)[MaternalProfileViewModel::class.java]
 
 
+        setDateListeners()
+
         return mBinding.root
+    }
+
+    private fun setDateListeners() {
+        mBinding.textMaternalProfileLmp.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus){
+                displayDatePicker(getString(R.string.text_lmp))
+            }
+        }
+        mBinding.textMaternalProfileEdd.setOnFocusChangeListener { _, hasFocus ->
+            if(hasFocus){
+                displayDatePicker(getString(R.string.text_edd))
+            }
+
+        }
+    }
+
+    private fun displayDatePicker(title: String) {
+        val dateBuilder = MaterialDatePicker.Builder.datePicker()
+        dateBuilder.setTitleText(title)
+
+        val materialDatePicker = dateBuilder.build()
+        materialDatePicker.show(requireActivity().supportFragmentManager, "DATE_PICKER")
+        materialDatePicker.addOnPositiveButtonClickListener { _ ->
+            when(title){
+                getString(R.string.text_lmp)->{
+                    mViewModel.lmp = materialDatePicker.headerText
+                    mBinding.textMaternalProfileLmp.setText(materialDatePicker.headerText)
+                }
+
+                getString(R.string.text_edd)->{
+                    mViewModel.edd = materialDatePicker.headerText
+                    mBinding.textMaternalProfileEdd.setText(materialDatePicker.headerText)
+                }
+
+            }
+
+        }
+
     }
 
     private fun postMaternalProfile() {

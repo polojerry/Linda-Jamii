@@ -30,8 +30,8 @@
     <string name="home_text_choose_an_option">Choose an Option</string>
     <string name="image_content_description_image_logo_of_linda_jamii_application">Image Logo of Linda Jamii Application</string>
     <string name="login_text_label_login">Login</string>
-    <string name="login_hint_login_email">Login Email</string>
-    <string name="login_hint_login_password">Login Password</string>
+    <string name="login_hint_login_email">Email</string>
+    <string name="login_hint_login_password">Password</string>
     <string name="button_login">Login</string>
     <string name="maternal_profile_title_maternal_profile">Maternal Profile</string>
     <string name="maternal_profile_hint_name_of_institution">Name of Institution</string>
@@ -169,5 +169,7 @@
     <string name="string_divider">|</string>
     <string name="string_format_anc_number">"ANC: %s"</string>
     <string name="string_format_edd">EDD: %s</string>
+    <string name="text_lmp">L.M.P</string>
+    <string name="text_edd">E.D.D</string>
 
 </resources>
